@@ -15,9 +15,9 @@ typedef struct {
     int col;
 } buildingPoints;
 
-#define row(C) (C)->row // Coordinate Y
-#define col(C) (C)->col // Coordinate X
-#define buildings(C) (C).building
+#define row(C) (C).row // Coordinate Y
+#define col(C) (C).col // Coordinate X
+#define building(C) (C).building
 
 buildingPoints makeBuilding (buildings building, int row, int col);
 
