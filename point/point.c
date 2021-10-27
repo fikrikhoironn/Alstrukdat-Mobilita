@@ -3,6 +3,7 @@
 
 #include "point.h"
 
+<<<<<<< HEAD
 // Allocate buildingCoord
 locationCoord* makeLocationCoord (locations *location, int row, int col)
 {
@@ -26,4 +27,8 @@ void writeBuildingCoord (locationCoord C)
     else if (C.location->type==6){printf("Neutral ");}
 
     printf("(%d,%d) ",row(C),col(C));
+=======
+buildingPoints makeBuilding (buildings building, int row, int col){
+    
+>>>>>>> 157ed4a510b95e81e76873547bc7dc17c72d6a06
 }
