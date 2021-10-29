@@ -14,6 +14,15 @@ locationCoord* makeLocationCoord (locations *location, int row, int col)
     return C;
 }
 
+locationCoord MakePOINT (int col, int row)
+{
+    locationCoord C;
+    col(C) = col;
+    row(C) = row;
+
+    return C;
+}
+
 // Outputs building in format : <type> (<col>,<row>)
 // For e.g : Tower (1,13)
 void writeBuildingCoord (locationCoord C)
