@@ -67,7 +67,7 @@ int indexOf(linkedList L, infotype val) {
     p = first(L);
     found = false;
     while (p != NULL && !found) {
-        if (info(p) == val) {
+        if (isItemEqual(info(p), val)) {
             found = true;
         }
         else {
@@ -210,16 +210,21 @@ void displayList(linkedList L) {
     // KAMUS
     Address p;
     // ALGORITMA
-    printf("[");
     if (!isEmpty(L)) {
         p = first(L);
-        while (next(p) != NULL) {
-            printf("%d,", info(p));
+        while (p != NULL) {
+            printf("Time in : %d\n", timeIn(info(p)) );
+            printf("Pick up point : %c\n", pickUp(info(p)));
+            printf("Drop off point : %c\n", dropOff(info(p)));
+            printf("Item type : %c\n", typeItem(info(p)));
+            printf("Item value : %d\n", valueItem(info(p)));
+            printf("Reward number : %d\n\n", rewardItem(info(p)));
             p = next(p);
         }
-        printf("%d", info(p));
     }
-    printf("]");
+    else {
+        printf("Tidak ada item.");
+    }
 }
 
 linkedList concat(linkedList L1, linkedList L2) {
@@ -239,4 +244,54 @@ linkedList concat(linkedList L1, linkedList L2) {
         p2 = next(p2);
     }
     return L3;
+}
+
+boolean isItemEqual (item a, item b) {
+    // KAMUS
+    // ALGORITMA
+    return ((timeIn(a)==timeIn(b)) && (pickUp(a)==pickUp(b)) && (dropOff(a)==dropOff(b)) && (typeItem(a)==typeItem(b)) && (valueItem(a)==valueItem(b)) && (rewardItem(a)==rewardItem(b)));
+}
+
+void insert_timeasc (linkedList *L, infotype val) {
+    // KAMUS
+    Address pNew, pList;
+    int idx;
+    // ALGORITMA
+    if (isEmpty(*L)) {
+        insertFirst(L, val);
+    }
+    else {   
+        pNew = newNode(val);
+        if (pNew != NULL) {
+            idx = 0;
+            pList = first(*L);
+            while ((pList != NULL) && (timeIn(info(pList))<=timeIn(val))) {
+                pList = next(pList);
+                idx++;
+            }
+            insertAt(L, idx, val);
+        }
+    }
+}
+
+void insert_timedesc (linkedList *L, infotype val) {
+    // KAMUS
+    int idx;
+    Address pNew, pList;
+    // ALGORITMA
+    if (isEmpty(*L)) {
+        insertFirst(L, val);
+    }
+    else {
+        pNew = newNode(val);
+        if (pNew != NULL) {
+            idx = 0;
+            pList = first(*L);
+            while ((pList != NULL) && (timeIn(info(pList))>=timeIn(val))) {
+                pList = next(pList);
+                idx++;
+            }
+            insertAt(L, idx, val);
+        }
+    }
 }
