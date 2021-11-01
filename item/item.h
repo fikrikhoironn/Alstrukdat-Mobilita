@@ -16,11 +16,11 @@ typedef struct{
     int rewardItem;
 }item;
 
-#define timeIn(I) (I).timeIn;
-#define pickUp(I) (I).pickUp;
-#define dropOff(I) (I).dropOff;
-#define typeItem(I) (I).typeItem;
-#define valueItem(I) (I).valueItem;
-#define rewardItem(I) (I).rewardItem;
+#define timeIn(I) (I).timeIn
+#define pickUp(I) (I).pickUp
+#define dropOff(I) (I).dropOff
+#define typeItem(I) (I).typeItem
+#define valueItem(I) (I).valueItem
+#define rewardItem(I) (I).rewardItem
 
 #endif
