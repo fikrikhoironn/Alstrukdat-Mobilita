@@ -23,7 +23,7 @@ Address newNode(infotype val) {
     return p;
 }
 
-boolean isEmpty(linkedList L) {
+boolean isListEmpty(linkedList L) {
     // KAMUS
     // ALGORITMA
     return (first(L) == NULL);
@@ -43,7 +43,7 @@ infotype getElmtList(linkedList L, int idx) {
     return (info(p));
 }
 
-void setElmt(linkedList *L, int idx, infotype val) {
+void setElmtList(linkedList *L, int idx, infotype val) {
     // KAMUS
     int count;
     Address p;
@@ -57,7 +57,7 @@ void setElmt(linkedList *L, int idx, infotype val) {
     info(p) = val;
 }
 
-int indexOf(linkedList L, infotype val) {
+int indexOfList(linkedList L, infotype val) {
     // KAMUS
     int i;
     Address p;
@@ -97,7 +97,7 @@ int lengthList(linkedList L) {
     return count;
 }
 
-void insertFirst(linkedList *L, infotype val) {
+void insertFirstList(linkedList *L, infotype val) {
     // KAMUS
     Address p;
     // ALGORITMA
@@ -108,13 +108,13 @@ void insertFirst(linkedList *L, infotype val) {
     }
 }
 
-void insertAt(linkedList *L, int idx, infotype val) {
+void insertAtList(linkedList *L, int idx, infotype val) {
     // KAMUS
     Address pNew, pList;
     int i;
     // ALGORITMA
     if (idx == 0) {
-        insertFirst(L, val);
+        insertFirstList(L, val);
     }
     else {
         pNew = newNode(val);
@@ -129,12 +129,12 @@ void insertAt(linkedList *L, int idx, infotype val) {
     }
 }
 
-void insertLast(linkedList *L, infotype val) {
+void insertLastList(linkedList *L, infotype val) {
     // KAMUS
     Address pNew, pList;
     // ALGORITMA
-    if (isEmpty(*L)) {
-        insertFirst(L, val);
+    if (isListEmpty(*L)) {
+        insertFirstList(L, val);
     }
     else {
         pNew = newNode(val);
@@ -148,7 +148,7 @@ void insertLast(linkedList *L, infotype val) {
     }
 }
 
-void deleteFirst(linkedList *L, infotype *val) {
+void deleteFirstList(linkedList *L, infotype *val) {
     // KAMUS
     Address p;
     // ALGORITMA
@@ -163,15 +163,15 @@ void deleteFirst(linkedList *L, infotype *val) {
     free(p);
 }
 
-void deleteAt(linkedList *L, int idx, infotype *val) {
+void deleteAtList(linkedList *L, int idx, infotype *val) {
     // KAMUS
     Address p, temp;
     int i;
     // ALGORITMA
     if (idx == 0) {
-        deleteFirst(L, val);
+        deleteFirstList(L, val);
     }
-    else if (idx == length(*L)) {
+    else if (idx == lengthList(*L)) {
         // tidak ada yang dihapus
     }
     else {
@@ -186,7 +186,7 @@ void deleteAt(linkedList *L, int idx, infotype *val) {
     }
 }
 
-void deleteLast(linkedList *L, infotype *val, int idx) {
+void deleteLastList(linkedList *L, infotype *val, int idx) {
     // KAMUS
     Address p, loc;
     // ALGORITMA
@@ -210,7 +210,7 @@ void displayList(linkedList L) {
     // KAMUS
     Address p;
     // ALGORITMA
-    if (!isEmpty(L)) {
+    if (!isListEmpty(L)) {
         p = first(L);
         while (p != NULL) {
             printf("Time in : %d\n", timeIn(info(p)) );
@@ -227,7 +227,7 @@ void displayList(linkedList L) {
     }
 }
 
-linkedList concat(linkedList L1, linkedList L2) {
+linkedList concatList(linkedList L1, linkedList L2) {
     // KAMUS
     Address p1, p2;
     linkedList L3;
@@ -236,11 +236,11 @@ linkedList concat(linkedList L1, linkedList L2) {
     p1 = first(L1);
     p2 = first(L2);
     while (p1 != NULL) {
-        insertLast(&L3, info(p1));
+        insertLastList(&L3, info(p1));
         p1 = next(p1);
     }
     while (p2 != NULL) {
-        insertLast(&L3, info(p2));
+        insertLastList(&L3, info(p2));
         p2 = next(p2);
     }
     return L3;
@@ -249,16 +249,16 @@ linkedList concat(linkedList L1, linkedList L2) {
 boolean isItemEqual (item a, item b) {
     // KAMUS
     // ALGORITMA
-    return ((timeIn(a)==timeIn(b)) && (pickUp(a)==pickUp(b)) && (dropOff(a)==dropOff(b)) && (typeItem(a)==typeItem(b)) && (valueItem(a)==valueItem(b)) && (rewardItem(a)==rewardItem(b)));
+    return ((timeIn(a)==timeIn(b)) && (pickUp(a)==pickUp(b)) && (dropOff(a)==dropOff(b)) && (typeItem(a)==typeItem(b)) && (valueItem(a)==valueItem(b)) && (rewardItem(a)==rewardItem(b)) && (perishableTime(a)==perishableTime(b)));
 }
 
-void insert_timeasc (linkedList *L, infotype val) {
+void insert_timeascList (linkedList *L, infotype val) {
     // KAMUS
     Address pNew, pList;
     int idx;
     // ALGORITMA
-    if (isEmpty(*L)) {
-        insertFirst(L, val);
+    if (isListEmpty(*L)) {
+        insertFirstList(L, val);
     }
     else {   
         pNew = newNode(val);
@@ -269,18 +269,18 @@ void insert_timeasc (linkedList *L, infotype val) {
                 pList = next(pList);
                 idx++;
             }
-            insertAt(L, idx, val);
+            insertAtList(L, idx, val);
         }
     }
 }
 
-void insert_timedesc (linkedList *L, infotype val) {
+void insert_timedescList (linkedList *L, infotype val) {
     // KAMUS
     int idx;
     Address pNew, pList;
     // ALGORITMA
-    if (isEmpty(*L)) {
-        insertFirst(L, val);
+    if (isListEmpty(*L)) {
+        insertFirstList(L, val);
     }
     else {
         pNew = newNode(val);
@@ -291,7 +291,7 @@ void insert_timedesc (linkedList *L, infotype val) {
                 pList = next(pList);
                 idx++;
             }
-            insertAt(L, idx, val);
+            insertAtList(L, idx, val);
         }
     }
 }
