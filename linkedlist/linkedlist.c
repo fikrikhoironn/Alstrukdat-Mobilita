@@ -29,7 +29,7 @@ boolean isEmpty(linkedList L) {
     return (first(L) == NULL);
 }
 
-infotype getElmt(linkedList L, int idx) {
+infotype getElmtList(linkedList L, int idx) {
     // KAMUS
     int count;
     Address p;
@@ -83,7 +83,7 @@ int indexOf(linkedList L, infotype val) {
     }
 }
 
-int length(linkedList L) {
+int lengthList(linkedList L) {
     // KAMUS
     int count;
     Address p;

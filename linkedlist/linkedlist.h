@@ -38,7 +38,7 @@ Address newNode(infotype val);
 boolean isEmpty(linkedList L);
 // Mengirimkan true jika L kosong, false jika tidak
 
-infotype getElmt(linkedList L, int idx);
+infotype getElmtList(linkedList L, int idx);
 // Mengirimkan nilai elemen L pada indeks ke-idx
 
 void setElmt(linkedList *L, int idx, infotype val);
@@ -48,7 +48,7 @@ void setElmt(linkedList *L, int idx, infotype val);
 int indexOf(linkedList L, infotype val);
 // Mencari letak val dalam list dan mengirimkan indeksnya 
 
-int length(linkedList L);
+int lengthList(linkedList L);
 // Mengirimkan panjang/banyak elemen list L 
 
 void insertFirst(linkedList *L, infotype val);
