@@ -4,6 +4,7 @@
 #ifndef POINT_H
 #define POINT_H
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "boolean.h"
@@ -22,6 +23,9 @@ typedef struct {
 // Allocate location coord
 locationCoord* makeLocationCoord (locations *location, int row, int col);
 
+
+// isi koordinat lokasi
+locationCoord MakePOINT (int col, int row);
 // Outputs location in format : <type> (<col>,<row>)
 // For e.g : Headquarters (1,1)
 void writeLocationCoord (locationCoord C);
