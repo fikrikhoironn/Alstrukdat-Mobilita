@@ -12,15 +12,13 @@ typedef struct{
     char pickUp;
     char dropOff;
     char typeItem;
-    int valueItem;
-    int rewardItem;
+    int perishableTime; 
 }item;
 
 #define timeIn(I) (I).timeIn;
 #define pickUp(I) (I).pickUp;
 #define dropOff(I) (I).dropOff;
 #define typeItem(I) (I).typeItem;
-#define valueItem(I) (I).valueItem;
-#define rewardItem(I) (I).rewardItem;
+#define perishableTime(I) (I).perishableTime;
 
 #endif
