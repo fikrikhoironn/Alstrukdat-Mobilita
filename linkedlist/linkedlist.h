@@ -6,10 +6,11 @@
 #define LINKEDLIST_H
 
 #include "boolean.h"
+#include "../item/item.h"
 #include <stdio.h>
 
 // DEKLARASI TIPE   
-typedef int infotype;
+typedef item infotype;
 typedef struct tnode* Address;
 typedef struct tnode {
     infotype info;
@@ -89,6 +90,15 @@ linkedList concat(linkedList L1, linkedList L2);
 // I.S. List L1 dan L2 terdefinisi 
 // F.S. LOUt terdefinisi sebagai list hasil penempelan L1 dengan L2 
 
+boolean isItemEqual(item a, item b);
+// mengembalikan true jika item a sama dengan item b
+// To do list terurut dengan waktu masuk terurut membesar
+// In progress list terurut dengan waktu masuk terurut mengecil
 
+void insert_timeasc (linkedList *L, infotype val);
+// Memasukkan element val ke dalam list L, terurut membesar
+
+void insert_timedesc (linkedList *L, infotype val);
+// Memasukkan element val ke dalam list L, terurut mengecil
 
 #endif

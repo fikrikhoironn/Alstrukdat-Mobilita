@@ -15,10 +15,12 @@ typedef struct{
     int perishableTime; 
 }item;
 
-#define timeIn(I) (I).timeIn;
-#define pickUp(I) (I).pickUp;
-#define dropOff(I) (I).dropOff;
-#define typeItem(I) (I).typeItem;
-#define perishableTime(I) (I).perishableTime;
+#define timeIn(I) (I).timeIn
+#define pickUp(I) (I).pickUp
+#define dropOff(I) (I).dropOff
+#define typeItem(I) (I).typeItem
+#define perishableTime(I) (I).perishableTime
+
+
 
 #endif
