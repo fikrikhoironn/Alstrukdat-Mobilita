@@ -20,6 +20,10 @@ void createGadgetList(gadgetList *g);
 
 // Fungsi/Prosedur
 
+boolean isFull(gadgetList g);
+
+boolean isEmpty(gadgetList g);
+
 void buyItem(int *money, gadgetList *g);
 // I.S money dan gadgetList terdefinisi
 // F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
