@@ -35,49 +35,49 @@ Address newNode(infotype val);
 // Mengalokasikan val sebagai info dari node baru dan mengembalikan alamatnya
 
 // OPERASI PADA LIST 
-boolean isEmpty(linkedList L);
+boolean isListEmpty(linkedList L);
 // Mengirimkan true jika L kosong, false jika tidak
 
-infotype getElmt(linkedList L, int idx);
+infotype getElmtList(linkedList L, int idx);
 // Mengirimkan nilai elemen L pada indeks ke-idx
 
-void setElmt(linkedList *L, int idx, infotype val);
+void setElmtList(linkedList *L, int idx, infotype val);
 // I.S. L terdefinisi, idx adalah indeks yang terdefinisi pada L
 // F.S. Nilai elemen L pada indeks ke-idx adalah 
 
-int indexOf(linkedList L, infotype val);
+int indexOfList(linkedList L, infotype val);
 // Mencari letak val dalam list dan mengirimkan indeksnya 
 
-int length(linkedList L);
+int lengthList(linkedList L);
 // Mengirimkan panjang/banyak elemen list L 
 
-void insertFirst(linkedList *L, infotype val);
+void insertFirstList(linkedList *L, infotype val);
 // I.S. List L terdefinisi 
 // F.S. val adalah elemen pertama list yang baru; 
 // list L dinyatakan sebagai address dari val
 // jumlah elemen list L bertambah satu 
 
-void insertAt(linkedList *L, int idx, infotype val);
+void insertAtList(linkedList *L, int idx, infotype val);
 // I.S. List L terdefinisi 
 // F.S. val adalah elemen list pada indeks ke-idx  yang baru; 
 // jumlah elemen list L bertambah satu
 
-void insertLast(linkedList *L, infotype val);
+void insertLastList(linkedList *L, infotype val);
 // I.S. List L terdefinisi 
 // F.S. val adalah elemen terakhir list yang baru; 
 // jumlah elemen list L bertambah satu
 
-void deleteFirst(linkedList *L, infotype *val);
+void deleteFirstList(linkedList *L, infotype *val);
 // I.S. List L terdefinisi dan tidak kosong 
 // F.S. Elemen pada indeks pertama list dihapus,
 // val adalah nilai yang dihapus dari list 
 
-void deleteAt(linkedList *L, int idx, infotype *val);
+void deleteAtList(linkedList *L, int idx, infotype *val);
 // I.S. List L terdefinisi dan tidak kosong 
 // F.S. Elemen pada indeks ke-idx list dihapus,
 // val adalah nilai yang dihapus dari list 
 
-void deleteLast(linkedList *L, infotype *val, int idx);
+void deleteLastList(linkedList *L, infotype *val, int idx);
 // I.S. List L terdefinisi dan tidak kosong 
 // F.S. Elemen pada indeks terakhir list dihapus,
 // val adalah nilai yang dihapus dari list 
@@ -86,7 +86,7 @@ void displayList(linkedList L);
 // I.S. List L terdefinisi, bisa kosong
 // F.S. Elemen list ditampilkan dengan format [e1,e2,...,en]
 
-linkedList concat(linkedList L1, linkedList L2);
+linkedList concatList(linkedList L1, linkedList L2);
 // I.S. List L1 dan L2 terdefinisi 
 // F.S. LOUt terdefinisi sebagai list hasil penempelan L1 dengan L2 
 
@@ -95,10 +95,10 @@ boolean isItemEqual(item a, item b);
 // To do list terurut dengan waktu masuk terurut membesar
 // In progress list terurut dengan waktu masuk terurut mengecil
 
-void insert_timeasc (linkedList *L, infotype val);
+void insert_timeascList (linkedList *L, infotype val);
 // Memasukkan element val ke dalam list L, terurut membesar
 
-void insert_timedesc (linkedList *L, infotype val);
+void insert_timedescList (linkedList *L, infotype val);
 // Memasukkan element val ke dalam list L, terurut mengecil
 
 #endif
