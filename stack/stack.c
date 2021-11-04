@@ -5,20 +5,20 @@
 
 //Creates empty stack
 void CreateStack(Stack *bag){
-    IDX_TOP(*bag) = IDX_UNDEF;
+    IDX_TOP(*bag) = IDX_UNDEF_STACK;
     maxBag(*bag) = 3;
 }
 
 boolean isBagEmpty(Stack bag)
 /* Mengirim true jika bag kosong */
 {
-    return IDX_TOP(bag) == IDX_UNDEF;
+    return IDX_TOP(bag) == IDX_UNDEF_STACK;
 }
 
 boolean isBagFull(Stack bag)
 /* Mengirim true jika tabel penampung nilai bag stack penuh */
 {
-    return (IDX_TOP(bag) == maxBag(bag) || IDX_TOP(bag) == (CAPACITY - 1));
+    return (IDX_TOP(bag) == maxBag(bag) || IDX_TOP(bag) == (CAPACITY_STACK - 1));
 }
 
 void pushBag(Stack *bag, item val)

@@ -8,11 +8,11 @@
 #include "boolean.h"
 #include "../item/item.h"
 
-#define IDX_UNDEF -1
-#define CAPACITY 100
+#define IDX_UNDEF_STACK -1
+#define CAPACITY_STACK 100
 
 typedef struct {
-  item buffer[CAPACITY]; /* tabel penyimpan elemen */
+  item buffer[CAPACITY_STACK]; /* tabel penyimpan elemen */
   int idxTop;              /* alamat TOP: elemen puncak */
   int maxBag;
 } Stack;
