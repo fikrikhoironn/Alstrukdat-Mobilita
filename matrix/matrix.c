@@ -1,164 +1,105 @@
-/* File: matrix.c */
-/* matrix.h implementation */
+/* ********** Definisi TYPE Matrix dengan Index dan elemen integer ********** */
 
+#include <stdio.h>
 #include "matrix.h"
 
-// Creates an empty matrix with size NRxNC
-void createEmptyMatrix(int NR, int NC, matrix *M)
-{
-    //Map size
-    nRowEff(*M)=NR+1;
-    nColEff(*M)=NC+1;
-    for(int i=1;i<=nRowEff(*M);i++)
-        for(int j=1;j<=nColEff(*M);j++)
-        {
-            locationPtr(*M,i,j) = NULL; // give null pointer
-        }
-    //+1 for "*" border (upper and left border using zero (0) index)
-    //structures in the map defined in [1..rowMax-1] and [1..colMax-1]
-    //every fiend is EmptyField (' ')
-    //to fill the blank with corresponding structure, use InsertStructure
-}
+/* rowEff >= 1 dan colEff >= 1 */
+/* Indeks matriks yang digunakan: [0..ROW_CAP-1][0..COL_CAP-1] */
+/* Memori matriks yang dipakai selalu di "ujung kiri atas" */
 
-// Return true if index [i,j] valid
-boolean isIdxValid (int i, int j)
-{
-    return((i>=rowMin && i<=rowMax) && (j>=colMin && j<=colMax));
+/* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
+/* *** Konstruktor membentuk Matrix *** */
+void CreateMatrix(int nRow, int nCol, Matrix *m){
+  ROWS(*m) = nRow;
+  COLS(*m) = nCol;
 }
+/* Membentuk sebuah Matrix "kosong" yang siap diisi berukuran nRow x nCol di "ujung kiri" memori */
+/* I.S. nRow dan nCol adalah valid untuk memori matriks yang dibuat */
+/* F.S. Matriks m sesuai dengan definisi di atas terbentuk */
 
-// Returns lowest index row M
-int getFirstIdxRow (matrix M)
-{
-    return(rowMin);
+/* *** Selektor "DUNIA Matrix" *** */
+boolean isIdxValid(int i, int j){
+  return (i >= 0 && i < ROW_CAP && j >= 0 && j < COL_CAP);
 }
+/* Mengirimkan true jika i, j adalah Index yang valid untuk matriks apa pun */
 
-// Returns lowest index column M
-int getFirstIdxCol (matrix M)
-{
-    return(colMin);
+/* *** Selektor: Untuk sebuah matriks m yang terdefinisi: *** */
+Index getLastIdxRow(Matrix m){
+  return ROWS(m) - 1;
 }
-
-// Returns highest index row M
-int getLastIdxRow (matrix M)
-{
-    return(nRowEff(M));
+/* Mengirimkan Index baris terbesar m */
+Index getLastIdxCol(Matrix m){
+  return COLS(m) - 1;
 }
-
-// Returns highest index column M
-int getLastIdxCol (matrix M)
-{
-    return(nColEff(M));
+/* Mengirimkan Index kolom terbesar m */
+boolean isIdxEff(Matrix m, Index i, Index j){
+  return(i >= 0 && i < ROWS(m) && j >= 0 && j < COLS(m));
 }
-
-// Returns true if index [i,j] is effective index for M
-boolean isIdxEff (matrix M, int i, int j)
-{
-    return((i>=1 && i<= getLastIdxRow(M)) && (j>=1 && j==getLastIdxCol(M)));
+/* Mengirimkan true jika i, j adalah Index efektif bagi m */
+ElType getElmtDiagonal(Matrix m, Index i){
+  return ELMT(m, i, i);
 }
+/* Mengirimkan elemen m(i,i) */
 
-// Insert structure in M based on C
-/* Example: if NR = 15 dan NC = 10, then matrix entry (provided every structure already inserted) :
-C       V   ​T​ ​C​
-  C            
-T      V     ​C​ 
-    F          
-           F   
-  T            
-         T     
- ​C​   ​V​        T
-            C  
-​C​ T           C
-NB: depends on coordinate points
+/* ********** Assignment  Matrix ********** */
+void copyMatrix(Matrix mIn, Matrix *mRes){
+  CreateMatrix(ROWS(mIn), COLS(mIn), mRes);
+  for(int i = 0; i < ROWS(mIn); i++){
+    for(int j = 0; j < COLS(mIn); j++){
+      ELMT(*mRes, i, j) = ELMT(mIn, i, j);
+    }
+  }
+}
+/* Melakukan assignment MRes = MIn */
+
+/* ********** KELOMPOK BACA/TULIS ********** */
+void readMatrix(Matrix *m, int nRow, int nCol){
+  CreateMatrix(nRow, nCol, m);
+  for(int i = 0; i < nRow; i++){
+    for(int j = 0; j < nCol; j++){
+      int x;
+      scanf("%d", &x);
+      ELMT(*m, i, j) = x;
+    }
+  }
+}
+/* I.S. isIdxValid(nRow,nCol) */
+/* F.S. m terdefinisi nilai elemen efektifnya, berukuran nRow x nCol */
+/* Proses: Melakukan CreateMatrix(m,nRow,nCol) dan mengisi nilai efektifnya */
+/* Selanjutnya membaca nilai elemen per baris dan kolom */
+/* Contoh: Jika nRow = 3 dan nCol = 3, maka contoh cara membaca isi matriks :
+1 2 3
+4 5 6
+8 9 10 
 */
-void insertStructure (matrix *M, locationCoord *C)
-{
-    locationPtr(*M,row(*C),col(*C)) = C;
+void displayMatrix(Matrix m){
+  for(int i = 0; i < ROWS(m); i++){
+    for(int j = 0; j < COLS(m); j++){
+      printf("%d", ELMT(m, i, j));
+      if(j != COLS(m) - 1){
+        printf(" ");
+      }
+    }
+    if(i != ROWS(m) - 1){
+      printf("\n");
+    }
+  }
 }
 
-void writeMatrix (matrix M)
-// Prints out matrix based on matrix 
-/* Example: prints 10x15 map (bordered by * from 0 to size+1)
-/---------------\
-|C       V   ​T​ ​C​|
-|  C            |
-|T      V     ​C​ |
-|    F          |
-|           F   |
-|  T            |
-|         T     |
-| ​C​   ​V​        T|
-|            C  |
-|​C​ T           C|
-\---------------/
-*/
-{
-    // Prints the col coordinate
-    colorPrint("  R\\C ",CYAN);
-    for(int i=1;i<=nColEff(M)-1;i++)
-    {
-        printf("   ");
-        print_cyan((char)(i%10)+'0');
-        printf("  ");
+boolean isLocationConnected(Matrix m, Index loc1, Index loc2){
+    return ELMT(m,loc1,loc2)==1 || ELMT(m,loc2,loc1);
+}
+
+void printMap(Matrix m, Index x , Index y){
+    for(int j=0;j<COLS(m)+2;j++){
+        printf("*");
     }
     printf("\n");
-
-    // Prints the grid
-    for(int i=1;i<getLastIdxRow(M);i++)
-    {
-        // Prints top border
-        printf("      ");
-        for(int j=1;j<getLastIdxCol(M);j++) colorPrint(". -=- ", YELLOW);
-        colorPrint(".\n",YELLOW);
-        
-        // Prints row coordinate
-        printf("   ");
-        print_cyan((char)(i%10)+'0');
-        printf("  ");
-
-        for(int j=1;j<getLastIdxCol(M);j++)
-        {
-            // Prints vertical borders
-            colorPrint("|  ", YELLOW);
-
-            // If pointer exists..
-            if (locationPtr(M,i,j)!=NULL)
-            {
-                // Building type checker
-                char t;
-                if (type(*locate(*locationPtr(M,i,j)))==1) { //headquarters
-                    t='8'; 
-                    printf("%c", t); }
-                else if (type(*locate(*locationPtr(M,i,j)))==2) { //Mobita
-                    t=name(*locate(*locationPtr(M,i,j)));
-                    print_yellow(t); }
-                else if (type(*locate(*locationPtr(M,i,j)))==4) { //drop-off
-                    t=name(*locate(*locationPtr(M,i,j)));
-                    print_blue(t); }
-                else if (type(*locate(*locationPtr(M,i,j)))==3) { //pick-up
-                    t=name(*locate(*locationPtr(M,i,j)));
-                    print_red(t); }
-                else if (type(*locate(*locationPtr(M,i,j)))==5) { //destination
-                    t=name(*locate(*locationPtr(M,i,j)));
-                    print_green(t); }
-                else if (type(*locate(*locationPtr(M,i,j)))==6) { //neutral
-                    t=name(*locate(*locationPtr(M,i,j)));
-                    printf("%c", t); }
-            }
-            else printf(" "); // ..else print space
-
-            printf("  ");
-
+    for(int i=0;i<ROWS(m);i++){
+        printf("*");
+        for(int j=0;j<COLS(m);j++){
+            
         }
-        // Prints incomplete vertical borders
-        colorPrint("|\n", YELLOW);
-        
+        printf("*\n");
     }
-
-    // Prints incomplete bottom border
-    printf("      ");
-    for(int j=1;j<getLastIdxCol(M);j++)
-    {
-        colorPrint(". -=- ", YELLOW);
-    }
-    colorPrint(".\n", YELLOW);
 }

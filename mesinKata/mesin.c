@@ -81,16 +81,16 @@ void copyToken(Token t1, Token *t2){
 }
 
 
-void startTokenStd(char *c){
-    startIn(c);
+void startTokenStd(){
+    startIn();
     salinTokenSTDIN();
 }
 
 void salinTokenSTDIN(){
     int i = 0;
     currentToken.len=0;
-    while(currentChar!=MARK && currentChar !=' ' && currentChar!='\n' && (i<MAX)){
-        i++;
+    while(currentChar !=' ' && currentChar!='\n' && (i<MAX)){
+        ++i;
         currentToken.tokenArray[i]=currentChar;
         advStartIn();
     }
@@ -99,16 +99,34 @@ void salinTokenSTDIN(){
 
 
 void advTokenStdin(){
-    if(currentChar==MARK || currentChar == ' ' || currentChar =='\n') endToken=true;
+    if(currentChar == ' ' || currentChar =='\n') endToken=true;
     else{
-
         ignoreBlank();
-        salinToken();
-        adv();
+        salinTokenSTDIN();
     }
 }
 
+void readConfigFiles(const char* c){
+    startToken(c);
+    int mapHeight,mapLong;
+    mapHeight = tokenToInt(currentToken);
+    advToken();
+    mapLong=tokenToInt(currentToken);
+    advToken();
+    advToken();
+    //setLocationHQ
+    advToken();
+    int m= tokenToInt(currentToken);
+    int i;
+    for(i=0;i<m;i++){
+        
+    }
+
+
+}
+
 /*
+
 matrix tokenToMatrix(int m){
     matrix M;
     createEmptyMatrix(m,m,&M);
@@ -117,16 +135,19 @@ matrix tokenToMatrix(int m){
     int i,j;
     for(i=1;i<=m;i++){
         for(j=1;j<=m;j++){
-            locationPtr(M,i,j)=tokenToInt(token);
+            locationPtr(M,i,j)=tokenToInt(currentToken);
             advToken();
         }
     }
 }
+*/
 
+/*
 locations tokenToLoc(int m){
 
 }
 */
+
 /*
 graph tokenToGraph(Token t){
     graph g;

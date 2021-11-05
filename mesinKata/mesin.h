@@ -7,7 +7,7 @@
 
 #include "boolean.h"
 #include "charmachine.h"
-//#include "../matrix/matrix.h"
+#include "../matrix/matrix.h"
 //#include "../graph/graph.h"
 #include <stdio.h>
 #include <string.h> 
@@ -61,7 +61,7 @@ I.S.
 F.S.
 */
 
-int tokenToInt();
+int tokenToInt(Token t);
 /* Mengubah token menjadi int 
 I.S. 
 F.S.
@@ -82,13 +82,13 @@ F.S. t2 memiliki isi yang identik dengan t1
 */
 
 
-void startTokenStd(char *c);
+void startTokenStd();
 
 
 void salinTokenSTDIN();
 
 //ini buat opsi kalo graph kita gagal'
-//matrix tokenToMatrix(int m);
+void tokenToMatrix(int m[][] );
 /*
 Menyimpan matrix relasi dari masukan (config) menjadi matrix biasa di mana ukurannya jumlah bangunan+1;
 I.S. m adalah total lokasi yang ada ditambah hq
@@ -97,10 +97,10 @@ Untuk setiap pergerakan, lakukan perulangan untuk mengecek relasi dari suatu tit
 */
 void advTokenStdin();
 
-int readNumber ();
+void readConfigFile(const char * c);
 /*
-Membaca sebuah angka dan berhenti ketika bertemu spasi, enter maupun titik
-Dan memberikan balikan nilai berupa ionteger tersebut
+Membaca file configurasi, ketika melakukan newgame
+
 */
 
 #endif

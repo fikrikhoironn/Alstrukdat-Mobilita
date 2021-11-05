@@ -43,15 +43,15 @@ void adv() {
 
 
 //menjalankan program pembacaan melalui masukan user
-void startIn(const char* fileName){
-       tape=fopen(fileName, "r");
+void startIn(){
+       tape=stdin;
        eot=false;
        advStartIn();
 }
 
 void advStartIn(){
        retval=fscanf(tape,"%c",&currentChar);
-       eot= (currentChar == MARK);
+       eot= (currentChar == ' ' || currentChar =='\n');
        if(eot){
               fclose(tape);
        }

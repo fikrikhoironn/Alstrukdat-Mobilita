@@ -27,7 +27,7 @@ void adv();
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
-void startIn(const char* fileName);
+void startIn();
 /* Mesin karakter untuk membaca secara standar sebuha input dari pengguna*/
 
 void advStartIn();

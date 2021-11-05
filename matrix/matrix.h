@@ -4,79 +4,66 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-#include <stdio.h>
-#include "boolean.h"
-#include "../point/point.h"
-#include "../pcolor/pcolor.h"
+#include<stdlib.h>
+#include<stdio.h>
+#include"boolean.h"
 
-#define rowMin 1
-#define rowMax 31
-#define colMin 1
-#define colMax 21
-#define emptyField ' '
+#define CAPACITY1 100
+#define COL_CAP 100
+#define ROW_CAP 100
+#define ROWS(M) (M).rowEff
+#define COLS(M) (M).colEff
+#define ELMT(M,i,j) (M).buffer[i][j]
 
-typedef struct {
-    locationCoord *locationPtr[rowMax+1][colMax+1];
-    int nRowEff;
-    int nColEff;
-} matrix;
+typedef int ElType;
+typedef int Index;
+typedef struct Matrix{
+  ElType buffer[ROW_CAP+1][COL_CAP+1];
+  int rowEff;
+  int colEff;
+}Matrix;
 
-#define nRowEff(M) (M).nRowEff
-#define nColEff(M) (M).nColEff
-#define locationPtr(M,i,j) (M).locationPtr[(i)][(j)]
 
-// Creates an empty matrix with size NRxNC
-void createEmptyMatrix(int NR, int NC, matrix * M);
+/* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
+/* *** Konstruktor membentuk Matrix *** */
+void CreateMatrix(int nRow,int nCol, Matrix *m);
+/* Membentuk sebuah Matrix "kosong" yang siap diisi berukuran nRow x nCol di "ujung kiri" memori */
+/* I.S. nRow dan nCol adalah valid untuk memori matriks yang dibuat */
+/* F.S. Matriks m sesuai dengan definisi di atas terbentuk */
 
-// Return true if index [i,j] valid
-boolean isIdxValid (int i, int j);
 
-// Returns lowest index row M
-int getFirstIdxRow (matrix M);
+/* *** Selektor "DUNIA Matrix" *** */
+boolean isIdxValid(int i, int j);
 
-// Returns lowest index column M
-int getFirstIdxCol (matrix M);
+/** Mengirimkan true jika i, j adalah Index yang valid untuk matriks apa pun */
 
-// Returns highest index row M
-int getLastIdxRow (matrix M);
+/* *** Selektor: Untuk sebuah matriks m yang terdefinisi: *** */
+Index getLastIdxRow(Matrix m);
 
-// Returns highest index column M
-int getLastIdxCol (matrix M);
+/* Mengirimkan Index baris terbesar m */
+Index getLastIdxCol(Matrix m);
 
-// Returns true if index [i,j] is effective index for M
-boolean isIdxEff (matrix M, int i, int j);
+/* Mengirimkan Index kolom terbesar m */
+boolean isIdxEff(Matrix m, Index i, Index j);
 
-// Insert structure in M based on C
-/* Example: if NR = 15 dan NC = 10, then matrix entry (provided every structure already inserted) :
-C       V   ​T​ ​C​
-  C            
-T      V     ​C​ 
-    F          
-           F   
-  T            
-         T     
- ​C​   ​V​        T
-            C  
-​C​ T           C
-NB: depends on coordinate points
-*/
-void insertStructure (matrix *M, locationCoord *C);
+/* Mengirimkan true jika i, j adalah Index efektif bagi m */
+ElType getElmtDiagonal(Matrix m, Index i);
 
-// Prints out matrix based on matrix 
-/* Example: prints 10x15 map (bordered by * from 0 to size+1)
-*****************
-*C       V   ​T​ ​C​*
-*  C            *
-*T      V     ​C​ *
-*    F          *
-*           F   *
-*  T            *
-*         T     *
-* ​C​   ​V​        T*
-*            C  *
-*​C​ T           C*
-*****************  
-*/
-void writeMatrix (matrix M);
+/* ********** Assignment  Matrix ********** */
+void copyMatrix(Matrix mIn, Matrix *mRes);
+
+/* ********** KELOMPOK BACA/TULIS ********** */
+void readMatrix(Matrix *m, int nRow, int nCol);
+
+/* Check and Debugging Stuff*/
+/*isplayin Matrix*/
+void displayMatrix(Matrix m);
+
+/* ********** KELOMPOK OPERASI RELASIONAL TERHADAP Matrix ********** */
+boolean isLocationConnected(Matrix m, Index loc1, Index loc2);
+
+/* mencetak peta berdasrkan kooridnat saat itu */
+void printMap(Matrix m, Index x , Index y);
+
 
 #endif
