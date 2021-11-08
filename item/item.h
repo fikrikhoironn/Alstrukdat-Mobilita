@@ -21,6 +21,8 @@ typedef struct{
 #define typeItem(I) (I).typeItem
 #define perishableTime(I) (I).perishableTime
 
+item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
+
 
 
 #endif
