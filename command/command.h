@@ -10,7 +10,7 @@
 #include "../stack/stack.h"
 #include "../linkedlist/linkedlist.h"
 
-void PICK_UP(List ToDoList, List *InProgressList, Stack *Bag);
+void PICK_UP(linkedList ToDoList, linkedList *InProgressList, Stack *Bag);
 /*melakukan pick up dengan mencari apakah ada item di lokasi tersebut dengan mengecek pada to do list
 jika ada, pick up masukkan ke bag dan update in progress list */
 

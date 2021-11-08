@@ -217,8 +217,6 @@ void displayList(linkedList L) {
             printf("Pick up point : %c\n", pickUp(info(p)));
             printf("Drop off point : %c\n", dropOff(info(p)));
             printf("Item type : %c\n", typeItem(info(p)));
-            printf("Item value : %d\n", valueItem(info(p)));
-            printf("Reward number : %d\n\n", rewardItem(info(p)));
             p = next(p);
         }
     }
@@ -249,7 +247,7 @@ linkedList concatList(linkedList L1, linkedList L2) {
 boolean isItemEqual (item a, item b) {
     // KAMUS
     // ALGORITMA
-    return ((timeIn(a)==timeIn(b)) && (pickUp(a)==pickUp(b)) && (dropOff(a)==dropOff(b)) && (typeItem(a)==typeItem(b)) && (valueItem(a)==valueItem(b)) && (rewardItem(a)==rewardItem(b)) && (perishableTime(a)==perishableTime(b)));
+    return ((timeIn(a)==timeIn(b)) && (pickUp(a)==pickUp(b)) && (dropOff(a)==dropOff(b)) && (typeItem(a)==typeItem(b)) && (perishableTime(a)==perishableTime(b)));
 }
 
 void insert_timeascList (linkedList *L, infotype val) {
