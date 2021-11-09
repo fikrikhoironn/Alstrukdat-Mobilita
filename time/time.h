@@ -7,15 +7,26 @@
 #include "../item/item.h"
 
 typedef struct{
-    float currentTime;
-    float speedBoost;
-    int heavyDuration;
+    int currentTime;
+    int speedBoost;
+    int heavyItem;
+    int moveCount;
 }time;
 
 #define currentTime(t) (t).currentTime
 #define speedBoost(t) (t).speedBoost
-#define heavyDuration(t) (t).heavyDuration
+#define heavyItem(t) (t).heavyItem
+#define moveCount(t) (t).moveCount
 
+void createTime(time *t);
+
+void incrementTime(time *t);
+
+void resetHeavyItem(time *t);
+
+void initMoveCount(time *t);
+
+void addHeavyItem(time *t);
 
 
 // typedef struct{
