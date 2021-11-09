@@ -3,7 +3,7 @@
 
 #include "boolean.h"
 #include "../point/point.h"
-#include "../wordmachine/wordmachine.h"
+#include "../mesinKata/mesin.h"
 
 /*  Kamus Umum */
 #define IDX_UNDEF -1

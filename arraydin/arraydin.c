@@ -87,13 +87,13 @@ ArrayBuild BacaArray (int isi){
     char nama_build;
     i = 0;
     while (i<isi){
-        nama_build = WordChar(currentWord);
-        advWord();
-        abs = WordInt(currentWord);
-        advWord();
-        ord = WordInt(currentWord);
+        nama_build = tokenToChar(currentChar);
+        advToken();
+        abs = tokenToInt(currentToken);
+        advToken();
+        ord = tokenToInt(currentToken);
         IsiArray(&array,nama_build,abs,ord);
-        advWord();
+        advToken();
         i++;
     }
     return array;

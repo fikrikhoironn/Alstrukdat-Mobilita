@@ -8,6 +8,10 @@
 #include "boolean.h"
 #include "charmachine.h"
 #include "../matrix/matrix.h"
+#include "../arraydin/arraydin.h"
+#include "../item/item.h"
+#include "../stack/stack.h"
+#include "../locations/locations.h"
 //#include "../graph/graph.h"
 #include <stdio.h>
 #include <string.h> 

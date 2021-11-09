@@ -106,22 +106,48 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(const char* c){
+void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* relationMatrix, Stack *bag){
     startToken(c);
-    int mapHeight,mapLong;
-    mapHeight = tokenToInt(currentToken);
+    *mapHeight = tokenToInt(currentToken);
     advToken();
-    mapLong=tokenToInt(currentToken);
+    *mapLong=tokenToInt(currentToken);
     advToken();
+    (*HQ).row=tokenToInt(currentToken);
     advToken();
-    //setLocationHQ
+    (*HQ).col = tokenToInt(currentToken);
     advToken();
     int m= tokenToInt(currentToken);
     int i;
-    for(i=0;i<m;i++){
-        
+    advToken();
+    *arrBuild = BacaArray(m);
+    CreateMatrix(m+1,m+1,relationMatrix);
+    advToken();
+    for(i=0;i<=m;i++){
+        for(int j =0;j<=m;j++){
+            ELMT(*relationMatrix,i,j)=tokenToInt(currentToken);
+            advToken();
+        }
     }
 
+    int countItem= tokenToInt(currentToken);
+    advToken();
+    for(int i=0;i<countItem;i++){
+        item items;
+        items.timeIn=tokenToInt(currentToken);
+        advToken();
+        items.pickUp=tokenToChar(currentToken);        
+        advToken();
+        items.dropOff=tokenToChar(currentToken);
+        advToken();
+        items.typeItem=tokenToChar(currentToken);
+        if(items.typeItem=='P'){
+            advToken();
+            items.perishableTime=tokenToInt(currentToken);
+        }
+        advToken();
+        pushBag(bag,items);
+    
+    }
 
 }
 

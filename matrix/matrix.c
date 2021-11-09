@@ -98,7 +98,10 @@ void printMap(Matrix m, Index x , Index y){
     for(int i=0;i<ROWS(m);i++){
         printf("*");
         for(int j=0;j<COLS(m);j++){
-            
+            //jika connected dengan posisi nobita saat ini
+            if(){
+
+            }
         }
         printf("*\n");
     }
