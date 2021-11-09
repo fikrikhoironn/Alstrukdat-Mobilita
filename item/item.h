@@ -5,7 +5,7 @@
 #define item_h
 
 #include <stdio.h>
-#include <boolean.h>
+#include "boolean.h"
 
 typedef struct{
     int timeIn;
@@ -20,6 +20,8 @@ typedef struct{
 #define dropOff(I) (I).dropOff
 #define typeItem(I) (I).typeItem
 #define perishableTime(I) (I).perishableTime
+
+item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
 
 
 
