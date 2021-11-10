@@ -106,11 +106,11 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* relationMatrix, Stack *bag){
+void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix, Stack *bag){
     startToken(c);
     *mapHeight = tokenToInt(currentToken);
     advToken();
-    *mapLong=tokenToInt(currentToken);
+    *mapLength=tokenToInt(currentToken);
     advToken();
     (*HQ).row=tokenToInt(currentToken);
     advToken();
@@ -120,17 +120,18 @@ void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord
     int i;
     advToken();
     *arrBuild = BacaArray(m);
-    CreateMatrix(m+1,m+1,relationMatrix);
+    CreateMatrix(m+1,m+1,adjMatrix);
     advToken();
     for(i=0;i<=m;i++){
         for(int j =0;j<=m;j++){
-            ELMT(*relationMatrix,i,j)=tokenToInt(currentToken);
+            ELMT(*adjMatrix,i,j)=tokenToInt(currentToken);
             advToken();
         }
     }
-
+/*
     int countItem= tokenToInt(currentToken);
     advToken();
+
     for(int i=0;i<countItem;i++){
         item items;
         items.timeIn=tokenToInt(currentToken);
@@ -148,7 +149,7 @@ void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord
         pushBag(bag,items);
     
     }
-
+*/
 }
 
 /*

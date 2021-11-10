@@ -87,7 +87,7 @@ ArrayBuild BacaArray (int isi){
     char nama_build;
     i = 0;
     while (i<isi){
-        nama_build = tokenToChar(currentChar);
+        nama_build = tokenToChar(currentToken);
         advToken();
         abs = tokenToInt(currentToken);
         advToken();

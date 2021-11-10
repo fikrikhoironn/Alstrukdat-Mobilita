@@ -58,11 +58,11 @@ IdxType getLastIdx(ArrayBuild l);
 /* Mengirimkan indeks elemen l terakhir */
 
 /* ********** Test Indeks yang valid ********** */
-boolean isIdxValid(ArrayBuild l, int i);
+boolean isIdxArrDinValid(ArrayBuild l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 
-boolean isIdxEff(ArrayBuild l, IdxType i);
+boolean isIdxArrDinEff(ArrayBuild l, IdxType i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
