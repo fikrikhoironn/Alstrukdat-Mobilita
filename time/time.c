@@ -60,3 +60,12 @@ void subtractCurrentMoney(time *t, int cost){
     currentMoney(*t) -= cost;
 }
 
+void initReturnToSender(time *t){
+    returnToSender(*t) = 0;
+}
+
+void incrementReturnToSender(time *t){
+    returnToSender(*t)++;
+}
+
+
