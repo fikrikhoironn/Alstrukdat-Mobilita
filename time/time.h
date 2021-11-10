@@ -5,20 +5,25 @@
 #include "../arraydin/arraydin.h"
 #include "../arraystatis/arraystatis.h"
 #include "../item/item.h"
+#include "boolean.h"
 
 typedef struct{
     int currentTime;
     int speedBoost;
     int heavyItem;
     int moveCount;
+    int currentMoney;
 }time;
 
 #define currentTime(t) (t).currentTime
 #define speedBoost(t) (t).speedBoost
 #define heavyItem(t) (t).heavyItem
 #define moveCount(t) (t).moveCount
+#define currentMoney(t) (t).currentMoney
 
 void createTime(time *t);
+
+void subtractHeavyItem(time *t);
 
 void incrementTime(time *t);
 
@@ -27,6 +32,12 @@ void resetHeavyItem(time *t);
 void initMoveCount(time *t);
 
 void addHeavyItem(time *t);
+
+void initCurrentMoney(time *t);
+
+void addCurrentMoney(time *t, int reward);
+
+void subtractCurrentMoney(time *t, int reward);
 
 
 // typedef struct{

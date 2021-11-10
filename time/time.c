@@ -10,7 +10,7 @@ void createTime(time *t){
 void incrementTime(time *t){
     if(heavyItem(*t) > 0){ // 
         currentTime(*t) += heavyItem(*t) +1;
-        speedBoost(*t) = 0;
+        speedBoost(*t) = 0; //reset speedBoost
     }
     else if(speedBoost(*t) > 0 && heavyItem(*t) == 0){
         speedBoost(*t) -= 1;
@@ -27,6 +27,10 @@ void addHeavyItem(time *t){
     heavyItem(*t) += 1;
 }
 
+void subtractHeavyItem(time *t){
+    heavyItem(*t) -= 1;
+}
+
 void resetHeavyItem(time *t){
     heavyItem(*t) = 0;
 }
@@ -35,4 +39,15 @@ void initMoveCount(time *t){
     moveCount(*t) = 0;
 }
 
+void initCurrentMoney(time *t){
+    currentMoney(*t) = 0;
+}
+
+void addCurrentMoney(time *t, int reward){
+    currentMoney(*t) += reward;
+}
+
+void subtractCurrentMoney(time *t, int cost){
+    currentMoney(*t) -= cost;
+}
 

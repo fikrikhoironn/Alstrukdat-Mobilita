@@ -12,7 +12,7 @@ void createGadgetList(gadgetList *g){
 // I.S sembarang
 // F.S mengisi gadgetList dengan VAL_UNDEF
 
-boolean isFull(gadgetList g){
+boolean isFullInventory(gadgetList g){
     int i;
     for (i = 0; i < CAPACITY; i++){
         if (ELMT(g,i) == VAL_UNDEF){
@@ -22,7 +22,7 @@ boolean isFull(gadgetList g){
     return true;
 }
 
-boolean isEmpty(gadgetList g){
+boolean isEmptyInventory(gadgetList g){
     int i;
     for (i = 0; i < CAPACITY; i++){
         if (ELMT(g, i) != VAL_UNDEF){
