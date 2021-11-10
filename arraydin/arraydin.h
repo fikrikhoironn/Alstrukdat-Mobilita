@@ -58,16 +58,16 @@ IdxType getLastIdx(ArrayBuild l);
 /* Mengirimkan indeks elemen l terakhir */
 
 /* ********** Test Indeks yang valid ********** */
-boolean isIdxValid(ArrayBuild l, int i);
+boolean isIdxValidArray(ArrayBuild l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 
-boolean isIdxEff(ArrayBuild l, IdxType i);
+boolean isIdxEffArray(ArrayBuild l, IdxType i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
 /* ********** TULIS dengan INPUT/OUTPUT device ********** */
-void displayList(ArrayBuild l);
+void displayArray(ArrayBuild l);
 /* Proses : Menuliskan isi list dengan traversal, list ditulis di antara kurung siku;
    antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan karakter di depan,
    di tengah, atau di belakang, termasuk spasi dan enter */

@@ -117,7 +117,7 @@ locationCoord Pointof(ArrayBuild l, char bangunan)
 }
 
 /*    Display array */
-void displayList(ArrayBuild l)
+void displayArray(ArrayBuild l)
 {
     int i;
     for(i=0;i<NEFF(l);i++){

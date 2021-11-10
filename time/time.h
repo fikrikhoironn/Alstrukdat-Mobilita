@@ -23,7 +23,11 @@ typedef struct{
 
 void createTime(time *t);
 
-void subtractHeavyItem(time *t);
+void addTime(time *t, int amount); //menambah waktu sesuai amount atau masukan
+
+void subtractTime(time *t, int amount); //mengurang waktu sesuai amount atau masukan
+
+void decrementHeavyItem(time *t);
 
 void incrementTime(time *t);
 

@@ -23,11 +23,20 @@ void incrementTime(time *t){
         currentTime(*t) += 1;
     }
 }
+
+void addTime(time *t, int amount){
+    currentTime(*t) += amount;
+}
+
+void subtractTime(time *t, int amount){
+    currentTime(*t) -= amount;
+}
+
 void addHeavyItem(time *t){
     heavyItem(*t) += 1;
 }
 
-void subtractHeavyItem(time *t){
+void decrementHeavyItem(time *t){
     heavyItem(*t) -= 1;
 }
 
