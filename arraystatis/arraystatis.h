@@ -2,14 +2,15 @@
 #define ARRAYSTATIS_H
 
 #include "boolean.h"
+#include "../time/time.h"
 
 #define VAL_UNDEF -1
-#define CAPACITY_INVENTORY 5
+#define MAX_CAPACITY 5
 
-#define ELMT(l, i) (l).gadgetType[i]
+#define ELEMENT(l, i) (l).gadgetType[i]
 
 typedef struct {
-    int gadgetType[CAPACITY_INVENTORY];
+    int gadgetType[MAX_CAPACITY];
 } gadgetList;
 
 // Konstruktor
@@ -20,11 +21,11 @@ void createGadgetList(gadgetList *g);
 
 // Fungsi/Prosedur
 
-boolean isFullInventory(gadgetList g);
+boolean isFull(gadgetList g);
 
-boolean isEmptyInventory(gadgetList g);
+boolean isEmpty(gadgetList g);
 
-void buyItem(int *money, gadgetList *g);
+void buyItem(time *money, gadgetList *g);
 // I.S money dan gadgetList terdefinisi
 // F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
 //     else -> I.S
@@ -47,7 +48,7 @@ void removeGadget(gadgetList *g, int index, int *gadgetType);
 int gadgetPrice(int gadgetType);
 // Menampilkan harga gadget
 
-boolean isMoneySufficient(int money, int gadgetType);
+boolean isMoneySufficient(time money, int gadgetType);
 // return true, if money > price of Gadget
 
 void useGadget(int gadgetType);
