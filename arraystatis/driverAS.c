@@ -2,12 +2,15 @@
 #include <stdio.h>
 
 int main(){
-    int money = 10000; // Asumsi money awal
+    time t;
+    createTime(&t);
+    initCurrentMoney(&t);
+    addCurrentMoney(&t, 10000);
 
     gadgetList g;
     createGadgetList(&g);
 
-    buyItem(&money, &g);
+    buyItem(&t, &g);
     useItem(&g);
 
     return 0;

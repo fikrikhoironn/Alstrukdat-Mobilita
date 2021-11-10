@@ -5,27 +5,27 @@
 // Konstruktor
 void createGadgetList(gadgetList *g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
-        ELMT(*g, i) = VAL_UNDEF;
+    for (i = 0; i < MAX_CAPACITY; i++){
+        ELEMENT(*g, i) = VAL_UNDEF;
     }
 }
 // I.S sembarang
 // F.S mengisi gadgetList dengan VAL_UNDEF
 
-boolean isFullInventory(gadgetList g){
+boolean isFull(gadgetList g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
-        if (ELMT(g,i) == VAL_UNDEF){
+    for (i = 0; i < MAX_CAPACITY; i++){
+        if (ELEMENT(g,i) == VAL_UNDEF){
             return false;
         }
     }
     return true;
 }
 
-boolean isEmptyInventory(gadgetList g){
+boolean isEmpty(gadgetList g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
-        if (ELMT(g, i) != VAL_UNDEF){
+    for (i = 0; i < MAX_CAPACITY; i++){
+        if (ELEMENT(g, i) != VAL_UNDEF){
             return false;
         }
     }
@@ -34,13 +34,13 @@ boolean isEmptyInventory(gadgetList g){
 
 // Fungsi/Prosedur
 
-void buyItem(int *money, gadgetList *g){
+void buyItem(time *money, gadgetList *g){
 
     int command;
 
     if (!isFull(*g)){ // cek inventory awal
         do {
-            printf("Uang Anda sekarang: %d Yen\n", *money);
+            printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
             printf("Gadget yang tersedia:\n");
             printf("1. Kain Pembungkus Waktu (800 Yen)\n");
             printf("2. Senter Pembesar (1200 Yen)\n");
@@ -62,15 +62,25 @@ void buyItem(int *money, gadgetList *g){
             if (command != 0){
                 if (isMoneySufficient(*money, command)){
                     addGadget(g, command);
-                    *money -= gadgetPrice(command);
-                    printf("Uang Anda sekarang: %d Yen\n", *money);
+                    subtractCurrentMoney(money, gadgetPrice(command));
+                    printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
                 } else {
                     printf("Uang tidak cukup untuk membeli gadget!\n");
                 }
-                printf("Lanjut membeli?(ketik 0 untuk kembali ke main menu/ketik angka bebas untuk lanjut)\n");
+                printf("Lanjut membeli?\n");
+                printf("1. Ya\n");
+                printf("2. Tidak\n");
 
                 printf("\nENTER COMMAND: ");
                 scanf("%d", &command);
+
+                while (command != 1 && command != 2){
+                    printf("Command salah, ulangi!\n");
+                    printf("\nENTER COMMAND: ");
+                    scanf("%d", &command);
+                }
+
+                command -= 2; 
             }
         } while (command != 0 && !isFull(*g));
         if (isFull(*g)){
@@ -114,12 +124,22 @@ void useItem(gadgetList *g){
                 if (gadgetType != VAL_UNDEF){
                     useGadget(gadgetType);
                 }
+                if (! isEmpty(*g)){
+                    printf("Lanjut membeli?\n");
+                    printf("1. Ya\n");
+                    printf("2. Tidak\n");
 
-                printf("Lanjut membeli?(ketik 0 untuk kembali ke main menu/ketik angka bebas untuk lanjut)\n");
+                    printf("\nENTER COMMAND: ");
+                    scanf("%d", &command);
 
-                printf("\nENTER COMMAND: ");
-                scanf("%d", &command);
+                    while (command != 1 && command != 2){
+                        printf("Command salah, ulangi!\n");
+                        printf("\nENTER COMMAND: ");
+                        scanf("%d", &command);
+                    }
 
+                    command -= 2; 
+                }
             } 
         } while (command != 0 && ! isEmpty(*g));
         if (isEmpty(*g)){
@@ -138,16 +158,16 @@ void useItem(gadgetList *g){
 
 void displayGadgetList(gadgetList g){
     int i;
-    for(i = 0; i < CAPACITY; i++){
+    for(i = 0; i < MAX_CAPACITY; i++){
         printf("%d. ", i + 1);
-        if (ELMT(g, i) == VAL_UNDEF){
+        if (ELEMENT(g, i) == VAL_UNDEF){
             printf("-\n");
         } else {
-            if (ELMT(g, i) == 1){
+            if (ELEMENT(g, i) == 1){
                 printf("Kain Pembungkus Waktu\n");
-            } else if (ELMT(g, i) == 2){
+            } else if (ELEMENT(g, i) == 2){
                 printf("Senter Pembesar\n");
-            } else if (ELMT(g, i) == 3){
+            } else if (ELEMENT(g, i) == 3){
                 printf("Pintu Kemana Saja\n");
             } else {
                 printf("Mesin Waktu\n");
@@ -161,10 +181,10 @@ void addGadget(gadgetList *g, int gadgetType){
     boolean find = false;
     int i = 0;
 
-    while (i < CAPACITY && ! find){
-        if (ELMT(*g, i) == VAL_UNDEF){
+    while (i < MAX_CAPACITY && ! find){
+        if (ELEMENT(*g, i) == VAL_UNDEF){
             find = true;
-            ELMT(*g, i) = gadgetType;
+            ELEMENT(*g, i) = gadgetType;
         } else {
             i++;
         }
@@ -174,9 +194,9 @@ void addGadget(gadgetList *g, int gadgetType){
 // F.S gadget (berupa int) ditambahkan di VAL_UNDEF pertama
 
 void removeGadget(gadgetList *g, int index, int *gadgetType){
-    if (ELMT(*g, index) != VAL_UNDEF){
-        *gadgetType = ELMT(*g, index);
-        ELMT(*g, index) = VAL_UNDEF;
+    if (ELEMENT(*g, index) != VAL_UNDEF){
+        *gadgetType = ELEMENT(*g, index);
+        ELEMENT(*g, index) = VAL_UNDEF;
     } else {
         printf("Tidak ada Gadget yang dapat digunakan!\n");
         *gadgetType = VAL_UNDEF;
@@ -198,8 +218,8 @@ int gadgetPrice(int gadgetType){
 }
 // Menampilkan harga gadget
 
-boolean isMoneySufficient(int money, int gadgetType){
-    return money > gadgetPrice(gadgetType);
+boolean isMoneySufficient(time money, int gadgetType){
+    return currentMoney(money) > gadgetPrice(gadgetType);
 }
 // return true, if money > price of Gadget
 
