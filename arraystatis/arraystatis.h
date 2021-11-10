@@ -4,12 +4,12 @@
 #include "boolean.h"
 
 #define VAL_UNDEF -1
-#define CAPACITY 5
+#define CAPACITY_INVENTORY 5
 
 #define ELMT(l, i) (l).gadgetType[i]
 
 typedef struct {
-    int gadgetType[CAPACITY];
+    int gadgetType[CAPACITY_INVENTORY];
 } gadgetList;
 
 // Konstruktor

@@ -5,7 +5,7 @@
 // Konstruktor
 void createGadgetList(gadgetList *g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
+    for (i = 0; i < CAPACITY_INVENTORY; i++){
         ELMT(*g, i) = VAL_UNDEF;
     }
 }
@@ -14,7 +14,7 @@ void createGadgetList(gadgetList *g){
 
 boolean isFullInventory(gadgetList g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
+    for (i = 0; i < CAPACITY_INVENTORY; i++){
         if (ELMT(g,i) == VAL_UNDEF){
             return false;
         }
@@ -24,7 +24,7 @@ boolean isFullInventory(gadgetList g){
 
 boolean isEmptyInventory(gadgetList g){
     int i;
-    for (i = 0; i < CAPACITY; i++){
+    for (i = 0; i < CAPACITY_INVENTORY; i++){
         if (ELMT(g, i) != VAL_UNDEF){
             return false;
         }
@@ -138,7 +138,7 @@ void useItem(gadgetList *g){
 
 void displayGadgetList(gadgetList g){
     int i;
-    for(i = 0; i < CAPACITY; i++){
+    for(i = 0; i < CAPACITY_INVENTORY; i++){
         printf("%d. ", i + 1);
         if (ELMT(g, i) == VAL_UNDEF){
             printf("-\n");
@@ -161,7 +161,7 @@ void addGadget(gadgetList *g, int gadgetType){
     boolean find = false;
     int i = 0;
 
-    while (i < CAPACITY && ! find){
+    while (i < CAPACITY_INVENTORY && ! find){
         if (ELMT(*g, i) == VAL_UNDEF){
             find = true;
             ELMT(*g, i) = gadgetType;

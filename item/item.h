@@ -23,6 +23,12 @@ typedef struct{
 
 item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
 
+boolean isNormalItem(item t);
 
+boolean isHeavyItem(item t);
+
+boolean isPerishableItem(item t);
+
+boolean isVipItem(item t);
 
 #endif

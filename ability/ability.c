@@ -9,3 +9,4 @@ void increaseCapactiy(stack *bag){
             maxBag(*bag) += 1;
     }
 }
+
