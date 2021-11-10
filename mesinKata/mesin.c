@@ -106,15 +106,20 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix, Stack *bag){
+void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix){
     startToken(c);
     *mapHeight = tokenToInt(currentToken);
     advToken();
     *mapLength=tokenToInt(currentToken);
     advToken();
-    (*HQ).row=tokenToInt(currentToken);
+    int xHQ, yHQ;
+    xHQ=tokenToInt(currentToken);
     advToken();
-    (*HQ).col = tokenToInt(currentToken);
+    yHQ = tokenToInt(currentToken);
+    locations* hqLoc= allocateLocation();
+    makeHeadquarters(hqLoc);
+    *HQ=MakePOINT(xHQ,yHQ);
+    (*HQ).location=hqLoc;
     advToken();
     int m= tokenToInt(currentToken);
     int i;

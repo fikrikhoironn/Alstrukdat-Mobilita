@@ -15,7 +15,7 @@ typedef struct {
   item buffer[CAPACITY_STACK]; /* tabel penyimpan elemen */
   int idxTop;              /* alamat TOP: elemen puncak */
   int maxBag;
-} Stack;
+} stack;
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */
@@ -24,26 +24,26 @@ typedef struct {
 #define  maxBag(s) (s).maxBag
 
 /* *** Konstruktor/Kreator *** */
-void CreateStack(Stack *bag);
+void createStack(stack *bag);
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S kosong dengan kondisi sbb: */
 /* - Index top bernilai IDX_UNDEF */
 /* Proses : Melakukan alokasi, membuat sebuah s kosong */
 
 /* ************ Prototype ************ */
-boolean isEmptyBag(Stack bag);
+boolean isEmptyBag(stack bag);
 /* Mengirim true jika s kosong: lihat definisi di atas */
-boolean isFullBag(Stack bag);
+boolean isFullBag(stack bag);
 /* Mengirim true jika tabel penampung nilai s stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void pushBag(Stack *bag, item val);
+void pushBag(stack *bag, item val);
 /* Menambahkan val sebagai elemen Stack s */
 /* I.S. s mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. val menjadi TOP yang baru,IDX_TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void popBag(Stack *bag, item *val);
+void popBag(stack *bag, item *val);
 /* Menghapus val dari Stack s */
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */

@@ -6,12 +6,6 @@
 
 
 
-void PICK_UP(linkedList ToDoList, linkedList *InProgressList, Stack *Bag)
-/*melakukan pick up dengan mencari apakah ada item di lokasi tersebut dengan mengecek pada to do list
-jika ada, pick up masukkan ke bag dan update in progress list */
-{
-
-}
 
 void TO_DO (linkedList todo) {
     // KAMUS
