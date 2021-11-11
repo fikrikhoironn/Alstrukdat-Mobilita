@@ -106,7 +106,7 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix){
+void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix){
     startToken(c);
     *mapHeight = tokenToInt(currentToken);
     advToken();
@@ -133,6 +133,28 @@ void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoo
             advToken();
         }
     }
+}
+/*    Dari txt ke array */
+ArrayBuild BacaArray (int isi){
+    ArrayBuild array;
+    CreateArrayBuild(&array,isi);
+    int i,abs,ord;
+    char nama_build;
+    i = 0;
+    while (i<isi){
+        nama_build = tokenToChar(currentToken);
+        advToken();
+        abs = tokenToInt(currentToken);
+        advToken();
+        ord = tokenToInt(currentToken);
+        IsiArray(&array,nama_build,abs,ord);
+        advToken();
+        i++;
+    }
+    NEFF(array)=isi;
+    return array;
+}
+
 /*
     int countItem= tokenToInt(currentToken);
     advToken();
@@ -155,7 +177,6 @@ void readConfigFiles(const char* c, int *mapHeight, int * mapLength, locationCoo
     
     }
 */
-}
 
 /*
 

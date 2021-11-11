@@ -1,20 +1,20 @@
-#ifndef ArrayBuild_H
-#define ArrayBuild_H
+#ifndef ARRAYBUILD_H
+#define ARRAYBUILD_H
 
 #include "boolean.h"
 #include "../point/point.h"
-#include "../mesinKata/mesin.h"
-
+#include "../locations/locations.h"
+#include <stdlib.h>
+#include <stdio.h>
 /*  Kamus Umum */
 #define IDX_UNDEF -1
 /* Indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef char ElType; /* type elemen list */
+typedef char ElCharType; /* type elemen list */
 typedef int IdxType; 
-typedef struct
-{
-    ElType *nama; /* memori tempat penyimpan nama building (container) */
+typedef struct ArrayBuild{
+    ElCharType *nama; /* memori tempat penyimpan nama building (container) */
     locationCoord *koor;
     int nEff;       /* >=0, banyaknya elemen efektif */
     int capacity;   /* ukuran elemen */
@@ -34,10 +34,11 @@ typedef struct
 /* ********** SELEKTOR ********** */
 #define NEFF(l) (l).nEff
 #define NAMA(l) (l).nama
-#define ELMT(l, i) (l).nama[i]
+#define ELMT_ARR_DIN(l, i) (l).nama[i]
 #define CAPACITY(l) (l).capacity
 #define KOOR(l) (l).koor
 #define TITIK(l,i) (l).koor[i]
+
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */
@@ -58,11 +59,11 @@ IdxType getLastIdx(ArrayBuild l);
 /* Mengirimkan indeks elemen l terakhir */
 
 /* ********** Test Indeks yang valid ********** */
-boolean isIdxValidArray(ArrayBuild l, int i);
+//boolean isIdxValidArray(ArrayBuild l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 
-boolean isIdxEffArray(ArrayBuild l, IdxType i);
+//boolean isIdxEffArray(ArrayBuild l, IdxType i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
@@ -83,7 +84,7 @@ void displayArray(ArrayBuild l);
 void IsiArray (ArrayBuild *l,char nama, int abs, int ord);
 
 
-ArrayBuild BacaArray (int isi);
+//ArrayBuild BacaArray (int isi);
 
 
 

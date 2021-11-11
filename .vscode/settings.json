@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "locations.h": "c",
-        "charmachine.h": "c"
+        "charmachine.h": "c",
+        "mesin.h": "c"
     }
 }

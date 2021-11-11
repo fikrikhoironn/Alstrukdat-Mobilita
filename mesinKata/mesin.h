@@ -5,13 +5,15 @@
 #ifndef _ENGINE_H
 #define _ENGINE_H
 
+#include "../arraydin/arraydin.h"
 #include "boolean.h"
 #include "charmachine.h"
 #include "../matrix/matrix.h"
-#include "../arraydin/arraydin.h"
+
 #include "../item/item.h"
-#include "../stack/stack.h"
 #include "../locations/locations.h"
+#include "../point/point.h"
+#include "../stack/stack.h"
 //#include "../graph/graph.h"
 #include <stdio.h>
 #include <string.h> 
@@ -92,7 +94,7 @@ void startTokenStd();
 void salinTokenSTDIN();
 
 //ini buat opsi kalo graph kita gagal'
-void tokenToMatrix(int m[][] );
+//void tokenToMatrix(int m[][] );
 /*
 Menyimpan matrix relasi dari masukan (config) menjadi matrix biasa di mana ukurannya jumlah bangunan+1;
 I.S. m adalah total lokasi yang ada ditambah hq
@@ -101,10 +103,11 @@ Untuk setiap pergerakan, lakukan perulangan untuk mengecek relasi dari suatu tit
 */
 void advTokenStdin();
 
-void readConfigFile(const char * c);
+void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix);
 /*
 Membaca file configurasi, ketika melakukan newgame
 
 */
+ArrayBuild BacaArray (int isi);
 
 #endif

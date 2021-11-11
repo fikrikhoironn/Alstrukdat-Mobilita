@@ -7,7 +7,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include"boolean.h"
-#include "../Alstrukdat-Mobilita/arraydin/arraydin.h"
+#include "../arraydin/arraydin.h"
 
 #define CAPACITY1 100
 #define COL_CAP 100

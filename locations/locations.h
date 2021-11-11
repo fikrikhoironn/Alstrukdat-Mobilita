@@ -5,6 +5,8 @@
 #define LOCATIONS_H
 
 #include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef int types;
 
@@ -21,7 +23,7 @@ typedef struct tLocations {
 locations *allocateLocation();
 
 // Show location status
-void show(locations C);
+void showLoc(locations C);
 
 // Constructor for location type Headquarters
 void makeHeadquarters(locations *C);
