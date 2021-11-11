@@ -172,7 +172,6 @@ void BacaArray (ArrayBuild* tes,int isi){
 /*
     int countItem= tokenToInt(currentToken);
     advToken();
-
     for(int i=0;i<countItem;i++){
         item items;
         items.timeIn=tokenToInt(currentToken);
