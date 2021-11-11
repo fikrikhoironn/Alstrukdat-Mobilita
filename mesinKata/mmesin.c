@@ -9,11 +9,12 @@ int main(){
     locationCoord HQ;
     ArrayBuild arrBuild;
     Matrix adjMatrix;
-    readConfigFiles(c,&mapHeight,&mapLength,&HQ,&arrBuild,&adjMatrix);
+    Queue daftarPesanan;
+    readConfigFiles(c,&mapHeight,&mapLength,&HQ,&arrBuild,&adjMatrix, &daftarPesanan);
     displayMatrix(adjMatrix);
     printf("\nMap size is(%d,%d)\n",mapLength,mapHeight);
     printf("HQ ada di (%d,%d)\n",HQ.col,HQ.row);
     displayArray(arrBuild);
-
+    DisplayQueue(daftarPesanan);
     return 0;
 }

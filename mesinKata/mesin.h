@@ -14,6 +14,7 @@
 #include "../locations/locations.h"
 #include "../point/point.h"
 #include "../stack/stack.h"
+#include "../queue/queue.h"
 //#include "../graph/graph.h"
 #include <stdio.h>
 #include <string.h> 
@@ -103,7 +104,7 @@ Untuk setiap pergerakan, lakukan perulangan untuk mengecek relasi dari suatu tit
 */
 void advTokenStdin();
 
-void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix);
+void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix,Queue * daftarPesanan);
 /*
 Membaca file configurasi, ketika melakukan newgame
 

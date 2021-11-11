@@ -106,7 +106,7 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix){
+void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix, Queue * daftarPesanan){
     startToken(c);
     *mapHeight = tokenToInt(currentToken);
     advToken();
@@ -114,7 +114,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     advToken();
 
 
-    printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
+    //printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
     int xHQ, yHQ;
     xHQ=tokenToInt(currentToken);
     advToken();
@@ -129,7 +129,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 
     advToken();
     int m= tokenToInt(currentToken);
-    printf("\n---%d---\n",m);
+    //printf("\n---%d---\n",m);
     int i;
 
 
@@ -144,6 +144,33 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
             advToken();
         }
     }
+
+    int mq=tokenToInt(currentToken);
+    advToken();
+    //printf("Banyak ipesanan %d\n",mq);
+    item pesanan;
+    CreateQueue(daftarPesanan);
+    for(int i=0;i<mq;i++){
+        int timeIn = tokenToInt(currentToken);
+        advToken();
+        char pickUp = tokenToChar(currentToken);
+        advToken();
+        char dropOff = tokenToChar(currentToken);
+        advToken();
+        char typeItem = tokenToChar(currentToken);
+        int perishable;
+        if(typeItem == 'P'){
+            advToken();
+            perishable = tokenToInt(currentToken);
+
+        }else{
+            perishable=-1;
+        }
+        pesanan=makeItem(timeIn, pickUp,dropOff,typeItem,perishable);
+        advToken();
+        enqueue(daftarPesanan,pesanan);
+    }
+
     currentChar =EOF;
     endToken=true;
     adv();
