@@ -108,6 +108,6 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 Membaca file configurasi, ketika melakukan newgame
 
 */
-ArrayBuild BacaArray (int isi);
+void BacaArray (ArrayBuild* tes,int isi);
 
 #endif

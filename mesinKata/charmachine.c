@@ -36,7 +36,6 @@ void adv() {
 	retval = fscanf(tape,"%c",&currentChar);
 	eot = (currentChar == EOF);
 	if (eot) {
-              printf("kelar");
        fclose(tape);
  	}
 }

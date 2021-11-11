@@ -112,6 +112,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     advToken();
     *mapLength=tokenToInt(currentToken);
     advToken();
+    printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
     int xHQ, yHQ;
     xHQ=tokenToInt(currentToken);
     advToken();
@@ -122,20 +123,23 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     (*HQ).location=hqLoc;
     advToken();
     int m= tokenToInt(currentToken);
+    printf("\n---%d---\n",m);
     int i;
     advToken();
-    *arrBuild = BacaArray(m);
+    BacaArray(arrBuild,m);
     CreateMatrix(m+1,m+1,adjMatrix);
-    advToken();
     for(i=0;i<=m;i++){
         for(int j =0;j<=m;j++){
             ELMT(*adjMatrix,i,j)=tokenToInt(currentToken);
             advToken();
         }
     }
+    currentChar =EOF;
+    endToken=true;
+    adv();
 }
 /*    Dari txt ke array */
-ArrayBuild BacaArray (int isi){
+void BacaArray (ArrayBuild* tes,int isi){
     ArrayBuild array;
     CreateArrayBuild(&array,isi);
     int i,abs,ord;
@@ -152,7 +156,7 @@ ArrayBuild BacaArray (int isi){
         i++;
     }
     NEFF(array)=isi;
-    return array;
+    *tes=array;
 }
 
 /*
