@@ -12,14 +12,14 @@ Token currentToken;
 
 int main(){
     ArrayBuild tes;
-	start("test.txt");
+	startToken("test.txt");
     int panjang = tokenToInt(currentToken);
+    printf("%d\n",panjang);
     advToken();
-    advToken();
-    tes = BacaArray(panjang);
+    BacaArray(&tes,panjang);
     displayArray(tes);
 
     /* Contoh akses titik lokasi bangunan */
-    printf("%d",TITIK(tes,1).col);
-    printf("%d", NEFF(tes));
+    printf("\n%d",TITIK(tes,1).col);
+    printf("\n%d", NEFF(tes));
 }

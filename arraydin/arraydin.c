@@ -77,7 +77,6 @@ void IsiArray (ArrayBuild *l,char bangun, int xx, int yy){
     NEFF(*l)++;
 }
 
-
 /* ********** SEARCHING ********** */
 
 

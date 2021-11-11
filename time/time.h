@@ -13,6 +13,7 @@ typedef struct{
     int heavyItem;
     int moveCount;
     int currentMoney;
+    int returnToSender;
 }time;
 
 #define currentTime(t) (t).currentTime
@@ -20,6 +21,7 @@ typedef struct{
 #define heavyItem(t) (t).heavyItem
 #define moveCount(t) (t).moveCount
 #define currentMoney(t) (t).currentMoney
+#define returnToSender(t) (t).returnToSender
 
 void createTime(time *t);
 
@@ -34,6 +36,10 @@ void incrementTime(time *t);
 void resetHeavyItem(time *t);
 
 void initMoveCount(time *t);
+
+void initReturnToSender(time *t);
+
+void incrementReturnToSender(time *t);
 
 void addHeavyItem(time *t);
 
