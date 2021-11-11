@@ -112,21 +112,31 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     advToken();
     *mapLength=tokenToInt(currentToken);
     advToken();
+
+
     printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
     int xHQ, yHQ;
     xHQ=tokenToInt(currentToken);
     advToken();
     yHQ = tokenToInt(currentToken);
+
+
     locations* hqLoc= allocateLocation();
     makeHeadquarters(hqLoc);
     *HQ=MakePOINT(xHQ,yHQ);
     (*HQ).location=hqLoc;
+
+
     advToken();
     int m= tokenToInt(currentToken);
     printf("\n---%d---\n",m);
     int i;
+
+
     advToken();
     BacaArray(arrBuild,m);
+ 
+
     CreateMatrix(m+1,m+1,adjMatrix);
     for(i=0;i<=m;i++){
         for(int j =0;j<=m;j++){
