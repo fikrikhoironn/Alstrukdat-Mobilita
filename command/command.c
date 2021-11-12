@@ -5,7 +5,9 @@
 #include "command.h"
 
 
-
+void MOVE(){
+    
+}
 
 void TO_DO (linkedList todo) {
     // KAMUS
@@ -74,3 +76,5 @@ void IN_PROGRESS (linkedList inprogress) {
         }
     }
 }
+
+void 
