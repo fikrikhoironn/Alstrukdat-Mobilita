@@ -11,10 +11,20 @@ int main(){
 
     stack bag;
     createStack(&bag);
+
+    displayBag(bag);
+
     pushBag(&bag, elmt1);
     pushBag(&bag, elmt2);
     pushBag(&bag, elmt3);
     pushBag(&bag, elmt4);
+    printf("isi tas sebelum di pop: \n");
+    displayBag(bag);
 
+    item val;
+    popBag(&bag, &val);
+    printf("nilai yang di pop: \n");
+    displayItem(val);
+    printf("isi tas sekarang: \n");
     displayBag(bag);
 }

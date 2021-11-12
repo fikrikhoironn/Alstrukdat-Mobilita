@@ -18,7 +18,7 @@ boolean isEmptyBag(stack bag)
 boolean isFullBag(stack bag)
 /* Mengirim true jika tabel penampung nilai bag stack penuh */
 {
-    return (IDX_TOP(bag) == maxBag(bag) || IDX_TOP(bag) == (CAPACITY_STACK - 1));
+    return (IDX_TOP(bag) == maxBag(bag)-1 || IDX_TOP(bag) == (CAPACITY_STACK - 1));
 }
 
 void pushBag(stack *bag, item val)
@@ -53,7 +53,7 @@ void popBag(stack *bag, item *val)
 
 void displayBag(stack bag){
     int i;
-    for (i=IDX_TOP(bag); i>0; i--){
+    for (i=IDX_TOP(bag); i>=0; i--){
         printf(" %d ", bag.buffer[i].timeIn);
         printf(" %c ", bag.buffer[i].pickUp);
         printf(" %c ", bag.buffer[i].dropOff);
