@@ -9,13 +9,13 @@ void createStack(stack *bag){
     maxBag(*bag) = 3;
 }
 
-boolean isBagEmpty(stack bag)
+boolean isEmptyBag(stack bag)
 /* Mengirim true jika bag kosong */
 {
     return IDX_TOP(bag) == IDX_UNDEF_STACK;
 }
 
-boolean isBagFull(stack bag)
+boolean isFullBag(stack bag)
 /* Mengirim true jika tabel penampung nilai bag stack penuh */
 {
     return (IDX_TOP(bag) == maxBag(bag) || IDX_TOP(bag) == (CAPACITY_STACK - 1));
@@ -54,11 +54,11 @@ void popBag(stack *bag, item *val)
 void displayBag(stack bag){
     int i;
     for (i=IDX_TOP(bag); i>0; i--){
-        printf(": %d ", bag.buffer[i].timeIn);
-        printf(": %c ", bag.buffer[i].pickUp);
-        printf(": %c ", bag.buffer[i].dropOff);
-        printf(": %c ", bag.buffer[i].typeItem);
-        printf(": %d\n", bag.buffer[i].perishableTime);
+        printf(" %d ", bag.buffer[i].timeIn);
+        printf(" %c ", bag.buffer[i].pickUp);
+        printf(" %c ", bag.buffer[i].dropOff);
+        printf(" %c ", bag.buffer[i].typeItem);
+        printf(" %d\n", bag.buffer[i].perishableTime);
     }
 }
 
