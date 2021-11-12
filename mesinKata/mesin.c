@@ -106,29 +106,97 @@ void advTokenStdin(){
     }
 }
 
-void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* relationMatrix, Stack *bag){
+void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix, Queue * daftarPesanan){
     startToken(c);
     *mapHeight = tokenToInt(currentToken);
     advToken();
-    *mapLong=tokenToInt(currentToken);
+    *mapLength=tokenToInt(currentToken);
     advToken();
-    (*HQ).row=tokenToInt(currentToken);
+
+
+    //printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
+    int xHQ, yHQ;
+    xHQ=tokenToInt(currentToken);
     advToken();
-    (*HQ).col = tokenToInt(currentToken);
+    yHQ = tokenToInt(currentToken);
+
+
+    locations* hqLoc= allocateLocation();
+    makeHeadquarters(hqLoc);
+    *HQ=MakePOINT(xHQ,yHQ);
+    (*HQ).location=hqLoc;
+
+
     advToken();
     int m= tokenToInt(currentToken);
+    //printf("\n---%d---\n",m);
     int i;
+
+
     advToken();
-    *arrBuild = BacaArray(m);
-    CreateMatrix(m+1,m+1,relationMatrix);
-    advToken();
+    BacaArray(arrBuild,m);
+ 
+
+    CreateMatrix(m+1,m+1,adjMatrix);
     for(i=0;i<=m;i++){
         for(int j =0;j<=m;j++){
-            ELMT(*relationMatrix,i,j)=tokenToInt(currentToken);
+            ELMT(*adjMatrix,i,j)=tokenToInt(currentToken);
             advToken();
         }
     }
 
+    int mq=tokenToInt(currentToken);
+    advToken();
+    //printf("Banyak ipesanan %d\n",mq);
+    item pesanan;
+    CreateQueue(daftarPesanan);
+    for(int i=0;i<mq;i++){
+        int timeIn = tokenToInt(currentToken);
+        advToken();
+        char pickUp = tokenToChar(currentToken);
+        advToken();
+        char dropOff = tokenToChar(currentToken);
+        advToken();
+        char typeItem = tokenToChar(currentToken);
+        int perishable;
+        if(typeItem == 'P'){
+            advToken();
+            perishable = tokenToInt(currentToken);
+
+        }else{
+            perishable=-1;
+        }
+        pesanan=makeItem(timeIn, pickUp,dropOff,typeItem,perishable);
+        advToken();
+        enqueue(daftarPesanan,pesanan);
+    }
+
+    currentChar =EOF;
+    endToken=true;
+    adv();
+}
+/*    Dari txt ke array */
+void BacaArray (ArrayBuild* tes,int isi){
+    ArrayBuild array;
+    CreateArrayBuild(&array,isi);
+    int i,abs,ord;
+    char nama_build;
+    i = 0;
+    while (i<isi){
+        nama_build = tokenToChar(currentToken);
+        advToken();
+        abs = tokenToInt(currentToken);
+        advToken();
+        ord = tokenToInt(currentToken);
+        IsiArray(&array,nama_build,abs,ord);
+        advToken();
+        i++;
+    }
+    NEFF(array)=isi;
+    *tes=array;
+}
+
+/*
     int countItem= tokenToInt(currentToken);
     advToken();
     for(int i=0;i<countItem;i++){
@@ -148,8 +216,7 @@ void readConfigFiles(const char* c, int *mapHeight, int * mapLong, locationCoord
         pushBag(bag,items);
     
     }
-
-}
+*/
 
 /*
 

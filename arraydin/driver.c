@@ -1,18 +1,25 @@
 #include <stdio.h>
 #include "arraydin.h"
-#include "../wordmachine/wordmachine.h"
-#include "../charmachine/charmachine.h"
+#include "../mesinKata/mesin.h"
+#include "boolean.h"
+#include "../matrix/matrix.h"
+
+#include "../item/item.h"
+#include "../locations/locations.h"
 #include "../point/point.h"
+
+Token currentToken;
 
 int main(){
     ArrayBuild tes;
-	startWord("test.txt");
-    int panjang = WordInt(currentWord);
-    advWord();
-    advWord();
-    tes = BacaArray(panjang);
-    displayList(tes);
+	startToken("test.txt");
+    int panjang = tokenToInt(currentToken);
+    printf("%d\n",panjang);
+    advToken();
+    BacaArray(&tes,panjang);
+    displayArray(tes);
 
     /* Contoh akses titik lokasi bangunan */
-    printf("%d",TITIK(tes,1).col);
+    printf("\n%d",TITIK(tes,1).col);
+    printf("\n%d", NEFF(tes));
 }

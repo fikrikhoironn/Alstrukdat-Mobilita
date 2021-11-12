@@ -5,10 +5,8 @@
    memori list dinamik */
 
 
-#include <stdio.h>
-#include "boolean.h"
 #include "arraydin.h"
-#include <stdlib.h>
+
 
 /* Indeks yang digunakan [0..capacity-1] */
 /* Jika l adalah : ArrayBuild, cara deklarasi dan akses: */
@@ -74,30 +72,11 @@ IdxType getLastIdx(ArrayBuild l)
 /*    Isi elemen array ke dalam NEFF */
 void IsiArray (ArrayBuild *l,char bangun, int xx, int yy){
     locationCoord lokasi = MakePOINT(xx,yy);
-    ELMT(*l,NEFF(*l)) = bangun;
+    ELMT_ARR_DIN(*l,NEFF(*l)) = bangun;
     TITIK(*l,NEFF(*l)) = lokasi;
     NEFF(*l)++;
 }
 
-/*    Dari txt ke array */
-ArrayBuild BacaArray (int isi){
-    ArrayBuild array;
-    CreateArrayBuild(&array,isi);
-    int i,abs,ord;
-    char nama_build;
-    i = 0;
-    while (i<isi){
-        nama_build = tokenToChar(currentChar);
-        advToken();
-        abs = tokenToInt(currentToken);
-        advToken();
-        ord = tokenToInt(currentToken);
-        IsiArray(&array,nama_build,abs,ord);
-        advToken();
-        i++;
-    }
-    return array;
-}
 /* ********** SEARCHING ********** */
 
 
@@ -108,7 +87,7 @@ locationCoord Pointof(ArrayBuild l, char bangunan)
     boolean cek = false;
     i = 0;
     while (i<length(l) && !cek){
-        if (ELMT(l,i)==bangunan){
+        if (ELMT_ARR_DIN(l,i)==bangunan){
             cek = true;
         }
         else i++;
@@ -121,6 +100,6 @@ void displayArray(ArrayBuild l)
 {
     int i;
     for(i=0;i<NEFF(l);i++){
-        printf("%c (%d %d)\n",ELMT(l,i),TITIK(l,i).col,TITIK(l,i).row);
+        printf("%c (%d %d)\n",ELMT_ARR_DIN(l,i),TITIK(l,i).col,TITIK(l,i).row);
     }
 }

@@ -99,7 +99,8 @@ void printMap(Matrix m, Index x , Index y){
         printf("*");
         for(int j=0;j<COLS(m);j++){
             //jika connected dengan posisi nobita saat ini
-            if(){
+            // kamu harus cek di koordinat i,j itu ada bangunan apa melalui arrdin
+            if(true){
 
             }
         }
