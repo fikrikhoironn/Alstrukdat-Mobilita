@@ -50,7 +50,6 @@ void addCurrentMoney(time *t, int reward);
 void subtractCurrentMoney(time *t, int reward);
 
 
-
 // typedef struct{
 //     Stack bag;
 //     linkedList toDoList;

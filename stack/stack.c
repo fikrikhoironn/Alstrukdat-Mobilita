@@ -58,7 +58,8 @@ void displayBag(stack bag){
         printf(" %c ", bag.buffer[i].pickUp);
         printf(" %c ", bag.buffer[i].dropOff);
         printf(" %c ", bag.buffer[i].typeItem);
-        printf(" %d\n", bag.buffer[i].perishableTime);
+        printf(" %d ", bag.buffer[i].perishableTime);
+        printf(" %d\n", bag.buffer[i].perishableOrigin);
     }
 }
 

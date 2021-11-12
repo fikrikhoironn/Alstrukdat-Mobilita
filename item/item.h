@@ -12,8 +12,8 @@ typedef struct{
     char pickUp;
     char dropOff;
     char typeItem;
-    int perishableTime;     //sisa waktu perishable item
-    int perishableOrigin;   //waktu asli dari perishable item
+    int perishableTime; 
+    int perishableOrigin;
 }item;
 
 #define timeIn(I) (I).timeIn
@@ -35,7 +35,6 @@ boolean isVipItem(item t);
 
 void displayItem(item t);
 
-void decrementPerishableTime(item *t){
-
+void decrementPerishableTime(item *t);
 
 #endif

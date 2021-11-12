@@ -2,7 +2,6 @@
 
 item createItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime){
     item Elmt;
-    int perishableOrigin;
     timeIn(Elmt) = timeIn;
     pickUp(Elmt) = pickUp;
     dropOff(Elmt) = dropOff;
@@ -30,12 +29,12 @@ boolean isVipItem(item t){
 }
 
 void displayItem(item t){
-    printf("%d ", t.timeIn);
-    printf("%c ", t.pickUp);
-    printf("%c ", t.dropOff);
-    printf("%c ", t.typeItem);
-    printf("%d ", t.perishableTime);
-    printf("%d\n", t.perishableOrigin);
+    printf(" %d ", t.timeIn);
+    printf(" %c ", t.pickUp);
+    printf(" %c ", t.dropOff);
+    printf(" %c ", t.typeItem);
+    printf(" %d ", t.perishableTime);
+    printf(" %d\n",t.perishableOrigin);
 }
 
 void decrementPerishableTime(item *t){
