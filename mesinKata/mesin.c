@@ -81,10 +81,26 @@ void copyToken(Token t1, Token *t2){
 }
 
 
+boolean compareToken(Token basis, Token compared){
+    int i=1;
+    boolean test= true;
+    if(basis.len!=compared.len) test=false;
+    
+    while (i<basis.len && test)
+    {
+        test = currentToken.tokenArray[i]==basis.tokenArray[i];
+        i++;
+    }
+    
+    return test;
+}
+
 void startTokenStd(){
     startIn();
     salinTokenSTDIN();
 }
+
+
 
 void salinTokenSTDIN(){
     int i = 0;

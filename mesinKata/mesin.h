@@ -88,6 +88,14 @@ I.S. t1 terdefinisi
 F.S. t2 memiliki isi yang identik dengan t1
 */
 
+boolean compareToken(Token basis, Token compared);
+/* Membandungkan dua buah token apakah senilai
+I.S. Basis merupakan token yang sudah diset dari commadn-command yang ada pada spek
+dan compared adalah masukan dari STDIN yang ingin kita compare dengan command
+F.S. Jika isinya sama "MOVE"=="MOVE"  misalnya maka hasilnya akan true, jika isi berbeda maka false
+*/
+
+
 
 void startTokenStd();
 
