@@ -21,7 +21,7 @@ typedef struct{
 #define typeItem(I) (I).typeItem
 #define perishableTime(I) (I).perishableTime
 
-item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
+item createItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
 
 boolean isNormalItem(item t);
 

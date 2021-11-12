@@ -50,3 +50,15 @@ void popBag(stack *bag, item *val)
     }
     
 }
+
+void displayBag(stack bag){
+    int i;
+    for (i=IDX_TOP(bag); i>0; i--){
+        printf(": %d ", bag.buffer[i].timeIn);
+        printf(": %c ", bag.buffer[i].pickUp);
+        printf(": %c ", bag.buffer[i].dropOff);
+        printf(": %c ", bag.buffer[i].typeItem);
+        printf(": %d\n", bag.buffer[i].perishableTime);
+    }
+}
+

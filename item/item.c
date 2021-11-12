@@ -1,6 +1,6 @@
 #include "item.h"
 
-item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime){
+item createItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime){
     item Elmt;
     timeIn(Elmt) = timeIn;
     pickUp(Elmt) = pickUp;
