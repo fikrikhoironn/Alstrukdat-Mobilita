@@ -14,7 +14,7 @@
 #include "../item/item.h"
 #include "../arraystatis/arraystatis.h"
 #include "../ability/ability.h"
-
+#include "../time/time.h"
 typedef struct mobilita{
 
 }mobilita;

@@ -10,8 +10,11 @@
 #include "../stack/stack.h"
 #include "../linkedlist/linkedlist.h"
 #include "../ability/ability.h"
+#include "../arraydin/arraydin.h"
+#include "../matrix/matrix.h"
+#include "../point/point.h"
 
-
+void MOVE(locationCoord *mobitaLoc, ArrayBuild arrayOfBuilding, Matrix adjMatrix);
 
 void TO_DO (linkedList todo);
 
@@ -24,6 +27,9 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, person *mob
 
 void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita);
 // Memindahkan item dari to do list ke in progress list dan melakukan push item ke dalam tas
+
+void HELP();
+
 
 #endif /* command_H */
 

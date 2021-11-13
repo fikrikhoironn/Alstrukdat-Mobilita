@@ -150,8 +150,10 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 
 
     advToken();
+    CreateArrayBuild(&arrBuild,m);
+    IsiArray(arrBuild,'1',(*HQ).col,(*HQ).row);
     BacaArray(arrBuild,m);
- 
+    
 
     CreateMatrix(m+1,m+1,adjMatrix);
     for(i=0;i<=m;i++){
@@ -194,11 +196,10 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 /*    Dari txt ke array */
 void BacaArray (ArrayBuild* tes,int isi){
     ArrayBuild array;
-    CreateArrayBuild(&array,isi);
     int i,abs,ord;
     char nama_build;
-    i = 0;
-    while (i<isi){
+    i = 1;
+    while (i<=isi){
         nama_build = tokenToChar(currentToken);
         advToken();
         abs = tokenToInt(currentToken);
@@ -208,7 +209,7 @@ void BacaArray (ArrayBuild* tes,int isi){
         advToken();
         i++;
     }
-    NEFF(array)=isi;
+    NEFF(array)=isi+1;
     *tes=array;
 }
 

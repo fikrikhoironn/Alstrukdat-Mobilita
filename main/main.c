@@ -19,23 +19,79 @@
 
 int main(){
     Token fileInput;
+    time mobitime;
+    createTime(&mobitime);
     int command;
+
+
+
+
+    int mapheight, mapLength;
+    locationCoord HQLoc;
+    locationCoord mobitaLoc;
+    
+    
+    
+    ArrayBuild arrayOfBuilding;
+    
+    
+    Matrix adjMatrix;
+
+
+
+
+    Queue daftartPesanan;
+
+
+    linkedList todo;
+    linkedList inprogressList;
+
+
+    stack mobiBag;
+    //buat todoList
+    FILE *fp;
     do{
+        printf("Silahkan masukkan menu\n(1//2//3):\nENTER COMMAND: ");
         scanf("%d",&command);
     }while(command != 1 || command != 2 || command !=3);
     if(command==1){
-            
-            start_game();
-            readConfigFiles();
+            do{
+            startIn();
+            fp= fopen(tokenToString(currentToken),"r");
+            advTokenStdin();
+            }while(fp==NULL);
+            readConfigFiles(tokenToString(currentToken),&mapheight,&mapLength,&HQLoc,&arrayOfBuilding,&adjMatrix,&daftartPesanan);
+            mobitaLoc = MakePOINT((HQLoc).col,HQLoc.row);
+            printf("Selamat datang di permainan Mobilita.");
     }else if(command ==2){
-    
+        printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
     }else{
-     //print   
+        printf("Selamat Tinggal, terima kasih telah bersua.\n");
     }
 
-    while (!isEmpty())
+    while (!isEmptyQueue(daftartPesanan))
     {
-        
+        printMenu();
+        printStatus();
+        advTokenStdin();
+        char * cmd = tokenToString(currentToken);
+        if(stringCompare(cmd,"MOVE")){
+            MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
+        }else if(stringCompare(cmd,"PICK_UP")){
+            //masi gajelas PICK_UP belum dibenerin
+            PICK_UP(&todo,&inprogressList,&mobiBag,);
+        }else if(stringCompare(cmd,"DROP_OFF")){
+            //ini juga ntar dibenerin
+            DROP_OFF(&todo,&inprogressList,&mobiBag,,);
+        }else if(stringCompare(cmd, "MAP")){
+            MAP();
+        }else if(stringCompare(cmd,"TO_DO")){
+            TO_DO(todo);
+        }else if(stringCompare(cmd,"INVENTORY")){
+
+        }else if(stringCompare(cmd,"HELP")){
+            HELP();
+        }
     }
     
 }

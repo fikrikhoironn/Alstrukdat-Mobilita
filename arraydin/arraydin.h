@@ -4,6 +4,7 @@
 #include "boolean.h"
 #include "../point/point.h"
 #include "../locations/locations.h"
+#include "../mesinKata/mesin.h"
 #include <stdlib.h>
 #include <stdio.h>
 /*  Kamus Umum */
