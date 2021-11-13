@@ -1,4 +1,19 @@
-#include  "mobilita.h"
+#include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "../mesinKata/mesin.h"
+#include "../command/command.h"
+#include "../queue/queue.h"
+#include "../arraydin/arraydin.h"
+#include "../time/time.h"
+#include "../stack/stack.h"
+#include "../point/point.h"
+#include "../matrix/matrix.h"
+#include "../locations/locations.h"
+#include "../linkedlist/linkedlist.h"
+#include "../item/item.h"
+#include "../arraystatis/arraystatis.h"
+#include "../ability/ability.h"
 
 int main(){
     int command;
