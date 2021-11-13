@@ -294,7 +294,7 @@ void insert_timedescList (linkedList *L, infotype val) {
     }
 }
 
-item find_by_pickup_location (linkedList L, char location) {
+Address find_by_pickup_location (linkedList L, char location) {
     // KAMUS
     Address p;
     // ALGORITMA
@@ -302,5 +302,22 @@ item find_by_pickup_location (linkedList L, char location) {
     while (p != NULL && (info(p)).pickUp != location) {
         p = next(p);
     }
-    return info(p);
+    return p;
+}
+
+boolean isVIPin (linkedList L) {
+    // KAMUS
+    Address p;
+
+    // ALGORITMA
+    p = first(L);
+    while (p != NULL && (info(p)).typeItem == 'V') {
+        p = next(p);
+    }
+    if (p != NULL) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
