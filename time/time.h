@@ -2,6 +2,9 @@
 #define TIME_H
 
 #include "boolean.h"
+#include "../linkedlist/linkedlist.h"
+#include "../queue/queue.h"
+#include "../stack/stack.h"
 
 typedef struct{
     float currentTime;
@@ -47,14 +50,8 @@ void addCurrentMoney(time *t, int reward); //menambah jumlah uang sesuai reward
 
 void subtractCurrentMoney(time *t, int reward); //mengurangi jumlah uang sesuai pengeluaran pembelian gadget
 
+void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgressList, Queue *daftarPesanan, stack *bag); //mengupdateToDoList sesuai waktu sekarang
 
-// typedef struct{
-//     Stack bag;
-//     linkedList toDoList;
-//     linkedList inProgressList;
-//     gadgetList inventory;
-//     //ability
-// }person;
 
 #endif
 
