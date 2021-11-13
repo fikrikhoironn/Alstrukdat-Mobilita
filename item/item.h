@@ -25,16 +25,18 @@ typedef struct{
 
 item createItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
 
-boolean isNormalItem(item t);
+boolean isNormalItem(item t); //mengecek apakah item ini normal item
 
-boolean isHeavyItem(item t);
+boolean isHeavyItem(item t); //mengecek apakah item ini heavy item 
 
-boolean isPerishableItem(item t);
+boolean isPerishableItem(item t); //mengecek apakah item ini perishable item
 
-boolean isVipItem(item t);
+boolean isVipItem(item t); //mengecek apakah item ini VIP item
 
-void displayItem(item t);
+void displayItem(item t); //menampilkan atribut item
 
-void decrementPerishableTime(item *t);
+void decrementPerishableTime(item *t); //mengurangi waktu perishable time
+
+void resetPerishableTime(item *t);
 
 #endif

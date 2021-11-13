@@ -40,3 +40,7 @@ void displayItem(item t){
 void decrementPerishableTime(item *t){
     perishableTime(*t)--;
 }
+
+void resetPerishableTime(item *t){
+    perishableTime(*t) = perishableOrigin(*t);
+}
