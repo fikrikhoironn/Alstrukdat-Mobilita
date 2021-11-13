@@ -75,7 +75,7 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *inprogress, stack *tas, time *t, map *map) {
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, map *map) {
     // KAMUS
     item delVal;
 
@@ -108,8 +108,8 @@ void DROP_OFF (linkedList *inprogress, stack *tas, time *t, map *map) {
                 printf("Anda memperoleh ability Increase Capacity\n");
             }
             else if (isVIPItem(delVal)) {
-                addCurrentMoney(t, 600);
-                activateReturnToSender(); // Diasumsikan ada
+                *mobita.money += 600;
+                activateReturnToSender(tas, todo, inprogress, *t); 
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
                 printf("Anda memperoleh ability Return To Sender\n");
@@ -124,5 +124,34 @@ void DROP_OFF (linkedList *inprogress, stack *tas, time *t, map *map) {
     }
     else {
         printf("Tidak terdapat pesanan yang dapat diantarkan!\n");
+    }
+}
+
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita) {
+    // KAMUS
+    Address pickedUp;
+    item delVal;
+
+    // ALGORITMA
+    pickedUp = find_by_pickup_location(*todo, *mobita.location);
+    if (pickedUp != NULL) {
+        if (!isFullBag(*tas)) {
+            if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {
+                printf("Pick up VIP Item terlebih dahulu!\n");
+            }
+            else {
+                // Kondisi normal, item berhasil di pick up
+                deleteAtList(*todo, (indexOfList(todo, info(pickedUp))), &delVal);
+                insert_timedescList(inprogress, delVal);
+                pushBag(tas, delVal);
+                // Ganti warna map
+            }
+        }
+        else {
+            printf("Tas penuh!\n");
+        }
+    }
+    else {
+        printf("Tidak ada item untuk di-pick up!\n");
     }
 }
