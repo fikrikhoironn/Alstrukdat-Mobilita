@@ -125,7 +125,7 @@ void useItem(gadgetList *g, stack *bag, time *t){
                     useGadget(gadgetType, bag, t);
                 }
                 if (! isEmpty(*g)){
-                    printf("Lanjut membeli?\n");
+                    printf("Lanjut memakai?\n");
                     printf("1. Ya\n");
                     printf("2. Tidak\n");
 
@@ -223,8 +223,11 @@ boolean isMoneySufficient(time money, int gadgetType){
 }
 // return true, if money > price of Gadget
 
-void useGadget(int gadgetType, stack *bag, time *t){ // belum selesai
+void useGadget(int gadgetType, stack *bag, time *t){
     if (gadgetType == 1){
+        if (isPerishableItem(TOP(*bag))) {
+            perishableTime(TOP(*bag)) = perishableOrigin(TOP(*bag));
+        } // else do nothing
         printf("Kain Pembungkus Waktu berhasil digunakan!\n");
     } else if (gadgetType == 2){
         maxBag(*bag) *= 2;
@@ -233,8 +236,18 @@ void useGadget(int gadgetType, stack *bag, time *t){ // belum selesai
         }
         printf("Senter Pembesar berhasil digunakan!\n");
     } else if (gadgetType == 3){
+        printf("Ingin pindah kemana?\n");
+        // Display all location -> panggil printMap()
+        char command;
+        scanf(" %c", &command);
+        // If lokasi tidak valid, ulangi pembacaan (membingung)
+        // mobita pindah ke lokasi sesuai command yg valid
         printf("Pintu Kemana Saja berhasil digunakan!\n");
     } else { // gadgetType == 4
+        subtractTime(t, 50);
+        if (currentTime(*t) < 0) {
+            currentTime(*t) = 0;
+        } 
         printf("Mesin Waktu berhasil digunakan!\n");
     }
 }

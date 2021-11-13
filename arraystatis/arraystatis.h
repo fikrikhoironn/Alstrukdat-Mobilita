@@ -3,6 +3,7 @@
 
 #include "boolean.h"
 #include "../time/time.h"
+#include "../stack/stack.h"
 
 #define VAL_UNDEF -1
 #define MAX_CAPACITY 5

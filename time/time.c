@@ -77,4 +77,8 @@ void incrementReturnToSender(time *t){
     returnToSender(*t)++;
 }
 
+void decrementReturnToSender(time *t){
+    returnToSender(*t)--;
+}
+
 
