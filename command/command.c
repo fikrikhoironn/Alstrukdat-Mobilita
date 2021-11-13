@@ -5,7 +5,9 @@
 #include "command.h"
 
 
-
+void MOVE(){
+    
+}
 
 void TO_DO (linkedList todo) {
     // KAMUS
@@ -75,7 +77,10 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map *map) {
+<<<<<<< HEAD
+void 
+=======
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita, time *t, map *map) {
     // KAMUS
     item delVal;
 
@@ -108,7 +113,7 @@ void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map 
             }
             else if (isVIPItem(delVal)) {
                 *mobita.money += 600;
-                activateReturnToSender(); // Diasumsikan ada
+                activateReturnToSender(tas, todo, inprogress, t);
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
                 printf("Anda memperoleh ability Return To Sender\n");
@@ -125,3 +130,4 @@ void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map 
         printf("Tidak terdapat pesanan yang dapat diantarkan!\n");
     }
 }
+>>>>>>> origin/develop

@@ -106,16 +106,16 @@ void salinTokenSTDIN(){
     int i = 0;
     currentToken.len=0;
     while(currentChar !=' ' && currentChar!='\n' && (i<MAX)){
-        ++i;
+  
         currentToken.tokenArray[i]=currentChar;
-        advStartIn();
+              ++i;advStartIn();
     }
     currentToken.len =i;
 }
 
 
 void advTokenStdin(){
-    if(currentChar == ' ' || currentChar =='\n') endToken=true;
+    if(currentChar == EOF) endToken=true;
     else{
         ignoreBlank();
         salinTokenSTDIN();
@@ -182,7 +182,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
         }else{
             perishable=-1;
         }
-        pesanan=makeItem(timeIn, pickUp,dropOff,typeItem,perishable);
+        pesanan=createItem(timeIn, pickUp,dropOff,typeItem,perishable);
         advToken();
         enqueue(daftarPesanan,pesanan);
     }
@@ -210,6 +210,32 @@ void BacaArray (ArrayBuild* tes,int isi){
     }
     NEFF(array)=isi;
     *tes=array;
+}
+
+char* readStdString(){
+    startTokenStd();
+    char* c = &(currentToken.tokenArray[0]);
+    eot=true;
+    advStartIn();
+    return c;
+}
+
+
+boolean stringCompare(char * str1, char *str2){
+   int i=0;
+    boolean test=str1[i]==str2[i];
+   while(str1[i]!='\0' && str2[i]!='\0' && test){
+       test= str1[i]==str2[i];
+       i++;
+   }
+    eot=false;
+    return str1[i]==str2[i];
+
+}
+
+char* tokenToString(Token test){
+    char * c = &(test.tokenArray[0]);
+    return c;
 }
 
 /*

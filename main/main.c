@@ -1,6 +1,8 @@
 #include "boolean.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "../mesinKata/mesin.h"
 #include "../command/command.h"
 #include "../queue/queue.h"
@@ -16,12 +18,13 @@
 #include "../ability/ability.h"
 
 int main(){
+    Token fileInput;
     int command;
     do{
         scanf("%d",&command);
     }while(command != 1 || command != 2 || command !=3);
     if(command==1){
-            scanf("%s[^\n]",);
+            
             start_game();
             readConfigFiles();
     }else if(command ==2){
@@ -30,9 +33,9 @@ int main(){
      //print   
     }
 
-    while (!isEmpty)
+    while (!isEmpty())
     {
-        /* code */
+        
     }
     
 }
