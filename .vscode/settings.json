@@ -2,6 +2,7 @@
     "files.associations": {
         "locations.h": "c",
         "charmachine.h": "c",
-        "mesin.h": "c"
+        "mesin.h": "c",
+        "math.h": "c"
     }
 }
