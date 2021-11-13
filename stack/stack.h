@@ -48,4 +48,6 @@ void popBag(stack *bag, item *val);
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
 
+void displayBag(stack bag);
+
 #endif

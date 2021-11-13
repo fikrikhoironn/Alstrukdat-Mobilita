@@ -30,7 +30,7 @@ void buyItem(time *money, gadgetList *g);
 // F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
 //     else -> I.S
 
-void useItem(gadgetList *g);
+void useItem(gadgetList *g, stack *bag, time *t);
 // I.S gadgetList terdefinisi
 // F.S gadgetList berkurang (jika instruksi benar)
 
@@ -51,7 +51,7 @@ int gadgetPrice(int gadgetType);
 boolean isMoneySufficient(time money, int gadgetType);
 // return true, if money > price of Gadget
 
-void useGadget(int gadgetType);
+void useGadget(int gadgetType, stack *bag, time *t);
 // menggunakan gadget
 
 #endif

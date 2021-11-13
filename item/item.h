@@ -13,6 +13,7 @@ typedef struct{
     char dropOff;
     char typeItem;
     int perishableTime; 
+    int perishableOrigin;
 }item;
 
 #define timeIn(I) (I).timeIn
@@ -20,8 +21,9 @@ typedef struct{
 #define dropOff(I) (I).dropOff
 #define typeItem(I) (I).typeItem
 #define perishableTime(I) (I).perishableTime
+#define perishableOrigin(I) (I).perishableOrigin
 
-item makeItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
+item createItem(int timeIn, char pickUp, char dropOff, char typeItem, int perishableTime);
 
 boolean isNormalItem(item t);
 
@@ -30,5 +32,9 @@ boolean isHeavyItem(item t);
 boolean isPerishableItem(item t);
 
 boolean isVipItem(item t);
+
+void displayItem(item t);
+
+void decrementPerishableTime(item *t);
 
 #endif

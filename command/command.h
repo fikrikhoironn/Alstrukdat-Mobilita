@@ -9,16 +9,18 @@
 #include "boolean.h"
 #include "../stack/stack.h"
 #include "../linkedlist/linkedlist.h"
+#include "../ability/ability.h"
 
-void MOVE();
 
-void PICK_UP(linkedList ToDoList, linkedList *InProgressList, stack *Bag);
-/*melakukan pick up dengan mencari apakah ada item di lokasi tersebut dengan mengecek pada to do list
-jika ada, pick up masukkan ke bag dan update in progress list */
 
 void TO_DO (linkedList todo);
 
 void IN_PROGRESS (linkedList inprogress);
+
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita, time *t, map *map);
+// Diasumsikan terdapat adt person bernama mobita yang memiliki komponen money
+// Diasumsikan terdapat adt map
+// Memindahkan item dari in progress list dan melakukan pop item dari tas
 
 
 #endif /* command_H */

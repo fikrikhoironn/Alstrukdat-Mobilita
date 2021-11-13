@@ -99,7 +99,7 @@ void buyItem(time *money, gadgetList *g){
 //     else -> I.S
 // panggil untuk membeli gadget *satu kali*
 
-void useItem(gadgetList *g){
+void useItem(gadgetList *g, stack *bag, time *t){
 
     int command;
     if (! isEmpty(*g)){
@@ -122,7 +122,7 @@ void useItem(gadgetList *g){
                 int gadgetType;
                 removeGadget(g, command - 1, &gadgetType); // command == index + 1
                 if (gadgetType != VAL_UNDEF){
-                    useGadget(gadgetType);
+                    useGadget(gadgetType, bag, t);
                 }
                 if (! isEmpty(*g)){
                     printf("Lanjut membeli?\n");
@@ -223,10 +223,14 @@ boolean isMoneySufficient(time money, int gadgetType){
 }
 // return true, if money > price of Gadget
 
-void useGadget(int gadgetType){ // belum selesai
+void useGadget(int gadgetType, stack *bag, time *t){ // belum selesai
     if (gadgetType == 1){
         printf("Kain Pembungkus Waktu berhasil digunakan!\n");
     } else if (gadgetType == 2){
+        maxBag(*bag) *= 2;
+        if (maxBag(*bag) > CAPACITY_STACK){
+            maxBag(*bag) = CAPACITY_STACK;
+        }
         printf("Senter Pembesar berhasil digunakan!\n");
     } else if (gadgetType == 3){
         printf("Pintu Kemana Saja berhasil digunakan!\n");
