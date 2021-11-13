@@ -293,3 +293,14 @@ void insert_timedescList (linkedList *L, infotype val) {
         }
     }
 }
+
+item find_by_pickup_location (linkedList L, char location) {
+    // KAMUS
+    Address p;
+    // ALGORITMA
+    p = first(L);
+    while (p != NULL && (info(p)).pickUp != location) {
+        p = next(p);
+    }
+    return info(p);
+}

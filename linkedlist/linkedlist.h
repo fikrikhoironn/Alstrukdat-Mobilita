@@ -101,4 +101,7 @@ void insert_timeascList (linkedList *L, infotype val);
 void insert_timedescList (linkedList *L, infotype val);
 // Memasukkan element val ke dalam list L, terurut mengecil
 
+item find_by_pickup_location (linkedList L, char location);
+// Mencari item yang memiliki lokasi pick up pada location 
+
 #endif
