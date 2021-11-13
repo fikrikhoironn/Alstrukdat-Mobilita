@@ -75,7 +75,7 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map *map) {
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita, time *t, map *map) {
     // KAMUS
     item delVal;
 
@@ -108,7 +108,7 @@ void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map 
             }
             else if (isVIPItem(delVal)) {
                 *mobita.money += 600;
-                activateReturnToSender(); // Diasumsikan ada
+                activateReturnToSender(tas, todo, inprogress, *t); 
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
                 printf("Anda memperoleh ability Return To Sender\n");
