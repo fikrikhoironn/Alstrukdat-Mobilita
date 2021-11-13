@@ -17,33 +17,35 @@ typedef struct{
 #define currentMoney(t) (t).currentMoney
 #define returnToSender(t) (t).returnToSender
 
-void createTime(time *t);
+void createTime(time *t); //membuat state waktu sesuai amount atau masukan
 
 void addTime(time *t, int amount); //menambah waktu sesuai amount atau masukan
 
-void printCurrentTime(time t);
+void printCurrentTime(time t); //menampilkan state sekarang
 
 void subtractTime(time *t, int amount); //mengurang waktu sesuai amount atau masukan
 
-void subtractHeavyItem(time *, int amount);
+void subtractHeavyItem(time *, int amount); //mengurangi heavy item sesuai masukan berupa heavy item yang di drop
 
-void incrementTime(time *t);
+void incrementTime(time *t); //melakukan increment waktu sesuai spek
 
-void resetHeavyItem(time *t);
+void resetHeavyItem(time *t); 
 
-void addSpeedBoost(time *t);
+void addSpeedBoost(time *t); //menambah speedboost 10 unit
 
-void initReturnToSender(time *t);
+void initReturnToSender(time *t); 
 
-void incrementReturnToSender(time *t);
+void incrementReturnToSender(time *t); //menambah waktu returnToSender sejumlah 1
 
-void addHeavyItem(time *t, int amount);
+void decrementReturnToSender(time *t); //mengurangi returnToSender sejumlah 1
+
+void addHeavyItem(time *t, int amount); //menambah heavy item sesuai masukan berupa jumlah heavy item yang dipick
 
 void initCurrentMoney(time *t);
 
-void addCurrentMoney(time *t, int reward);
+void addCurrentMoney(time *t, int reward); //menambah jumlah uang sesuai reward
 
-void subtractCurrentMoney(time *t, int reward);
+void subtractCurrentMoney(time *t, int reward); //mengurangi jumlah uang sesuai pengeluaran pembelian gadget
 
 
 // typedef struct{
