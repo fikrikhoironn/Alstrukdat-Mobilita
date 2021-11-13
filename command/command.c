@@ -75,7 +75,7 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map *map) {
+void DROP_OFF (linkedList *inprogress, stack *tas, time *t, map *map) {
     // KAMUS
     item delVal;
 
@@ -87,27 +87,28 @@ void DROP_OFF (linkedList *inprogress, stack *tas, person *mobita, time *t, map 
             deleteAtList(inprogress, (indexOfList(*inprogress, TOP(*tas))), &delVal);
             popBag(tas, &delVal);
             if (isNormalItem(delVal)) {
-                *mobita.money += 200;
+                addCurrentMoney(t, 200);
                 printf("Pesanan Normal Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 200 Yen\n");
             }
             else if (isHeavyItem(delVal)) {
-                *mobita.money += 400;
+                addCurrentMoney(t, 400);
                 activateSpeedBoost(t);
+                subtractHeavyItem(t, 1);
                 printf("Pesanan Heavy Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 400 Yen\n");
                 printf("Anda memperoleh ability Speed Boost\n");
             }
             else if (isPerishableItem(delVal)) {
                 // Waktu hangus dari perishable item < waktu mobita
-                *mobita.money += 400;
+                addCurrentMoney(t, 400);
                 increaseCapactiy(tas);
                 printf("Pesanan Perishable Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 400 Yen\n");
                 printf("Anda memperoleh ability Increase Capacity\n");
             }
             else if (isVIPItem(delVal)) {
-                *mobita.money += 600;
+                addCurrentMoney(t, 600);
                 activateReturnToSender(); // Diasumsikan ada
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
