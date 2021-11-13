@@ -50,7 +50,7 @@ void startIn(){
 
 void advStartIn(){
        retval=fscanf(tape,"%c",&currentChar);
-       eot= (currentChar == ' ' || currentChar =='\n');
+       eot= (currentChar == EOF);
        if(eot){
               fclose(tape);
        }

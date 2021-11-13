@@ -16,9 +16,16 @@
 #include "../ability/ability.h"
 
 typedef struct mobilita{
-    
+
 }mobilita;
 
 void start_game();
 /* initiate ADT to start the game, set everyting at zero point before start the game*/
+
+void printMenu();
+//memprint daftar perintah
+
+
+void printStatus();
+//mengprinf posisi, waktu, serta uang yang dimiliki dan pesanan yag harus di antar
 

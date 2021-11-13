@@ -119,4 +119,14 @@ Membaca file configurasi, ketika melakukan newgame
 */
 void BacaArray (ArrayBuild* tes,int isi);
 
+char* readStdString();
+/* membaca secara standar masukan user dan disimpan dalam pointer of char*/
+
+boolean stringCompare(char * str1, char *str2);
+/* 
+I.F. kedua char of pointer terdefinisi
+F.S. Mengembalikan nilai true jika keduanya berisi kalimat atau string yang sama*/
+
+char* tokenToString(Token test);
+
 #endif

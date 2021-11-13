@@ -3,6 +3,7 @@
         "locations.h": "c",
         "charmachine.h": "c",
         "mesin.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "command.h": "c"
     }
 }
