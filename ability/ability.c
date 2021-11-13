@@ -5,7 +5,7 @@ void activateSpeedBoost(time *t){
 }
 
 void increaseCapactiy(stack *bag){
-    if (!sBagFull(*bag)){
+    if (!isFullBag(*bag)){
             maxBag(*bag) += 1;
     }
 }
