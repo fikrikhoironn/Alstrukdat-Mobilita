@@ -150,7 +150,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 
 
     advToken();
-    CreateArrayBuild(&arrBuild,m);
+    CreateArrayBuild(arrBuild,m);
     IsiArray(arrBuild,'1',(*HQ).col,(*HQ).row);
     BacaArray(arrBuild,m);
     

@@ -4,7 +4,7 @@
 #include <string.h>
 
 #include "../mesinKata/mesin.h"
-#include "../command/command.h"
+
 #include "../queue/queue.h"
 #include "../arraydin/arraydin.h"
 #include "../time/time.h"
@@ -71,26 +71,37 @@ int main(){
 
     while (!isEmptyQueue(daftartPesanan))
     {
-        printMenu();
-        printStatus();
+        //printMenu();
+        //printStatus();
         advTokenStdin();
         char * cmd = tokenToString(currentToken);
         if(stringCompare(cmd,"MOVE")){
-            MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
+            //MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
+            printf("move\n");
         }else if(stringCompare(cmd,"PICK_UP")){
             //masi gajelas PICK_UP belum dibenerin
-            PICK_UP(&todo,&inprogressList,&mobiBag,);
+            //PICK_UP(&todo,&inprogressList,&mobiBag,);
+            printf("pick up\n");
         }else if(stringCompare(cmd,"DROP_OFF")){
             //ini juga ntar dibenerin
-            DROP_OFF(&todo,&inprogressList,&mobiBag,,);
+            //DROP_OFF(&todo,&inprogressList,&mobiBag,,);
+            printf("drop off\n");
         }else if(stringCompare(cmd, "MAP")){
-            MAP();
+            //MAP();
+            printf("map\n");
         }else if(stringCompare(cmd,"TO_DO")){
-            TO_DO(todo);
+            //TO_DO(todo);
+            printf("to do\n");
+        }else if(stringCompare(cmd,"IN_PROGRESS")){
+            //
+            printf("in progrss\n");
         }else if(stringCompare(cmd,"INVENTORY")){
+            printf("inventory\n");
+        }else if(stringCompare(cmd,"BUY")){
 
         }else if(stringCompare(cmd,"HELP")){
-            HELP();
+            //HELP();
+            printf("help\n");
         }
     }
     
