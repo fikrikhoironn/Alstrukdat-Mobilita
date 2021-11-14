@@ -135,8 +135,8 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
                 printf("Anda memperoleh ability Increase Capacity\n");
             }
             else if (isVIPItem(delVal)) {
-                addCurrentMoney(t, 600);
-                incrementReturnToSender(t); 
+                *mobita.money += 600;
+                activateReturnToSender(tas, todo, inprogress, *t); 
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
                 printf("Anda memperoleh ability Return To Sender\n");
@@ -144,6 +144,13 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
             // Mengubah tampilan warna pada map
             updateMap(map, *mobita.location);
             // Fungsi updateMap diasumsikan ada
+
+            if (senterPengecil(*t)){ // senterPengecil!= 0
+                if (! isHeavyItem(delVal)){
+                    addHeavyItem(t, 1);
+                }
+                decrementSenterPengecil(t);
+            } 
         }
         else {
             printf("Lokasi pengantaran tidak sesuai!\n");
