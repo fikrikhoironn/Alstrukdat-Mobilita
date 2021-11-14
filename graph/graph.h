@@ -25,14 +25,14 @@ typedef struct tNodeV {
 } nodeV;
 
 typedef struct {
-	uAddress first;
+	uAddress firstGraph;
 } graph;
 
 #define info(P) (P)->info
 #define next(P) (P)->next
 #define nextChild(P) (P)->nextChild
 #define child(P) (P)->firstChild
-#define first(G) ((G).first)
+#define firstGraph(G) ((G).firstGraph)
 
 // Allocate node for incoming node
 uAddress allocateNodeU(infotype N);

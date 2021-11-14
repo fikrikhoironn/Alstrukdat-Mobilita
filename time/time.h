@@ -22,6 +22,8 @@ typedef struct{
 #define returnToSender(t) (t).returnToSender
 #define senterPengecil(t) (t).senterPengecil
 
+void displayStatus(time t);
+
 void createTime(time *t); //membuat state waktu sesuai amount atau masukan
 
 void addTime(time *t, int amount); //menambah waktu sesuai amount atau masukan

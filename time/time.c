@@ -2,6 +2,12 @@
 #include <math.h>
 #include <stdio.h>
 
+void displayStatus(time t){
+    printCurrentTime;
+    printf("JUMLAH UANG: %d\n", currentMoney(t));
+}
+
+
 void createTime(time *t){
     currentTime(*t) = 0;
     speedBoost(*t) = 0;

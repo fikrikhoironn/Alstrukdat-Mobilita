@@ -38,7 +38,7 @@ boolean isNodeEmpty(uAddress P)
 void createGraph(graph *G, int nodeCount)
 {
 	uAddress P = allocateNodeU(1);
-	first(*G) = P;
+	firstGraph(*G) = P;
 	
 	for(int i=2;i<=nodeCount;i++)
 	{
@@ -71,7 +71,7 @@ void insertChildP(uAddress P, int M)
 // I.S : Graph  is defined
 void insertChild(graph *G, int N, int M)
 {
-	uAddress P = first(*G);
+	uAddress P = firstGraph(*G);
 	for(int i=2;i<=N;i++) P = next(P);
 	insertChildP(P, M);
 }
@@ -79,7 +79,7 @@ void insertChild(graph *G, int N, int M)
 // Output graph for testing
 void printGraph(graph G)
 {
-	uAddress P  = first(G);
+	uAddress P  = firstGraph(G);
 	while(P!=NULL)
 	{
 		printf("Node %d is connected to:\n", info(P));
@@ -101,7 +101,7 @@ void printGraph(graph G)
 // Check if node N is connected to node M
 boolean isConnected(graph G, int N, int M)
 {
-	uAddress P = first(G);
+	uAddress P = firstGraph(G);
 	boolean result = false;
 
 	for(int i=2;i<=N;i++) P = next(P);
