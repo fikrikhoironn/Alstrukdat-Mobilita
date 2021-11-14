@@ -8,6 +8,7 @@ void createTime(time *t){
     heavyItem(*t) = 0;
     currentMoney(*t) = 0;
     returnToSender(*t) = 0;
+    senterPengecil(*t) = 0;
 }
 
 void incrementTime(time *t){
@@ -80,6 +81,14 @@ void incrementReturnToSender(time *t){
 
 void decrementReturnToSender(time *t){
     returnToSender(*t)--;
+}
+
+void incrementSenterPengecil(time *t){
+    senterPengecil(*t)++;
+}
+
+void decrementSenterPengecil(time *t){
+    senterPengecil(*t)--;
 }
 
 void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgressList,  Queue *daftarPesanan, stack *bag) //mengupdateToDoList dan perishableTime sesuai waktu sekarang

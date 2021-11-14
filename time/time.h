@@ -12,6 +12,7 @@ typedef struct{
     int heavyItem;
     int currentMoney;
     int returnToSender;
+    int senterPengecil; 
 }time;
 
 #define currentTime(t) (t).currentTime
@@ -19,6 +20,7 @@ typedef struct{
 #define heavyItem(t) (t).heavyItem
 #define currentMoney(t) (t).currentMoney
 #define returnToSender(t) (t).returnToSender
+#define senterPengecil(t) (t).senterPengecil
 
 void createTime(time *t); //membuat state waktu sesuai amount atau masukan
 
@@ -49,6 +51,10 @@ void initCurrentMoney(time *t);
 void addCurrentMoney(time *t, int reward); //menambah jumlah uang sesuai reward
 
 void subtractCurrentMoney(time *t, int reward); //mengurangi jumlah uang sesuai pengeluaran pembelian gadget
+
+void incrementSenterPengecil(time *t); // menambah senterPengecil sebanyak 1
+
+void decrementSenterPengecil(time *t); // mengurangi senterPengecil sebanyak 1
 
 void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgressList, Queue *daftarPesanan, stack *bag); //mengupdateToDoList sesuai waktu sekarang
 
