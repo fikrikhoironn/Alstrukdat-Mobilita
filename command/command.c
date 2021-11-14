@@ -135,8 +135,8 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
                 printf("Anda memperoleh ability Increase Capacity\n");
             }
             else if (isVIPItem(delVal)) {
-                *mobita.money += 600;
-                activateReturnToSender(tas, todo, inprogress, *t); 
+                addCurrentMoney(t, 600);
+                incrementReturnToSender(t); 
                 printf("Pesanan VIP Item berhasil diantarkan\n");
                 printf("Uang yang didapatkan : 600 Yen\n");
                 printf("Anda memperoleh ability Return To Sender\n");
