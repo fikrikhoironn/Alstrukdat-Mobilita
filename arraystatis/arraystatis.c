@@ -46,13 +46,14 @@ void buyItem(time *money, gadgetList *g){
             printf("2. Senter Pembesar (1200 Yen)\n");
             printf("3. Pintu Kemana Saja (1500 Yen)\n");
             printf("4. Mesin Waktu (3000 Yen)\n");
+            printf("5. Senter Pengecil (800 Yen)\n");
             printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
 
             printf("\nENTER COMMAND: ");
 
             scanf("%d", &command);
 
-            while (command > 4 || command < 0){ // command tidak valid
+            while (command > 5 || command < 0){ // command tidak valid
                 printf("Command salah, ulangi!\n");
                 printf("\nENTER COMMAND: ");
                 scanf("%d", &command);
@@ -111,7 +112,7 @@ void useItem(gadgetList *g, stack *bag, time *t){
             
             scanf("%d", &command);
 
-            while (command > 5 || command < 1){ // command tidak valid
+            while (command > 5 || command < 0){ // command tidak valid
                 printf("Command salah, ulangi!\n");
                 printf("\nENTER COMMAND: ");
                 scanf("%d", &command);
@@ -169,8 +170,10 @@ void displayGadgetList(gadgetList g){
                 printf("Senter Pembesar\n");
             } else if (ELEMENT(g, i) == 3){
                 printf("Pintu Kemana Saja\n");
-            } else {
+            } else if (ELEMENT(g,i) == 4){
                 printf("Mesin Waktu\n");
+            } else { // ELEMENT(g,i) == 5
+                printf("Senter Pengecil\n");
             }
         }
     }
@@ -212,8 +215,10 @@ int gadgetPrice(int gadgetType){
         return 1200;
     } else if (gadgetType == 3){
         return 1500;
-    } else { // gadgetType == 4
+    } else if (gadgetType == 4){ 
         return 3000;
+    } else { // gadgetType == 5
+        return 800;
     }
 }
 // Menampilkan harga gadget
@@ -243,11 +248,20 @@ void useGadget(int gadgetType, stack *bag, time *t){
         // If lokasi tidak valid, ulangi pembacaan (membingung)
         // mobita pindah ke lokasi sesuai command yg valid
         printf("Pintu Kemana Saja berhasil digunakan!\n");
-    } else { // gadgetType == 4
+    } else if (gadgetType == 4){ 
         subtractTime(t, 50);
         if (currentTime(*t) < 0) {
             currentTime(*t) = 0;
         } 
         printf("Mesin Waktu berhasil digunakan!\n");
+    } else { // gadgetType == 5
+        if (isHeavyItem(TOP(*bag))) {
+            subtractHeavyItem(t, 1);
+            incrementSenterPengecil(t);
+        } 
+        if (heavyItem(*t) < 0){
+            heavyItem(*t) = 0;
+        }
+        printf("Senter Pengecil berhasil digunakan!\n");
     }
 }
