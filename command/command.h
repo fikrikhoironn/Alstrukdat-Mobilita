@@ -20,8 +20,7 @@ void TO_DO (linkedList todo);
 
 void IN_PROGRESS (linkedList inprogress);
 
-void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita, time *t, map *map);
-// Diasumsikan terdapat adt person bernama mobita yang memiliki komponen money
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, map *map);// Diasumsikan terdapat adt person bernama mobita yang memiliki komponen money
 // Diasumsikan terdapat adt map
 // Memindahkan item dari in progress list dan melakukan pop item dari tas
 
