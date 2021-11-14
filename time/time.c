@@ -111,7 +111,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         }
     }
     //menghapus perishable item jika waktunya sudah hangus dan mengurangi sisa waktu perishable item
-    if (!isListEmpty(inProgressList)){
+    if (!isListEmpty(*inProgressList)){
         Address p = first(inProgressList);
         int idx = 0;
         while (p != NULL){
