@@ -106,18 +106,17 @@ void salinTokenSTDIN(){
     int i = 0;
     currentToken.len=0;
     while(currentChar !=' ' && currentChar!='\n' && (i<MAX)){
-  
-        currentToken.tokenArray[i]=currentChar;
-              ++i;advStartIn();
+    currentToken.tokenArray[i]=currentChar;
+    i++;
+    advStartIn();
     }
     currentToken.len =i;
 }
 
 
 void advTokenStdin(){
-    if(currentChar == EOF) endToken=true;
+    if(currentChar == eot) endToken=true;
     else{
-        ignoreBlank();
         salinTokenSTDIN();
     }
 }
@@ -235,7 +234,8 @@ boolean stringCompare(char * str1, char *str2){
 }
 
 char* tokenToString(Token test){
-    char * c = &(test.tokenArray[0]);
+    char * c =&(test.tokenArray[0]);
+    printf("--%c-%s-\n",test.tokenArray[0],c);
     return c;
 }
 

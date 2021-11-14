@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #include "../mesinKata/mesin.h"
 
 #include "../queue/queue.h"
@@ -16,6 +17,8 @@
 #include "../item/item.h"
 #include "../arraystatis/arraystatis.h"
 #include "../ability/ability.h"
+
+
 
 int main(){
     Token fileInput;
@@ -50,15 +53,18 @@ int main(){
     stack mobiBag;
     //buat todoList
     FILE *fp;
+    char * test;
     do{
         printf("Silahkan masukkan menu\n(1//2//3):\nENTER COMMAND: ");
-        scanf("%d",&command);
-    }while(command != 1 || command != 2 || command !=3);
+        scanf("%d\n",&command);
+    }while(command != 1 && command != 2 && command !=3);
     if(command==1){
             do{
-            startIn();
-            fp= fopen(tokenToString(currentToken),"r");
-            advTokenStdin();
+            startTokenStd();
+            test=tokenToString(currentToken);
+            fp= fopen(test,"r");
+            printf("%s||%c||%c\n",test,test[0],currentToken.tokenArray[1]);
+                                    advTokenStdin();
             }while(fp==NULL);
             readConfigFiles(tokenToString(currentToken),&mapheight,&mapLength,&HQLoc,&arrayOfBuilding,&adjMatrix,&daftartPesanan);
             mobitaLoc = MakePOINT((HQLoc).col,HQLoc.row);

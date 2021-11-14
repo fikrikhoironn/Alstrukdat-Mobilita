@@ -35,8 +35,7 @@ void incrementTime(time *t){
 }
 
 void printCurrentTime(time t){
-    float currentTimeFloat = floor(currentTime(t));
-    int my_var = (int)currentTimeFloat;
+    int my_var = (int) floor(currentTime(t));
     printf("WAKTU SEKARANG: %d\n", my_var);
     // printf("%f\n", currentTimeFloat);
 }
@@ -112,7 +111,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
     }
     //menghapus perishable item jika waktunya sudah hangus dan mengurangi sisa waktu perishable item
     if (!isListEmpty(*inProgressList)){
-        Address p = first(inProgressList);
+        Address p = first(*inProgressList);
         int idx = 0;
         while (p != NULL){
             item val;

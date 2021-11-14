@@ -2,6 +2,7 @@
 #define TIME_H
 
 #include "boolean.h"
+#include <math.h>
 #include "../linkedlist/linkedlist.h"
 #include "../queue/queue.h"
 #include "../stack/stack.h"
