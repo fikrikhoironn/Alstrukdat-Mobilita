@@ -13,9 +13,10 @@
 #include "../arraydin/arraydin.h"
 #include "../matrix/matrix.h"
 #include "../point/point.h"
+#include "../mesinKata/mesin.h"
 
-void MOVE(locationCoord *mobitaLoc, ArrayBuild arrayOfBuilding, Matrix adjMatrix);
-
+void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix);
+/*
 void TO_DO (linkedList todo);
 
 void IN_PROGRESS (linkedList inprogress);
@@ -29,7 +30,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobi
 // Memindahkan item dari to do list ke in progress list dan melakukan push item ke dalam tas
 
 void HELP();
-
+*/
 
 #endif /* command_H */
 

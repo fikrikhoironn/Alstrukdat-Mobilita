@@ -4,31 +4,38 @@
 
 #include "command.h"
 
-void MOVE(locationCoord *mobitaLoc, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
+void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     printf("Posisi yang dapat dicapai:\n");
     int k=1;
     int locMob;
     ArrayBuild tmpBuild;
     CreateArrayBuild(&tmpBuild,arrayOfBuilding.capacity);
-    for(int i=0;i<=NEFF(arrayOfBuilding);i++){
-        if((*mobitaLoc).col==arrayOfBuilding.koor[i].col && (*mobitaLoc).row==arrayOfBuilding.koor[i].row){
+    for(int i=0;i<NEFF(arrayOfBuilding);i++){
+        if(mobitaLocation(*mobiTime).col==arrayOfBuilding.koor[i].col && mobitaLocation(*mobiTime).row==arrayOfBuilding.koor[i].row){
             locMob=i;
         }
     }
+
     for(int i=0;i<NEFF(arrayOfBuilding);i++){
         if(isLocationConnected(adjMatrix,locMob,i)){
             printf("%d. %c (%d,%d)\n",k,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
             IsiArray(&tmpBuild,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
+            k++;
         }
     }
+
     printf("Posisi yang dipilih? (ketik 0 jika ingin kembali)\n\n");
     printf("ENTER COMMAND: ");
-    int comd = tokenToInt(currentToken);
+        //ignoreBlank();
+        //advTokenStdin();
+    //printf("---%d--\n",tokenToIntStd(currentToken));
+    int comd;
+    scanf("%d",&comd);
     if(comd!=0){
-        (*mobitaLoc).col=tmpBuild.koor[comd-1].col;
-        (*mobitaLoc).row=tmpBuild.koor[comd-1].row;
-        makeNeutral(&((*mobitaLoc).location));
-        makeMobita(tmpBuild.koor[comd-1].location);
+        //makeNeutral((mobitaLocation(*mobiTime).location));
+        mobitaLocation(*mobiTime).col=tmpBuild.koor[comd-1].col;
+        mobitaLocation(*mobiTime).row=tmpBuild.koor[comd-1].row;
+        //makeMobita(tmpBuild.koor[comd-1].location);
     }
 
 }

@@ -73,6 +73,11 @@ int tokenToInt(Token t);
 I.S. 
 F.S.
 */
+int tokenToIntStd(Token t);
+/* Mengubah token menjadi int 
+I.S. 
+F.S.
+*/
 
 char tokenToChar(Token t);
 /* Mengubah sebuah token dengan len=1 menjadi char

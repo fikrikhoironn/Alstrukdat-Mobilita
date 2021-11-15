@@ -17,6 +17,7 @@
 #include "../item/item.h"
 #include "../arraystatis/arraystatis.h"
 #include "../ability/ability.h"
+#include "../command/command.h"
 
 
 
@@ -102,9 +103,9 @@ int main(){
         else cmd[i]='\0';
         }
         if(stringCompare(cmd,"MOVE")){
-            //MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
-            printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
-            printf("--move\n");
+            MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
+            //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
+            //printf("--move %d\n",tokenToIntStd(currentToken));
         }else if(stringCompare(cmd,"PICK_UP")){
             //masi gajelas PICK_UP belum dibenerin
             //PICK_UP(&todo,&inprogressList,&mobiBag,);

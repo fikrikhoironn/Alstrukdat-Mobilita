@@ -8,6 +8,7 @@
 #include "../stack/stack.h"
 #include "../point/point.h"
 
+
 typedef struct{
     float currentTime;
     int speedBoost;

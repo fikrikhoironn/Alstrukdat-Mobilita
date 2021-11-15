@@ -68,6 +68,18 @@ int tokenToInt(Token t){
     return val;
 }
 
+int tokenToIntStd(Token t){
+    int i =0;
+    int val=0;
+    while(i<t.len){
+        val*=10;
+        //printf("|%c|",t.tokenArray[i]);
+        val += (int)t.tokenArray[i]-(int)'0';
+        i++;
+    }    
+    return val;
+}
+
 char tokenToChar(Token t){
     return t.tokenArray[1];
 }
