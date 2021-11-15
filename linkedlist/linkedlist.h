@@ -104,6 +104,8 @@ void insert_timedescList (linkedList *L, infotype val);
 Address find_by_pickup_location (linkedList L, char location);
 // Mencari item yang memiliki lokasi pick up pada location dan mengembalikan address dari p
 
+boolean isPickupLocation (linkedList L, char location); //apakah char tsb pickup location
+
 boolean isVIPin (linkedList L);
 // mengembalikan true jika terdapat vip item dalam list, false jika tidak
 

@@ -321,3 +321,19 @@ boolean isVIPin (linkedList L) {
         return false;
     }
 }
+
+boolean isPickupLocation(linkedList L, char location) {
+    // KAMUS
+    Address p;
+    // ALGORITMA
+    p = first(L);
+    boolean found  = false;
+    while (p != NULL && !found) {
+        if (info(p).pickUp == location){
+            found = true;
+        }                
+        p = next(p);
+
+    }
+    return found;
+}
