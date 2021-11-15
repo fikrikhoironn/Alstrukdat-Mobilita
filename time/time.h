@@ -6,6 +6,7 @@
 #include "../linkedlist/linkedlist.h"
 #include "../queue/queue.h"
 #include "../stack/stack.h"
+#include "../point/point.h"
 
 typedef struct{
     float currentTime;
@@ -14,6 +15,7 @@ typedef struct{
     int currentMoney;
     int returnToSender;
     int senterPengecil; 
+    locationCoord currentLocation;
 }time;
 
 #define currentTime(t) (t).currentTime
@@ -22,6 +24,7 @@ typedef struct{
 #define currentMoney(t) (t).currentMoney
 #define returnToSender(t) (t).returnToSender
 #define senterPengecil(t) (t).senterPengecil
+#define mobitaLocation(t) (t).currentLocation
 
 void displayStatus(time t);
 

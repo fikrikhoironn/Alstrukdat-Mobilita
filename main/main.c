@@ -31,7 +31,6 @@ int main(){
 
     int mapheight, mapLength;
     locationCoord HQLoc;
-    locationCoord mobitaLoc;
     
     
     
@@ -53,26 +52,31 @@ int main(){
     stack mobiBag;
     //buat todoList
     FILE *fp;
-    char * test;
+    char * test=(char *) malloc(101*sizeof(char));
     do{
-        printf("Silahkan masukkan menu\n(1//2//3):\nENTER COMMAND: ");
-        scanf("%d\n",&command);
+        printf("Silahkan masukkan menu\n(1 // 2 // 3):\nENTER COMMAND: ");
+        scanf("%d",&command);
     }while(command != 1 && command != 2 && command !=3);
     if(command==1){
-            do{
+            while(fp==NULL){
+            currentToken.len=0;
+            printf("ENTER FILENAME: ");
             startTokenStd();
-            test=&(currentToken.tokenArray[0]);
+            for(int i=0;i<=currentToken.len;i++){
+            if(i!=currentToken.len) test[i]=currentToken.tokenArray[i];
+            else test[i]='\0';
+            }
             fp= fopen(test,"r");
             //printf("%s||%c||%c\n",test,test[0],currentToken.tokenArray[1]);
             advTokenStdin();
-            }while(fp==NULL);
+            }
             readConfigFiles(test,&mapheight,&mapLength,&HQLoc,&arrayOfBuilding,&adjMatrix,&daftarPesanan);
             //printf("%d %d\n%d %d\n",mapLength,mapheight,HQLoc.col,HQLoc.row);
             //displayArray(arrayOfBuilding);
             //displayMatrix(adjMatrix);
             //DisplayQueue(daftarPesanan);
-            mobitaLoc = MakePOINT((HQLoc).col,HQLoc.row);
-            printf("Selamat datang di permainan Mobilita.\n");
+            mobitaLocation(mobitime) = MakePOINT((HQLoc).col,HQLoc.row);
+            //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
         printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
     }else{
@@ -99,6 +103,7 @@ int main(){
         }
         if(stringCompare(cmd,"MOVE")){
             //MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
+            printf("(%d,%d)",mobitaLocation(mobitime).col,mobitaLocation(mobitime).row);
             printf("--move\n");
         }else if(stringCompare(cmd,"PICK_UP")){
             //masi gajelas PICK_UP belum dibenerin
@@ -120,7 +125,7 @@ int main(){
         }else if(stringCompare(cmd,"INVENTORY")){
             printf("inventory\n");
         }else if(stringCompare(cmd,"BUY")){
-
+            printf("buy\n");
         }else if(stringCompare(cmd,"HELP")){
             //HELP();
             printf("help\n");

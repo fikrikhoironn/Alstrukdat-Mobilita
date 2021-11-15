@@ -96,7 +96,9 @@ boolean compareToken(Token basis, Token compared){
 }
 
 void startTokenStd(){
+    //printf("ENTER COMMAND: ");
     startIn();
+    ignoreBlankStdin();
     salinTokenSTDIN();
 }
 
@@ -117,6 +119,7 @@ void salinTokenSTDIN(){
 void advTokenStdin(){
     if(currentChar == eot) endToken=true;
     else{
+        //printf("ENTER COMMAND: ");
         salinTokenSTDIN();
     }
 }
@@ -141,7 +144,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     *HQ=MakePOINT(xHQ,yHQ);
     (*HQ).location=hqLoc;
 
-    printf("%d %d\n%d %d\n",*mapLength,*mapHeight,(*HQ).col,(*HQ).row);
+    //printf("%d %d\n%d %d\n",*mapLength,*mapHeight,(*HQ).col,(*HQ).row);
     advToken();
     int m= tokenToInt(currentToken);
     advToken();
