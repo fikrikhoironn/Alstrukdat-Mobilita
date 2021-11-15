@@ -107,7 +107,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         /* code */
         item val;
         val = daftarPesanan->buffer[i];
-        if (timeIn(val) >= currentTime(*t)){
+        if (timeIn(val) <= currentTime(*t)){
             insert_timeascList(toDoList, val);
         }
     }
