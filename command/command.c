@@ -102,13 +102,13 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, map *map) {
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
     // KAMUS
     item delVal;
 
     // ALGORITMA
     if (!isEmptyBag(*tas)) {
-        if (TOP(*tas).dropOff == *mobita.location) {
+        if (TOP(*tas).dropOff == currentLocation(*t)) {
             // Diasumsikan adt mobita memiliki komponen location
             // Lokasi drop off pada top dari stack tas sama dengan lokasi mobita saat ini
             deleteAtList(inprogress, (indexOfList(*inprogress, TOP(*tas))), &delVal);
@@ -142,7 +142,7 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
                 printf("Anda memperoleh ability Return To Sender\n");
             }
             // Mengubah tampilan warna pada map
-            updateMap(map, *mobita.location);
+            //updateMap(map, *mobita.location);
             // Fungsi updateMap diasumsikan ada
 
             if (senterPengecil(*t)){ // senterPengecil!= 0
@@ -161,13 +161,13 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
     }
 }
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita) {
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
     // KAMUS
     Address pickedUp;
     item delVal;
 
     // ALGORITMA
-    pickedUp = find_by_pickup_location(*todo, *mobita.location);
+    pickedUp = find_by_pickup_location(*todo, currentLocation(t));
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
             if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {
