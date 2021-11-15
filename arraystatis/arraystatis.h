@@ -26,14 +26,16 @@ boolean isFull(gadgetList g);
 
 boolean isEmpty(gadgetList g);
 
-void buyItem(time *money, gadgetList *g);
+void BUY(time *money, gadgetList *g);
 // I.S money dan gadgetList terdefinisi
 // F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
 //     else -> I.S
 
-void useItem(gadgetList *g, stack *bag, time *t);
+void INVENTORY(gadgetList *g, stack *bag, time *t);
 // I.S gadgetList terdefinisi
 // F.S gadgetList berkurang (jika instruksi benar)
+
+void displayBuySuccess(int gadgetType);
 
 void displayGadgetList(gadgetList g);
 // Menampilkan gadget yang disimpan dalam gadgetList
