@@ -75,7 +75,7 @@ int main(){
             //displayArray(arrayOfBuilding);
             //displayMatrix(adjMatrix);
             //DisplayQueue(daftarPesanan);
-            mobitaLocation(mobitime) = MakePOINT((HQLoc).col,HQLoc.row);
+            mobitaLocation(mobiTime) = MakePOINT((HQLoc).col,HQLoc.row);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
         printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
@@ -103,7 +103,7 @@ int main(){
         }
         if(stringCompare(cmd,"MOVE")){
             //MOVE(&mobitaLoc,arrayOfBuilding,adjMatrix);
-            printf("(%d,%d)",mobitaLocation(mobitime).col,mobitaLocation(mobitime).row);
+            printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
             printf("--move\n");
         }else if(stringCompare(cmd,"PICK_UP")){
             //masi gajelas PICK_UP belum dibenerin
