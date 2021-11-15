@@ -104,6 +104,7 @@ int main(){
         }
         if(stringCompare(cmd,"MOVE")){
             MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
+            displayStatus(mobiTime);
             //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
             //printf("--move %d\n",tokenToIntStd(currentToken));
         }else if(stringCompare(cmd,"PICK_UP")){
@@ -115,8 +116,7 @@ int main(){
             //DROP_OFF(&todo,&inprogressList,&mobiBag,,);
             printf("drop off\n");
         }else if(stringCompare(cmd, "MAP")){
-            //MAP();
-            printf("map\n");
+            printMap(adjMatrix,arrayOfBuilding,mapLength,mapheight);
         }else if(stringCompare(cmd,"TO_DO")){
             //TO_DO(todo);
             printf("to do\n");

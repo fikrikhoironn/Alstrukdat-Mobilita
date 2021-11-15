@@ -31,16 +31,17 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     //printf("---%d--\n",tokenToIntStd(currentToken));
     int comd;
     scanf("%d",&comd);
-    if(comd!=0){
+    if(comd!=0 && comd<=k+1){
         //makeNeutral((mobitaLocation(*mobiTime).location));
         mobitaLocation(*mobiTime).col=tmpBuild.koor[comd-1].col;
         mobitaLocation(*mobiTime).row=tmpBuild.koor[comd-1].row;
+        incrementTime(mobiTime);
         //makeMobita(tmpBuild.koor[comd-1].location);
-    }
+    }else if(comd!=0) printf("Lokasi tidak ada...\n");
 
 }
 
-
+/*
 void TO_DO (linkedList todo) {
     // KAMUS
     Address p;
@@ -196,6 +197,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
         printf("Tidak ada item untuk di-pick up!\n");
     }
 }
+*/
 
 void HELP(){
     printf("1. MOVE         -> Untuk berpindah ke lokasi selanjutnya\n");
