@@ -109,13 +109,13 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, map *map) {
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
     // KAMUS
     item delVal;
 
     // ALGORITMA
     if (!isEmptyBag(*tas)) {
-        if (TOP(*tas).dropOff == *mobita.location) {
+        if (TOP(*tas).dropOff == currentLocation(*t)) {
             // Diasumsikan adt mobita memiliki komponen location
             // Lokasi drop off pada top dari stack tas sama dengan lokasi mobita saat ini
             deleteAtList(inprogress, (indexOfList(*inprogress, TOP(*tas))), &delVal);
@@ -149,7 +149,7 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
                 printf("Anda memperoleh ability Return To Sender\n");
             }
             // Mengubah tampilan warna pada map
-            updateMap(map, *mobita.location);
+            //updateMap(map, *mobita.location);
             // Fungsi updateMap diasumsikan ada
 
             if (senterPengecil(*t)){ // senterPengecil!= 0
@@ -168,13 +168,13 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ma
     }
 }
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobita) {
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
     // KAMUS
     Address pickedUp;
     item delVal;
 
     // ALGORITMA
-    pickedUp = find_by_pickup_location(*todo, *mobita.location);
+    pickedUp = find_by_pickup_location(*todo, currentLocation(t));
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
             if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {
@@ -198,10 +198,13 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, person *mobi
 }
 
 void HELP(){
-    printf("1.\tMOVE -> Untuk berpindah ke lokasi selanjutnya.\n");
-    printf("2.\tPICL_UP -> Untuk mengamvil item di lokasi saat ini.\n");
-    printf("3.\tDROP_OFF -> Untuk mengantarkan item ke lokasi jika item di tumpukan teratas sesuai dengan pesanan.\n");
-    printf("4.\tMAP -> untuk menampilkan peta saat ini.\n");
-    printf("5.\tTO_DO -> Untuk menampilkan pesanan yang masuk ke To Do List.\n");
-    
+    printf("1. MOVE         -> Untuk berpindah ke lokasi selanjutnya\n");
+    printf("2. PICK_UP      -> Untuk mengambil item dilokasi saat ini\n");
+    printf("3. DROP_OFF     -> Untuk mengantarkan item ke lokasi sesuai pesanan\n");
+    printf("4. MAP          -> Untuk memunculkan peta\n");
+    printf("5. TO_DO        -> Untuk menampilkan pesanan pada To Do List\n");
+    printf("6. IN_PROGRESS  -> Untuk menampilkan pesanan yang sedang dikerjakan\n");
+    printf("7. BUY          -> Untuk menampilkan gadget yang dapat dibeli lalu membelinya (Hanya pada headquarters)\n");
+    printf("8. INVENTORY    -> Untuk melihat gadget yang dimiliki dan menggunakannya\n");
+    printf("9. HELP         -> Untuk mengeluarkan list command dan kegunaannya\n");
 }
