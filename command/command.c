@@ -41,7 +41,7 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
 
 }
 
-/*
+
 void TO_DO (linkedList todo) {
     // KAMUS
     Address p;
@@ -89,7 +89,7 @@ void IN_PROGRESS (linkedList inprogress) {
 
         printf("Pesanan yang sedang diantarkan:\n");
         while (p != NULL) {
-            printf("%d. ");
+            printf("%d. ",i);
             if (typeItem(info(p)) == 'N') {
                 printf("Normal Item ");
             }
@@ -116,7 +116,7 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
 
     // ALGORITMA
     if (!isEmptyBag(*tas)) {
-        if (TOP(*tas).dropOff == currentLocation(*t)) {
+        if (TOP(*tas).dropOff == mobitaLocation(*t).location->name) {
             // Diasumsikan adt mobita memiliki komponen location
             // Lokasi drop off pada top dari stack tas sama dengan lokasi mobita saat ini
             deleteAtList(inprogress, (indexOfList(*inprogress, TOP(*tas))), &delVal);
@@ -142,7 +142,7 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
                 printf("Uang yang didapatkan : 400 Yen\n");
                 printf("Anda memperoleh ability Increase Capacity\n");
             }
-            else if (isVIPItem(delVal)) {
+            else if (isVipItem(delVal)) {
                 addCurrentMoney(t, 600);
                 incrementReturnToSender(t); 
                 printf("Pesanan VIP Item berhasil diantarkan\n");
@@ -175,7 +175,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
     item delVal;
 
     // ALGORITMA
-    pickedUp = find_by_pickup_location(*todo, currentLocation(t));
+    pickedUp = find_by_pickup_location(*todo, mobitaLocation(t).location->name);
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
             if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {
@@ -183,7 +183,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
             }
             else {
                 // Kondisi normal, item berhasil di pick up
-                deleteAtList(*todo, (indexOfList(todo, info(pickedUp))), &delVal);
+                deleteAtList(todo, (indexOfList(*todo, info(pickedUp))), &delVal);
                 insert_timedescList(inprogress, delVal);
                 pushBag(tas, delVal);
                 // Ganti warna map
@@ -197,7 +197,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
         printf("Tidak ada item untuk di-pick up!\n");
     }
 }
-*/
+
 
 void HELP(){
     printf("1. MOVE         -> Untuk berpindah ke lokasi selanjutnya\n");

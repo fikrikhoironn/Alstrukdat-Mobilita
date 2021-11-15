@@ -104,27 +104,21 @@ int main(){
         }
         if(stringCompare(cmd,"MOVE")){
             MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
-            displayStatus(mobiTime);
+            updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
             //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
             //printf("--move %d\n",tokenToIntStd(currentToken));
         }else if(stringCompare(cmd,"PICK_UP")){
-            //masi gajelas PICK_UP belum dibenerin
-            //PICK_UP(&todo,&inprogressList,&mobiBag,);
-            printf("pick up\n");
+            PICK_UP(&todo,&inprogressList,&mobiBag,mobiTime);
         }else if(stringCompare(cmd,"DROP_OFF")){
-            //ini juga ntar dibenerin
-            //DROP_OFF(&todo,&inprogressList,&mobiBag,,);
-            printf("drop off\n");
+            DROP_OFF(&todo,&inprogressList,&mobiBag,&mobiTime);
         }else if(stringCompare(cmd, "MAP")){
             //printf("%d %d\n%d %d\n",mapheight,mapLength,arrayOfBuilding.koor[2].row,arrayOfBuilding.koor[2].col);
             //displayArray(arrayOfBuilding);
             printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
         }else if(stringCompare(cmd,"TO_DO")){
-            //TO_DO(todo);
-            printf("to do\n");
+            TO_DO(todo);
         }else if(stringCompare(cmd,"IN_PROGRESS")){
-            //
-            printf("in progrss\n");
+            IN_PROGRESS(inprogressList);
         }else if(stringCompare(cmd,"INVENTORY")){
             printf("inventory\n");
         }else if(stringCompare(cmd,"BUY")){
@@ -133,6 +127,7 @@ int main(){
             //HELP();
             printf("help\n");
         }
+        displayStatus(mobiTime);
         printf("ENTER COMMAND: ");
         ignoreBlankStdin();
         advTokenStdin();
