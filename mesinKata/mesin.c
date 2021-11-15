@@ -141,23 +141,19 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     *HQ=MakePOINT(xHQ,yHQ);
     (*HQ).location=hqLoc;
 
-
+    printf("%d %d\n%d %d\n",*mapLength,*mapHeight,(*HQ).col,(*HQ).row);
     advToken();
     int m= tokenToInt(currentToken);
-    //printf("\n---%d---\n",m);
-    int i;
-
-
     advToken();
-    CreateArrayBuild(arrBuild,m);
-    IsiArray(arrBuild,'1',(*HQ).col,(*HQ).row);
+    CreateArrayBuild(arrBuild,m+1);
+    IsiArray(arrBuild, '1',(*HQ).col,(*HQ).row);
     BacaArray(arrBuild,m);
-    
-
+    //displayArray(*arrBuild);
+    int z;
     CreateMatrix(m+1,m+1,adjMatrix);
-    for(i=0;i<=m;i++){
+    for(z=0;z<=m;z++){
         for(int j =0;j<=m;j++){
-            ELMT(*adjMatrix,i,j)=tokenToInt(currentToken);
+            ELMT(*adjMatrix,z,j)=tokenToInt(currentToken);
             advToken();
         }
     }
@@ -194,7 +190,6 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 }
 /*    Dari txt ke array */
 void BacaArray (ArrayBuild* tes,int isi){
-    ArrayBuild array;
     int i,abs,ord;
     char nama_build;
     i = 1;
@@ -204,12 +199,11 @@ void BacaArray (ArrayBuild* tes,int isi){
         abs = tokenToInt(currentToken);
         advToken();
         ord = tokenToInt(currentToken);
-        IsiArray(&array,nama_build,abs,ord);
+        IsiArray(tes,nama_build,abs,ord);
         advToken();
         i++;
     }
-    NEFF(array)=isi+1;
-    *tes=array;
+    NEFF(*tes)=isi+1;
 }
 
 char* readStdString(){

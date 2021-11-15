@@ -26,7 +26,7 @@ void CreateArrayBuild(ArrayBuild *l, int isi)
 {
     NAMA(*l)=(char *) malloc(isi * sizeof(char));
     KOOR(*l)=(locationCoord *) malloc (isi * sizeof(locationCoord));
-    CAPACITY(*l) = isi;
+    CAPACITY(*l) = isi+1;
     NEFF(*l)=0;
 }
 /* I.S. l sembarang, capacity > 0 */
