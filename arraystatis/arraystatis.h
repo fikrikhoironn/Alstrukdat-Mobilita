@@ -52,6 +52,9 @@ int gadgetPrice(int gadgetType);
 boolean isMoneySufficient(time money, int gadgetType);
 // return true, if money > price of Gadget
 
+// Better input selector
+void getCommand(int *a, int lower_border, int upper_border);
+
 void useGadget(int gadgetType, stack *bag, time *t);
 // menggunakan gadget
 

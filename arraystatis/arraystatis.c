@@ -49,15 +49,7 @@ void buyItem(time *money, gadgetList *g){
             printf("5. Senter Pengecil (800 Yen)\n");
             printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
 
-            printf("\nENTER COMMAND: ");
-
-            scanf("%d", &command);
-
-            while (command > 5 || command < 0){ // command tidak valid
-                printf("Command salah, ulangi!\n");
-                printf("\nENTER COMMAND: ");
-                scanf("%d", &command);
-            }
+            getCommand(&command, 0, 5);
 
             // command yang dimasukkan pasti valid (0..4)
             if (command != 0){
@@ -72,14 +64,7 @@ void buyItem(time *money, gadgetList *g){
                 printf("1. Ya\n");
                 printf("2. Tidak\n");
 
-                printf("\nENTER COMMAND: ");
-                scanf("%d", &command);
-
-                while (command != 1 && command != 2){
-                    printf("Command salah, ulangi!\n");
-                    printf("\nENTER COMMAND: ");
-                    scanf("%d", &command);
-                }
+                getCommand(&command, 1, 2);
 
                 command -= 2; 
             }
@@ -87,7 +72,7 @@ void buyItem(time *money, gadgetList *g){
         if (isFull(*g)){
             printf("Inventory sudah penuh. Kembali ke main menu!\n"); 
         } else {
-            printf("Kembali ke main menu!\n"); // Pengganti sementara fungsi ke main menu
+            printf("Kembali ke main menu!\n"); 
         }
     } else {
         printf("Inventory sudah penuh. Kembali ke main menu!\n");
@@ -108,15 +93,7 @@ void useItem(gadgetList *g, stack *bag, time *t){
             displayGadgetList(*g);
             printf("Gadget mana yang ingin digunakan? (ketik 0 jika ingin kembali)\n");
 
-            printf("\nENTER COMMAND: ");
-            
-            scanf("%d", &command);
-
-            while (command > 5 || command < 0){ // command tidak valid
-                printf("Command salah, ulangi!\n");
-                printf("\nENTER COMMAND: ");
-                scanf("%d", &command);
-            }
+            getCommand(&command, 0, 5);
 
             // command pasti valid (1..5)
             if (command != 0){
@@ -130,15 +107,7 @@ void useItem(gadgetList *g, stack *bag, time *t){
                     printf("1. Ya\n");
                     printf("2. Tidak\n");
 
-                    printf("\nENTER COMMAND: ");
-                    scanf("%d", &command);
-
-                    while (command != 1 && command != 2){
-                        printf("Command salah, ulangi!\n");
-                        printf("\nENTER COMMAND: ");
-                        scanf("%d", &command);
-                    }
-
+                    getCommand(&command, 1, 2);
                     command -= 2; 
                 }
             } 
@@ -146,7 +115,7 @@ void useItem(gadgetList *g, stack *bag, time *t){
         if (isEmpty(*g)){
             printf("Inventory kosong. Kembali ke main menu!\n");
         } else{
-            printf("Kembali ke main manu!\n"); // Pengganti sementara fungsi ke main menu
+            printf("Kembali ke main menu!\n");
         }
     } else {
         printf("Inventory kosong. Kembali ke main menu!\n");
@@ -228,6 +197,19 @@ boolean isMoneySufficient(time money, int gadgetType){
 }
 // return true, if money > price of Gadget
 
+// Better input selector
+void getCommand(int *a, int lower_border, int upper_border){
+    char b;
+    printf("ENTER COMMAND: ");
+    if (scanf("%d%c", a,&b) == 2 && b == '\n' && (*a <= upper_border) && (*a >= lower_border)){
+        printf("\n");
+    } else {
+        printf("Command salah, Ulangi!\n\n");
+        fflush(stdin);
+        getCommand(a, lower_border, upper_border);
+    }
+}
+
 void useGadget(int gadgetType, stack *bag, time *t){
     if (gadgetType == 1){
         if (isPerishableItem(TOP(*bag))) {
@@ -245,8 +227,9 @@ void useGadget(int gadgetType, stack *bag, time *t){
         // Display all location -> panggil printMap()
         char command;
         scanf(" %c", &command);
-        // If lokasi tidak valid, ulangi pembacaan (membingung)
+        // If lokasi tidak valid, ulangi pembacaan
         // mobita pindah ke lokasi sesuai command yg valid
+        // plus updateDisplayMap
         printf("Pintu Kemana Saja berhasil digunakan!\n");
     } else if (gadgetType == 4){ 
         subtractTime(t, 50);
