@@ -90,30 +90,43 @@ boolean isLocationConnected(Matrix m, Index loc1, Index loc2){
     return ELMT(m,loc1,loc2)==1 || ELMT(m,loc2,loc1);
 }
 
-void printMap(Matrix m, ArrayBuild arrBuild,int x , int y){
+void printMap(linkedList todoList,Matrix m, ArrayBuild arrBuild,int x , int y, time t, stack bag){
+    //hiasan atas
     printf("\n\n\n");
     for(int j=0;j<x+2;j++){
         printf("*");
     }
     boolean isBuildExist;
     printf("\n");
+
+    //*+kotak map+*
     for(int i=1;i<=y;i++){ //vertikal
         printf("*");
         for(int j=1;j<=x;j++){ //horizontal
             isBuildExist =false;
             int k=0;
-            while(k<NEFF(arrBuild) && !isBuildExist && i<=y && j<x){
-              isBuildExist=(TITIK(arrBuild,k).row==j && TITIK(arrBuild,k).col==i);
+            while(k<NEFF(arrBuild) && !isBuildExist){
+              isBuildExist=(TITIK(arrBuild,k).row==i && TITIK(arrBuild,k).col==j);
               k++;
             }
             if(isBuildExist){
+              if(mobitaLocation(t).row==i && mobitaLocation(t).col==j){
+                print_yellow(ELMT_ARR_DIN(arrBuild,k-1));
+              }else if(TOP(bag).dropOff==ELMT_ARR_DIN(arrBuild,k-1)){
+                print_blue(ELMT_ARR_DIN(arrBuild,k-1));
+              }else if(isPickupLocation(todoList,ELMT_ARR_DIN(arrBuild,k-1))){
+                print_red(ELMT_ARR_DIN(arrBuild,k-1));
+              }else{
               printf("%c",ELMT_ARR_DIN(arrBuild,k-1));
+              }
             }else{
               printf(" ");
             }
         }
         printf("*\n");
     }
+
+    //hiasan bawah
     for(int j=0;j<x+2;j++){
       printf("*");
     }

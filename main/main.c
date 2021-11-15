@@ -116,7 +116,9 @@ int main(){
             //DROP_OFF(&todo,&inprogressList,&mobiBag,,);
             printf("drop off\n");
         }else if(stringCompare(cmd, "MAP")){
-            printMap(adjMatrix,arrayOfBuilding,mapLength,mapheight);
+            //printf("%d %d\n%d %d\n",mapheight,mapLength,arrayOfBuilding.koor[2].row,arrayOfBuilding.koor[2].col);
+            //displayArray(arrayOfBuilding);
+            printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
         }else if(stringCompare(cmd,"TO_DO")){
             //TO_DO(todo);
             printf("to do\n");

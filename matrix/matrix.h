@@ -8,6 +8,10 @@
 #include<stdio.h>
 #include"boolean.h"
 #include "../arraydin/arraydin.h"
+#include "../time/time.h"
+#include "../pcolor/pcolor.h"
+#include "../linkedlist/linkedlist.h"
+#include "../stack/stack.h"
 
 #define CAPACITY1 100
 #define COL_CAP 100
@@ -64,7 +68,7 @@ void displayMatrix(Matrix m);
 boolean isLocationConnected(Matrix m, Index loc1, Index loc2);
 
 /* mencetak peta berdasrkan kooridnat saat itu */
-void printMap(Matrix m, ArrayBuild arrBuild ,int x , int y);
+void printMap(linkedList todoList ,Matrix m, ArrayBuild arrBuild ,int x , int y,time t, stack bag);
 
 
 #endif

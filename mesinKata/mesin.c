@@ -211,9 +211,9 @@ void BacaArray (ArrayBuild* tes,int isi){
     while (i<=isi){
         nama_build = tokenToChar(currentToken);
         advToken();
-        abs = tokenToInt(currentToken);
-        advToken();
         ord = tokenToInt(currentToken);
+        advToken();
+        abs = tokenToInt(currentToken);
         IsiArray(tes,nama_build,abs,ord);
         advToken();
         i++;
