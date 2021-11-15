@@ -22,8 +22,8 @@
 
 int main(){
     Token fileInput;
-    time mobitime;
-    createTime(&mobitime);
+    time mobiTime;
+    createTime(&mobiTime);
     int command;
 
 
