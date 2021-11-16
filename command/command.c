@@ -104,6 +104,8 @@ void IN_PROGRESS (linkedList inprogress) {
             p = next(p);
             i++;
         }
+    }else{
+        printf("TIDAK ADA PESANAN BERJALAN\n");
     }
 }
 
@@ -169,15 +171,30 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, Ar
 
 void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,ArrayBuild arrBuild) {
     // KAMUS
-    Address pickedUp;
+    Address pickedUp,checkVip;
     item delVal;
-
+    boolean isLocOfVip;
+    int i,z;
     // ALGORITMA
-    int z = indexOfBuildMobita(*t,arrBuild);
+    isLocOfVip=false;
+     z = indexOfBuildMobita(*t,arrBuild);
+    checkVip =first(*todo);
+    while((checkVip)!=NULL && !isLocOfVip){
+        if(info(checkVip).typeItem=='V'){
+            isLocOfVip=true;
+            pickedUp =checkVip;
+        }else{
+            checkVip=next(checkVip);
+        }
+    }
+    if(!isLocOfVip){
     pickedUp = find_by_pickup_location(*todo, arrBuild.nama[z]);
+    }
+
+
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
-            if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {
+            if (isVIPin(*todo)&& info(pickedUp).typeItem!='V') {
                 printf("Pick up VIP Item terlebih dahulu!\n");
             }
             else {

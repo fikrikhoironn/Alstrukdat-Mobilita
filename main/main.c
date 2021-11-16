@@ -131,6 +131,7 @@ int main(){
             TO_DO(todo);
         }else if(stringCompare(cmd,"IN_PROGRESS")){
             IN_PROGRESS(inprogressList);
+            printf("progrlist");
         }else if(stringCompare(cmd,"INVENTORY")){
             INVENTORY(&listGadget,&mobiBag,&mobiTime,todo,adjMatrix,arrayOfBuilding,mapLength,mapheight);
             //printf("inventory\n");
