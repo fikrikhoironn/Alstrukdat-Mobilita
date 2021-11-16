@@ -140,7 +140,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         insert_timeascList(toDoList, val); 
     }
 
-    if(isEmpty(*daftarPesanan)){
+    if(!isEmptyQueue(*daftarPesanan)){
         if(timeIn(HEAD(*daftarPesanan))<=my_var){
         item val;
         dequeue(daftarPesanan,&val);
