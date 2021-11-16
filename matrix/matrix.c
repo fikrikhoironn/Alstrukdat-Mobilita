@@ -90,7 +90,7 @@ boolean isLocationConnected(Matrix m, Index loc1, Index loc2){
     return ELMT(m,loc1,loc2)==1 || ELMT(m,loc2,loc1);
 }
 
-void printMap(linkedList todoList,Matrix m, ArrayBuild arrBuild,int x , int y, time t, stack bag){
+void printMap(linkedList inProgressList,Matrix m, ArrayBuild arrBuild,int x , int y, time t, stack bag){
     //hiasan atas
     printf("\n\n\n");
     for(int j=0;j<x+2;j++){
@@ -114,8 +114,10 @@ void printMap(linkedList todoList,Matrix m, ArrayBuild arrBuild,int x , int y, t
                 print_yellow(ELMT_ARR_DIN(arrBuild,k-1));
               }else if(TOP(bag).dropOff==ELMT_ARR_DIN(arrBuild,k-1)){
                 print_blue(ELMT_ARR_DIN(arrBuild,k-1));
-              }else if(isPickupLocation(todoList,ELMT_ARR_DIN(arrBuild,k-1))){
+              }else if(isPickupLocation(inProgressList,ELMT_ARR_DIN(arrBuild,k-1))){
                 print_red(ELMT_ARR_DIN(arrBuild,k-1));
+              }else if(){
+                
               }else{
               printf("%c",ELMT_ARR_DIN(arrBuild,k-1));
               }

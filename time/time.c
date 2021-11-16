@@ -4,7 +4,7 @@
 
 void displayStatus(time t){
         printf("Mobita sekarang berada di titik %c (%d,%d)!\n",mobitaLocation(t).location->name,mobitaLocation(t).col,mobitaLocation(t).row);
-    printCurrentTime;
+    printCurrentTime(t);
     printf("JUMLAH UANG: %d\n", currentMoney(t));
     //printf("ENTERCOMMAND: ");
 }
@@ -39,7 +39,7 @@ void incrementTime(time *t){
 void printCurrentTime(time t){
     int my_var = (int) floor(currentTime(t));
     printf("WAKTU SEKARANG: %d\n", my_var);
-    // printf("%f\n", currentTimeFloat);
+    //printf("%f\n", currentTimeFloat);
 }
 
 void addTime(time *t, int amount){

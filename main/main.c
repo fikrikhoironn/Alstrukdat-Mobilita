@@ -27,7 +27,8 @@ int main(){
     createTime(&mobiTime);
     int command;
 
-
+    gadgetList listGadget;
+    createGadgetList(&listGadget);
 
 
     int mapheight, mapLength;
@@ -93,7 +94,8 @@ int main(){
     char * cmd;
     free(cmd);
     cmd = (char *) malloc(101*sizeof(char));
-
+    updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
+    displayList(todo);
     while (!isEmptyQueue(daftarPesanan))
     {
         //printMenu();
@@ -114,18 +116,20 @@ int main(){
         }else if(stringCompare(cmd, "MAP")){
             //printf("%d %d\n%d %d\n",mapheight,mapLength,arrayOfBuilding.koor[2].row,arrayOfBuilding.koor[2].col);
             //displayArray(arrayOfBuilding);
-            printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
+            printMap(inprogressList,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
         }else if(stringCompare(cmd,"TO_DO")){
             TO_DO(todo);
         }else if(stringCompare(cmd,"IN_PROGRESS")){
             IN_PROGRESS(inprogressList);
         }else if(stringCompare(cmd,"INVENTORY")){
-            printf("inventory\n");
+            INVENTORY(&listGadget,&mobiBag,&mobiTime);
+            //printf("inventory\n");
         }else if(stringCompare(cmd,"BUY")){
-            printf("buy\n");
+            BUY(&mobiTime,&listGadget);
+            //printf("buy\n");
         }else if(stringCompare(cmd,"HELP")){
-            //HELP();
-            printf("help\n");
+            HELP();
+            //printf("help\n");
         }
         displayStatus(mobiTime);
         printf("ENTER COMMAND: ");
