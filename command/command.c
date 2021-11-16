@@ -111,13 +111,14 @@ void IN_PROGRESS (linkedList inprogress) {
     }
 }
 
-void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ArrayBuild arrBuild) {
     // KAMUS
     item delVal;
 
     // ALGORITMA
     if (!isEmptyBag(*tas)) {
-        if (TOP(*tas).dropOff == mobitaLocation(*t).location->name) {
+        int z = indexOfBuildMobita(*t,arrBuild);
+        if (TOP(*tas).dropOff == arrBuild.nama[z]) {
             // Diasumsikan adt mobita memiliki komponen location
             // Lokasi drop off pada top dari stack tas sama dengan lokasi mobita saat ini
             deleteAtList(inprogress, (indexOfList(*inprogress, TOP(*tas))), &delVal);
@@ -170,13 +171,14 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t) {
     }
 }
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t) {
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,ArrayBuild arrBuild) {
     // KAMUS
     Address pickedUp;
     item delVal;
 
     // ALGORITMA
-    pickedUp = find_by_pickup_location(*todo, mobitaLocation(t).location->name);
+    int z = indexOfBuildMobita(t,arrBuild);
+    pickedUp = find_by_pickup_location(*todo, arrBuild.nama[z]);
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
             if (isVIPin(*todo) && info(pickedUp).typeItem != 'V') {

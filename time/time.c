@@ -167,3 +167,10 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
 
 }
 
+int indexOfBuildMobita(time t, ArrayBuild arrBuild){
+    int z=0;
+    while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(t).row || TITIK(arrBuild,z).col !=mobitaLocation(t).col)){
+      z++;
+    }
+    return z;
+}

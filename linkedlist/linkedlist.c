@@ -314,7 +314,7 @@ boolean isVIPin (linkedList L) {
     while (p != NULL && (info(p)).typeItem == 'V') {
         p = next(p);
     }
-    if (p != NULL) {
+    if (info(p).typeItem=='V') {
         return true;
     }
     else {

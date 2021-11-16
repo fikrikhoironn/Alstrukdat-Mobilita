@@ -21,12 +21,12 @@ void TO_DO (linkedList todo);
 
 void IN_PROGRESS (linkedList inprogress);
 
-void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t);
+void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, ArrayBuild arrBuild);
 // Diasumsikan terdapat adt person bernama mobita yang memiliki komponen money
 // Diasumsikan terdapat adt map
 // Memindahkan item dari in progress list dan melakukan pop item dari tas
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t);
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,ArrayBuild arrBuild);
 // Memindahkan item dari to do list ke in progress list dan melakukan push item ke dalam tas
 
 void HELP();
