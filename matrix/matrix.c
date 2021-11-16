@@ -98,7 +98,10 @@ void printMap(linkedList inProgressList,Matrix m, ArrayBuild arrBuild,int x , in
     }
     boolean isBuildExist;
     printf("\n");
-
+    int z=0;
+    while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(t).row || TITIK(arrBuild,z).col !=mobitaLocation(t).col)){
+      z++;
+    }
     //*+kotak map+*
     for(int i=1;i<=y;i++){ //vertikal
         printf("*");
@@ -116,8 +119,8 @@ void printMap(linkedList inProgressList,Matrix m, ArrayBuild arrBuild,int x , in
                 print_blue(ELMT_ARR_DIN(arrBuild,k-1));
               }else if(isPickupLocation(inProgressList,ELMT_ARR_DIN(arrBuild,k-1))){
                 print_red(ELMT_ARR_DIN(arrBuild,k-1));
-              }else if(){
-                
+              }else if(isLocationConnected(m,k-1,z)){
+                print_green(ELMT_ARR_DIN(arrBuild,k-1));
               }else{
               printf("%c",ELMT_ARR_DIN(arrBuild,k-1));
               }
