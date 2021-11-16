@@ -312,14 +312,17 @@ boolean isVIPin (linkedList L) {
     // ALGORITMA
     p = first(L);
     boolean found = false;
-    while (p != NULL && !found) {
-        if((info(p)).typeItem == 'V'){
-            found = true;
-        }
-        else{
-            p = next(p);
-        }
+    while (p != NULL && (info(p)).typeItem != 'V') {
+        p = next(p);
     }
+    // while (p != NULL && !found) {
+    //     if((info(p)).typeItem == 'V'){
+    //         found = true;
+    //     }
+    //     else{
+    //         p = next(p);
+    //     }
+    // }
     if (info(p).typeItem=='V') {
         return true;
     }
