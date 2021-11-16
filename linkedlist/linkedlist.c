@@ -315,6 +315,12 @@ boolean isVIPin (linkedList L) {
     while (p != NULL && (info(p)).typeItem != 'V') {
         p = next(p);
     }
+    if (p == NULL) {
+        return false;
+    }
+    else {
+        return true;
+    }
     // while (p != NULL && !found) {
     //     if((info(p)).typeItem == 'V'){
     //         found = true;
@@ -323,12 +329,14 @@ boolean isVIPin (linkedList L) {
     //         p = next(p);
     //     }
     // }
+    /*
     if (info(p).typeItem=='V') {
         return true;
     }
     else {
         return false;
     }
+    */
 }
 
 boolean isPickupLocation(linkedList L, char location) {
