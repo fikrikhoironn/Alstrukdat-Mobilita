@@ -81,9 +81,10 @@ int main(){
             //printf("%d %d\n%d %d\n",mapLength,mapheight,HQLoc.col,HQLoc.row);
             //displayArray(arrayOfBuilding);
             //displayMatrix(adjMatrix);
-            DisplayQueue(daftarPesanan);
+            //DisplayQueue(daftarPesanan);
             mobitaLocation(mobiTime) = HQLoc;
             createTime(&mobiTime,HQLoc);
+            //printf("%d %d",HQLoc.col,mobiTime.currentLocation.row);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
         printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
