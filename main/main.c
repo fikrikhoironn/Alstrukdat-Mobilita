@@ -87,7 +87,7 @@ int main(){
             //DisplayQueue(daftarPesanan);
             mobitaLocation(mobiTime) = HQLoc;
             createTime(&mobiTime,HQLoc);
-            currentMoney(mobiTime) = 10000; // nge-cheat doeloe ga seh
+            //currentMoney(mobiTime) = 10000; // nge-cheat doeloe ga seh
             //printf("%d %d",HQLoc.col,mobiTime.currentLocation.row);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
