@@ -60,6 +60,8 @@ int main(){
     //buat todoList
     FILE *fp;
     char * test=(char *) malloc(101*sizeof(char));
+    int i;
+    int j;
     do{
         printf("Silahkan masukkan menu\n(1 // 2 // 3):\nENTER COMMAND: ");
         scanf("%d",&command);
@@ -69,7 +71,7 @@ int main(){
             currentToken.len=0;
             printf("ENTER FILENAME: ");
             startTokenStd();
-            for(int i=0;i<=currentToken.len;i++){
+            for(i=0;i<=currentToken.len;i++){
             if(i!=currentToken.len) test[i]=currentToken.tokenArray[i];
             else test[i]='\0';
             }
@@ -106,7 +108,7 @@ int main(){
     {
         //printMenu();
         //printStatus();
-        for(int i=0;i<=currentToken.len;i++){
+        for(i=0;i<=currentToken.len;i++){
         if(i!=currentToken.len) cmd[i]=currentToken.tokenArray[i];
         else cmd[i]='\0';
         }

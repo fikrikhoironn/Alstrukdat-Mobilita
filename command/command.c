@@ -11,8 +11,8 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     ArrayBuild tmpBuild;
     CreateArrayBuild(&tmpBuild,arrayOfBuilding.capacity);
     int z = indexOfBuildMobita(*mobiTime,arrayOfBuilding);
-
-    for(int i=0;i<NEFF(arrayOfBuilding);i++){
+    int i;
+    for( i=0;i<NEFF(arrayOfBuilding);i++){
         if(isLocationConnected(adjMatrix,z,i)){
             printf("%d. %c (%d,%d)\n",k,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
             IsiArray(&tmpBuild,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
