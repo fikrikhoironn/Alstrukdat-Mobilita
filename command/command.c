@@ -33,6 +33,7 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     scanf("%d",&comd);
     if(comd!=0 && comd<=k+1){
         //makeNeutral((mobitaLocation(*mobiTime).location));
+        mobitaLocation(*mobiTime).location=arrayOfBuilding.koor->location;
         mobitaLocation(*mobiTime).col=tmpBuild.koor[comd-1].col;
         mobitaLocation(*mobiTime).row=tmpBuild.koor[comd-1].row;
         incrementTime(mobiTime);

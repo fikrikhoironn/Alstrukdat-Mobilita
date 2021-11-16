@@ -153,8 +153,7 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 
     locations* hqLoc= allocateLocation();
     makeHeadquarters(hqLoc);
-    *HQ=MakePOINT(xHQ,yHQ);
-    (*HQ).location=hqLoc;
+    HQ=makeLocationCoord(hqLoc,xHQ,yHQ);
 
     //printf("%d %d\n%d %d\n",*mapLength,*mapHeight,(*HQ).col,(*HQ).row);
     advToken();

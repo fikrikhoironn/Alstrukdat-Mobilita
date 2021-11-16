@@ -7,6 +7,7 @@
 #include "../queue/queue.h"
 #include "../stack/stack.h"
 #include "../point/point.h"
+#include "../arraydin/arraydin.h"
 
 
 typedef struct{
@@ -27,9 +28,9 @@ typedef struct{
 #define senterPengecil(t) (t).senterPengecil
 #define mobitaLocation(t) (t).currentLocation
 
-void displayStatus(time t);
+void displayStatus(time t, ArrayBuild arrBuild);
 
-void createTime(time *t); //membuat state waktu sesuai amount atau masukan
+void createTime(time *t, locationCoord base); //membuat state waktu sesuai amount atau masukan
 
 void addTime(time *t, int amount); //menambah waktu sesuai amount atau masukan
 

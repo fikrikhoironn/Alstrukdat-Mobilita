@@ -2,21 +2,26 @@
 #include <math.h>
 #include <stdio.h>
 
-void displayStatus(time t){
-        printf("Mobita sekarang berada di titik %c (%d,%d)!\n",mobitaLocation(t).location->name,mobitaLocation(t).col,mobitaLocation(t).row);
+void displayStatus(time t, ArrayBuild arrBuild){
+    int z=0;
+    while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(t).row || TITIK(arrBuild,z).col !=mobitaLocation(t).col)){
+      z++;
+    }
+    printf("Mobita sekarang berada di titik %c (%d,%d)!\n",arrBuild.nama[z],mobitaLocation(t).col,mobitaLocation(t).row);
     printCurrentTime(t);
     printf("JUMLAH UANG: %d\n", currentMoney(t));
     //printf("ENTERCOMMAND: ");
 }
 
 
-void createTime(time *t){
+void createTime(time *t,locationCoord base){
     currentTime(*t) = 0;
     speedBoost(*t) = 0;
     heavyItem(*t) = 0;
     currentMoney(*t) = 0;
     returnToSender(*t) = 0;
     senterPengecil(*t) = 0;
+    mobitaLocation(*t)=base;
 }
 
 void incrementTime(time *t){
