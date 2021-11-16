@@ -136,12 +136,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
     while(timeIn(HEAD(*daftarPesanan)) <= my_var){
         item val;
         dequeue(daftarPesanan, &val);
-        if (typeItem(val) == 'V'){
-            insertFirstList(toDoList, val);
-        }
-        else{
-            insert_timeascList(toDoList, val);
-        }
+        insert_timeascList(toDoList, val); 
     }
 
     //menghapus perishable item jika waktunya sudah hangus dan mengurangi sisa waktu perishable item
