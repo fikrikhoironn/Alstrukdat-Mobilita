@@ -68,7 +68,7 @@ void displayMatrix(Matrix m);
 boolean isLocationConnected(Matrix m, Index loc1, Index loc2);
 
 /* mencetak peta berdasrkan kooridnat saat itu */
-void printMap(linkedList todoList ,Matrix m, ArrayBuild arrBuild ,int x , int y,time t, stack bag);
+void printMap(linkedList toDoList ,Matrix m, ArrayBuild arrBuild ,int x , int y,time t, stack bag);
 
 
 #endif

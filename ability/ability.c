@@ -18,5 +18,11 @@ void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProg
         deleteFirstList(inProgressList, &val);
         insertLastList(toDoList, val);
     }
+    else if(returnToSender(t) < 0){
+        printf("Kamu tidak punya return to sender\n");
+    }
+    else if(typeItem(val) == 'V'){
+        printf("INI ITEM VIP!, KAMU TIDAK BISA MELAKUKAN RETURN\n");
+    }
 }
 
