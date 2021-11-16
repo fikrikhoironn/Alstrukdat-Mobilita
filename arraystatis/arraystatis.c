@@ -34,58 +34,64 @@ boolean isEmpty(gadgetList g){
 
 // Fungsi/Prosedur
 
-void BUY(time *money, gadgetList *g){
+void BUY(time *money, gadgetList *g, ArrayBuild arrBuild){
 
-    int command;
+    int z=0;
+    while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(*money).row || TITIK(arrBuild,z).col !=mobitaLocation(*money).col)){
+      z++;
+    }
 
-    if (!isFull(*g)){ // cek inventory awal
-        do {
-            printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
-            printf("Gadget yang tersedia:\n");
-            printf("1. Kain Pembungkus Waktu (800 Yen)\n");
-            printf("2. Senter Pembesar (1200 Yen)\n");
-            printf("3. Pintu Kemana Saja (1500 Yen)\n");
-            printf("4. Mesin Waktu (3000 Yen)\n");
-            printf("5. Senter Pengecil (800 Yen)\n");
-            printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
+    if (arrBuild.nama[z] == '8'){
+        int command;
 
-            getCommand(&command, 0, 5);
+        if (!isFull(*g)){ // cek inventory awal
+            do {
+                printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
+                printf("Gadget yang tersedia:\n");
+                printf("1. Kain Pembungkus Waktu (800 Yen)\n");
+                printf("2. Senter Pembesar (1200 Yen)\n");
+                printf("3. Pintu Kemana Saja (1500 Yen)\n");
+                printf("4. Mesin Waktu (3000 Yen)\n");
+                printf("5. Senter Pengecil (800 Yen)\n");
+                printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
 
-            // command yang dimasukkan pasti valid (0..5)
-            if (command != 0){
-                if (isMoneySufficient(*money, command)){
-                    addGadget(g, command);
-                    subtractCurrentMoney(money, gadgetPrice(command));
-                    displayBuySuccess(command);
-                    printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
-                } else {
-                    printf("Uang tidak cukup untuk membeli gadget!\n");
+                getCommand(&command, 0, 5);
+
+                // command yang dimasukkan pasti valid (0..5)
+                if (command != 0){
+                    if (isMoneySufficient(*money, command)){
+                        addGadget(g, command);
+                        subtractCurrentMoney(money, gadgetPrice(command));
+                        displayBuySuccess(command);
+                        printf("Uang Anda sekarang: %d Yen\n", currentMoney(*money));
+                    } else {
+                        printf("Uang tidak cukup untuk membeli gadget!\n");
+                    }
+                    printf("\nLanjut membeli?\n");
+                    printf("1. Ya\n");
+                    printf("2. Tidak\n");
+
+                    getCommand(&command, 1, 2);
+                    printf("\n");
+
+                    command -= 2; 
                 }
-                printf("\nLanjut membeli?\n");
-                printf("1. Ya\n");
-                printf("2. Tidak\n");
-
-                getCommand(&command, 1, 2);
-                printf("\n");
-
-                command -= 2; 
+            } while (command != 0 && !isFull(*g));
+            if (isFull(*g)){
+                printf("Inventory sudah penuh. Kembali...\n"); 
+            } else {
+                printf("Kembali...\n"); 
             }
-        } while (command != 0 && !isFull(*g));
-        if (isFull(*g)){
-            printf("Inventory sudah penuh. Kembali...\n"); 
         } else {
-            printf("Kembali...\n"); 
+            printf("Inventory sudah penuh. Kembali...\n");
         }
     } else {
-        printf("Inventory sudah penuh. Kembali...\n");
+        printf("Tidak dapat membeli di luar Headquarter!\n");
     }
+
+    
     
 }
-// Prekondisi gadgetList tidak penuh
-// I.S money dan gadgetList terdefinisi
-// F.S jika money cukup -> item dimasukkan ke dalam gadgetList
-//     else -> I.S
-// panggil untuk membeli gadget *satu kali*
 
 void displayBuySuccess(int gadgetType){
     if (gadgetType == 1){
@@ -101,7 +107,7 @@ void displayBuySuccess(int gadgetType){
     }
 }
 
-void INVENTORY(gadgetList *g, stack *bag, time *t){
+void INVENTORY(gadgetList *g, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y){
 
     int command;
     if (! isEmpty(*g)){
@@ -116,7 +122,7 @@ void INVENTORY(gadgetList *g, stack *bag, time *t){
                 int gadgetType;
                 removeGadget(g, command - 1, &gadgetType); // command == index + 1
                 if (gadgetType != VAL_UNDEF){
-                    useGadget(gadgetType, bag, t);
+                    useGadget(gadgetType, bag, t, toDoList, m, arrBuild, x , y);
                 }
                 if (! isEmpty(*g)){
                     printf("\nLanjut memakai?\n");
@@ -141,8 +147,6 @@ void INVENTORY(gadgetList *g, stack *bag, time *t){
     
     
 }
-// I.S gadgetList terdefinisi
-// F.S gadgetList berkurang (jika instruksi benar)
 
 void displayGadgetList(gadgetList g){
     int i;
@@ -211,7 +215,7 @@ int gadgetPrice(int gadgetType){
 // Menampilkan harga gadget
 
 boolean isMoneySufficient(time money, int gadgetType){
-    return currentMoney(money) > gadgetPrice(gadgetType);
+    return currentMoney(money) >= gadgetPrice(gadgetType);
 }
 // return true, if money > price of Gadget
 
@@ -228,7 +232,7 @@ void getCommand(int *a, int lower_border, int upper_border){
     }
 }
 
-void useGadget(int gadgetType, stack *bag, time *t){
+void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y){
     if (gadgetType == 1){
         if (isPerishableItem(TOP(*bag))) {
             perishableTime(TOP(*bag)) = perishableOrigin(TOP(*bag));
@@ -241,9 +245,34 @@ void useGadget(int gadgetType, stack *bag, time *t){
         }
         printf("Senter Pembesar berhasil digunakan!\n");
     } else if (gadgetType == 3){
+        printMap(toDoList, m, arrBuild, x, y, *t, *bag);
         printf("Ingin pindah kemana?\n");
-        // Copy code command MAP
-        // Copy code command MOVE
+        
+        // Ngikutin command MOVE, belum ada validasi input
+        int k=1;
+        int locMob;
+        ArrayBuild tmpBuild;
+        CreateArrayBuild(&tmpBuild,arrBuild.capacity);
+        int z = indexOfBuildMobita(*t,arrBuild);
+        int i;
+        for( i=0;i<NEFF(arrBuild);i++){
+            printf("%d. %c (%d,%d)\n",k,arrBuild.nama[i],arrBuild.koor[i].col,arrBuild.koor[i].row);
+            IsiArray(&tmpBuild,arrBuild.nama[i],arrBuild.koor[i].col,arrBuild.koor[i].row);
+            k++;
+        }
+
+        printf("Posisi yang dipilih? (ketik 0 jika ingin kembali)\n\n");
+        printf("ENTER COMMAND: ");
+        int comd;
+        scanf("%d",&comd);
+        if(comd!=0 && comd<=k+1){
+            //makeNeutral((mobitaLocation(*mobiTime).location));
+            mobitaLocation(*t).location=arrBuild.koor[z].location;
+            mobitaLocation(*t).col=tmpBuild.koor[comd-1].col;
+            mobitaLocation(*t).row=tmpBuild.koor[comd-1].row;
+            //makeMobita(tmpBuild.koor[comd-1].location);
+        }else if(comd!=0) printf("Lokasi tidak ada...\n");
+
         printf("Pintu Kemana Saja berhasil digunakan!\n");
     } else if (gadgetType == 4){ 
         subtractTime(t, 50);

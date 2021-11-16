@@ -158,7 +158,7 @@ void deleteFirstList(linkedList *L, infotype *val) {
         first(*L) = NULL;
     }
     else {
-        first(*L) = next(*L);
+        first(*L) = next(p);
     }
     free(p);
 }
