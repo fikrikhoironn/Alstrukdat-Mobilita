@@ -58,7 +58,7 @@ int main(){
     stack mobiBag;
     createStack(&mobiBag);
     //buat todoList
-    FILE *fp;
+    FILE *fp = NULL;
     char * test=(char *) malloc(101*sizeof(char));
     int i;
     int j;
