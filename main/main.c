@@ -24,6 +24,7 @@
 int main(){
     Token fileInput;
     time mobiTime;
+
     int command;
 
     gadgetList listGadget;
@@ -86,6 +87,7 @@ int main(){
             //DisplayQueue(daftarPesanan);
             mobitaLocation(mobiTime) = HQLoc;
             createTime(&mobiTime,HQLoc);
+            currentMoney(mobiTime) = 10000; // nge-cheat doeloe ga seh
             //printf("%d %d",HQLoc.col,mobiTime.currentLocation.row);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
@@ -130,10 +132,10 @@ int main(){
         }else if(stringCompare(cmd,"IN_PROGRESS")){
             IN_PROGRESS(inprogressList);
         }else if(stringCompare(cmd,"INVENTORY")){
-            INVENTORY(&listGadget,&mobiBag,&mobiTime);
+            INVENTORY(&listGadget,&mobiBag,&mobiTime,todo,adjMatrix,arrayOfBuilding,mapLength,mapheight);
             //printf("inventory\n");
         }else if(stringCompare(cmd,"BUY")){
-            BUY(&mobiTime,&listGadget);
+            BUY(&mobiTime,&listGadget, arrayOfBuilding);
             //printf("buy\n");
         }else if(stringCompare(cmd,"HELP")){
             HELP();
