@@ -185,7 +185,21 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,Array
                 deleteAtList(todo, (indexOfList(*todo, info(pickedUp))), &delVal);
                 insert_timedescList(inprogress, delVal);
                 pushBag(tas, delVal);
-                printf("Item berhasil di pick up!\n");
+                printf("Pesanan berupa ");
+                if (delVal.typeItem == 'N') {
+                    printf("Normal ");
+                }
+                else if (delVal.typeItem == 'H') {
+                    printf("Heavy ");
+                }
+                else if (delVal.typeItem == 'P') {
+                    printf("Perishable ");
+                }
+                else if (delVal.typeItem == 'V') {
+                    printf("VIP ");
+                }
+                printf("Item berhasil diambil!\n");
+                printf("Tujuan Pesanan : %c\n", delVal.dropOff);
                 // Ganti warna map
             }
         }
