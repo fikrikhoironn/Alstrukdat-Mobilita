@@ -134,16 +134,18 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
     // }
 
     int my_var = (int) floor(currentTime(*t));
-    while(timeIn(HEAD(*daftarPesanan)) <= my_var && !isOneElmtQueue(*daftarPesanan)){
+    while(timeIn(HEAD(*daftarPesanan)) <= my_var && !isOneElmtQueue(*daftarPesanan) && !isEmptyQueue(*daftarPesanan)){
         item val;
         dequeue(daftarPesanan, &val);
         insert_timeascList(toDoList, val); 
     }
 
-    if(timeIn(HEAD(*daftarPesanan))<=my_var){
+    if(isEmpty(*daftarPesanan)){
+        if(timeIn(HEAD(*daftarPesanan))<=my_var){
         item val;
         dequeue(daftarPesanan,&val);
         insert_timeascList(toDoList,val);
+        }
     }
 
     //menghapus perishable item jika waktunya sudah hangus dan mengurangi sisa waktu perishable item
