@@ -45,13 +45,16 @@ int main(){
 
 
     Queue daftarPesanan;
+    CreateQueue(&daftarPesanan);
 
 
     linkedList todo;
+    CreateList(&todo);
     linkedList inprogressList;
-
+    CreateList(&inprogressList);
 
     stack mobiBag;
+    createStack(&mobiBag);
     //buat todoList
     FILE *fp;
     char * test=(char *) malloc(101*sizeof(char));
@@ -76,7 +79,7 @@ int main(){
             //printf("%d %d\n%d %d\n",mapLength,mapheight,HQLoc.col,HQLoc.row);
             //displayArray(arrayOfBuilding);
             //displayMatrix(adjMatrix);
-            //DisplayQueue(daftarPesanan);
+            DisplayQueue(daftarPesanan);
             mobitaLocation(mobiTime) = MakePOINT((HQLoc).col,HQLoc.row);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
@@ -94,8 +97,8 @@ int main(){
     char * cmd;
     free(cmd);
     cmd = (char *) malloc(101*sizeof(char));
-    updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
-    displayList(todo);
+    //updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
+    //displayList(todo);
     while (!isEmptyQueue(daftarPesanan))
     {
         //printMenu();
@@ -107,6 +110,7 @@ int main(){
         if(stringCompare(cmd,"MOVE")){
             MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
             updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
+            //displayList(todo);
             //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
             //printf("--move %d\n",tokenToIntStd(currentToken));
         }else if(stringCompare(cmd,"PICK_UP")){
@@ -116,7 +120,7 @@ int main(){
         }else if(stringCompare(cmd, "MAP")){
             //printf("%d %d\n%d %d\n",mapheight,mapLength,arrayOfBuilding.koor[2].row,arrayOfBuilding.koor[2].col);
             //displayArray(arrayOfBuilding);
-            printMap(inprogressList,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
+            printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
         }else if(stringCompare(cmd,"TO_DO")){
             TO_DO(todo);
         }else if(stringCompare(cmd,"IN_PROGRESS")){
@@ -131,7 +135,8 @@ int main(){
             HELP();
             //printf("help\n");
         }
-        displayStatus(mobiTime);
+        displayStatus(mobiTime); 
+        //displayList(todo);
         printf("ENTER COMMAND: ");
         ignoreBlankStdin();
         advTokenStdin();
