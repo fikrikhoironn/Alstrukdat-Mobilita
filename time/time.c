@@ -118,12 +118,17 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         if (status){ //jika waktu masuk pesanan kurang sama dengan dari waktu sekarang maka masukkan ke toDoList
             //printf("memasukkan pesanan ke toDoList\n");
             //printf("isi TO DO LIST sekarang: \n");
-            insert_timeascList(toDoList, val); //masukkan ke  toDoList
+            if (typeItem(val) == 'V'){
+                insertFirstList(toDoList, val);
+            }
+            else{
+                insert_timeascList(toDoList, val); //masukkan ke  toDoList
+                //displayList(*toDoList);
+            }
             if (!isEmptyQueue(*daftarPesanan)){
                 item x;
                 dequeue(daftarPesanan, &x); //dequeue dari daftar pesanan
             }
-            //displayList(*toDoList);
 
         }
     }
