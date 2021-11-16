@@ -26,7 +26,7 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, Ar
 // Diasumsikan terdapat adt map
 // Memindahkan item dari in progress list dan melakukan pop item dari tas
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,ArrayBuild arrBuild);
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,ArrayBuild arrBuild);
 // Memindahkan item dari to do list ke in progress list dan melakukan push item ke dalam tas
 
 void HELP();

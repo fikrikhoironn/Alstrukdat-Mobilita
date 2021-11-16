@@ -118,7 +118,7 @@ int main(){
             //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
             //printf("--move %d\n",tokenToIntStd(currentToken));
         }else if(stringCompare(cmd,"PICK_UP")){
-            PICK_UP(&todo,&inprogressList,&mobiBag,mobiTime,arrayOfBuilding);
+            PICK_UP(&todo,&inprogressList,&mobiBag,&mobiTime,arrayOfBuilding);
         }else if(stringCompare(cmd,"DROP_OFF")){
             DROP_OFF(&todo,&inprogressList,&mobiBag,&mobiTime, arrayOfBuilding);
         }else if(stringCompare(cmd, "MAP")){

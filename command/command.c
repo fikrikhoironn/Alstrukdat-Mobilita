@@ -167,13 +167,13 @@ void DROP_OFF (linkedList *todo, linkedList *inprogress, stack *tas, time *t, Ar
     }
 }
 
-void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,ArrayBuild arrBuild) {
+void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,ArrayBuild arrBuild) {
     // KAMUS
     Address pickedUp;
     item delVal;
 
     // ALGORITMA
-    int z = indexOfBuildMobita(t,arrBuild);
+    int z = indexOfBuildMobita(*t,arrBuild);
     pickedUp = find_by_pickup_location(*todo, arrBuild.nama[z]);
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
@@ -191,6 +191,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,Array
                 }
                 else if (delVal.typeItem == 'H') {
                     printf("Heavy ");
+                    addHeavyItem(t, 1);
                 }
                 else if (delVal.typeItem == 'P') {
                     printf("Perishable ");
