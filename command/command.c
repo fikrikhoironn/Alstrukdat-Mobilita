@@ -10,14 +10,10 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     int locMob;
     ArrayBuild tmpBuild;
     CreateArrayBuild(&tmpBuild,arrayOfBuilding.capacity);
-    for(int i=0;i<NEFF(arrayOfBuilding);i++){
-        if(mobitaLocation(*mobiTime).col==arrayOfBuilding.koor[i].col && mobitaLocation(*mobiTime).row==arrayOfBuilding.koor[i].row){
-            locMob=i;
-        }
-    }
+    int z = indexOfBuildMobita(*mobiTime,arrayOfBuilding);
 
     for(int i=0;i<NEFF(arrayOfBuilding);i++){
-        if(isLocationConnected(adjMatrix,locMob,i)){
+        if(isLocationConnected(adjMatrix,z,i)){
             printf("%d. %c (%d,%d)\n",k,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
             IsiArray(&tmpBuild,arrayOfBuilding.nama[i],arrayOfBuilding.koor[i].col,arrayOfBuilding.koor[i].row);
             k++;
@@ -33,7 +29,7 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     scanf("%d",&comd);
     if(comd!=0 && comd<=k+1){
         //makeNeutral((mobitaLocation(*mobiTime).location));
-        mobitaLocation(*mobiTime).location=arrayOfBuilding.koor->location;
+        mobitaLocation(*mobiTime).location=arrayOfBuilding.koor[z].location;
         mobitaLocation(*mobiTime).col=tmpBuild.koor[comd-1].col;
         mobitaLocation(*mobiTime).row=tmpBuild.koor[comd-1].row;
         incrementTime(mobiTime);
