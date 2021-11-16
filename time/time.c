@@ -177,6 +177,10 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         else if((typeItem(val) != 'P')){
             pushBag(&temp, val);
         }
+        if ((typeItem(val) == 'P') && perishableTime(val) <= 0){
+            printf("Perishable item tujuan %c telah dihapus\n", dropOff(val));
+        }
+
     }
     while(!isEmptyBag(temp)){ //memindahkan dari stack sementara ke bag awal
         item val2;
