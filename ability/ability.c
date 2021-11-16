@@ -17,6 +17,7 @@ void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProg
         popBag(bag, &val);
         deleteFirstList(inProgressList, &val);
         insertLastList(toDoList, val);
+        printf("Item tipe %c berhasil dikembalikan ke pick up point %c \n", typeItem(val), pickUp(val));
     }
     else if(returnToSender(t) < 0){
         printf("Kamu tidak punya return to sender\n");
