@@ -155,10 +155,13 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         while (p != NULL){
             item val;
             if (typeItem(info(p)) == 'P'){
-                decrementPerishableTime(&info(p));
+                perishableTime(info(p)) = perishableTime(info(p)) - heavyItem(*t) - 1;
+                //printf("sisa waktu hangus: %d\n", perishableTime(info(p)));
+
             }
             if (typeItem(info(p)) == 'P' && perishableTime(info(p)) <= 0){
                 deleteAtList(inProgressList, idx, &val);
+                printf("Perishable item tujuan dropOff %c telah hangus\n", dropOff(info(p)));
 
             }
             p = next(p);
