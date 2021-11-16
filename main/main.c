@@ -103,8 +103,7 @@ int main(){
     char * cmd;
     free(cmd);
     cmd = (char *) malloc(101*sizeof(char));
-
-    while (!isEmptyQueue(daftarPesanan))
+    while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList))
     {
         //printMenu();
         //printStatus();
