@@ -115,3 +115,7 @@ void dequeue(Queue * pq, item *val)
 /* F.S. val = nilai elemen HEAD pd
 I.S., HEAD dan IDX_HEAD "mundur"; 
         pq mungkin kosong */
+
+boolean isOneElmtQueue(Queue pq){
+    return IDX_TAIL(pq)==IDX_HEAD(pq);
+}

@@ -61,4 +61,6 @@ void dequeue(Queue * pq, item *val);
 I.S., HEAD dan IDX_HEAD "mundur"; 
         pq mungkin kosong */
 
+boolean isOneElmtQueue(Queue pq);
+
 #endif

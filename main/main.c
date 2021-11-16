@@ -140,6 +140,8 @@ int main(){
         }else if(stringCompare(cmd,"HELP")){
             HELP();
             //printf("help\n");
+        }else{
+            printf("PERINTAH TIDAK SESUAI.");
         }
         displayStatus(mobiTime,arrayOfBuilding); 
         //displayList(todo);
@@ -147,7 +149,7 @@ int main(){
         ignoreBlankStdin();
         advTokenStdin();
 
-    }
+    } 
     printf("PERMAINAN SELESAI SELAMAT");
     
 }
