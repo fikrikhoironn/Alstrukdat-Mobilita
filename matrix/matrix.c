@@ -44,8 +44,10 @@ ElType getElmtDiagonal(Matrix m, Index i){
 /* ********** Assignment  Matrix ********** */
 void copyMatrix(Matrix mIn, Matrix *mRes){
   CreateMatrix(ROWS(mIn), COLS(mIn), mRes);
-  for(int i = 0; i < ROWS(mIn); i++){
-    for(int j = 0; j < COLS(mIn); j++){
+  int i;
+  for(i = 0; i < ROWS(mIn); i++){
+    int j;
+    for(j = 0; j < COLS(mIn); j++){
       ELMT(*mRes, i, j) = ELMT(mIn, i, j);
     }
   }
@@ -55,8 +57,10 @@ void copyMatrix(Matrix mIn, Matrix *mRes){
 /* ********** KELOMPOK BACA/TULIS ********** */
 void readMatrix(Matrix *m, int nRow, int nCol){
   CreateMatrix(nRow, nCol, m);
-  for(int i = 0; i < nRow; i++){
-    for(int j = 0; j < nCol; j++){
+  int i;
+  for(i = 0; i < nRow; i++){
+    int j;
+    for(j = 0; j < nCol; j++){
       int x;
       scanf("%d", &x);
       ELMT(*m, i, j) = x;
@@ -73,8 +77,10 @@ void readMatrix(Matrix *m, int nRow, int nCol){
 8 9 10 
 */
 void displayMatrix(Matrix m){
-  for(int i = 0; i < ROWS(m); i++){
-    for(int j = 0; j < COLS(m); j++){
+  int i;
+  for(i = 0; i < ROWS(m); i++){
+    int j;
+    for(j = 0; j < COLS(m); j++){
       printf("%d", ELMT(m, i, j));
       if(j != COLS(m) - 1){
         printf(" ");
@@ -91,10 +97,11 @@ boolean isLocationConnected(Matrix m, Index loc1, Index loc2){
 }
 
 void printMap(linkedList toDoList,Matrix m, ArrayBuild arrBuild,int x , int y, time t, stack bag){
+    int i, j;
     displayList(toDoList);
     //hiasan atas
     printf("\n\n\n");
-    for(int j=0;j<x+2;j++){
+    for(j=0;j<x+2;j++){
         printf("*");
     }
     boolean isBuildExist;
@@ -104,9 +111,11 @@ void printMap(linkedList toDoList,Matrix m, ArrayBuild arrBuild,int x , int y, t
       z++;
     }
     //*+kotak map+*
-    for(int i=1;i<=y;i++){ //vertikal
+  
+    for(i=1;i<=y;i++){ //vertikal
         printf("*");
-        for(int j=1;j<=x;j++){ //horizontal
+        
+        for(j=1;j<=x;j++){ //horizontal
             isBuildExist =false;
             int k=0;
             while(k<NEFF(arrBuild) && !isBuildExist){
@@ -133,7 +142,7 @@ void printMap(linkedList toDoList,Matrix m, ArrayBuild arrBuild,int x , int y, t
     }
 
     //hiasan bawah
-    for(int j=0;j<x+2;j++){
+    for(j=0;j<x+2;j++){
       printf("*");
     }
     printf("\n\n\n");

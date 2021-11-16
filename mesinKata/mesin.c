@@ -51,7 +51,7 @@ void salinToken(){
 
 void printToken(Token t){
     int i;
-    for(int i=1;i<=t.len;i++){
+    for(i=1;i<=t.len;i++){
         printf("%c", t.tokenArray[i]);
     }
 }
@@ -167,7 +167,8 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     int z;
     CreateMatrix(m+1,m+1,adjMatrix);
     for(z=0;z<=m;z++){
-        for(int j =0;j<=m;j++){
+        int j;
+        for(j =0;j<=m;j++){
             ELMT(*adjMatrix,z,j)=tokenToInt(currentToken);
             advToken();
         }
@@ -178,7 +179,8 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     //printf("Banyak ipesanan %d\n",mq);
     item pesanan;
     CreateQueue(daftarPesanan);
-    for(int i=0;i<mq;i++){
+    int i;
+    for(i=0;i<mq;i++){
         int timeIn = tokenToInt(currentToken);
         advToken();
         char pickUp = tokenToChar(currentToken);
