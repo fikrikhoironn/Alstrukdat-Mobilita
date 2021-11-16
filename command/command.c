@@ -185,6 +185,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time t,Array
                 deleteAtList(todo, (indexOfList(*todo, info(pickedUp))), &delVal);
                 insert_timedescList(inprogress, delVal);
                 pushBag(tas, delVal);
+                printf("Item berhasil di pick up!\n");
                 // Ganti warna map
             }
         }
