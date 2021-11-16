@@ -4,6 +4,7 @@
 #include "boolean.h"
 #include "../time/time.h"
 #include "../stack/stack.h"
+#include "../matrix/matrix.h"
 
 #define VAL_UNDEF -1
 #define MAX_CAPACITY 5
@@ -26,12 +27,12 @@ boolean isFull(gadgetList g);
 
 boolean isEmpty(gadgetList g);
 
-void BUY(time *money, gadgetList *g);
+void BUY(time *money, gadgetList *g, ArrayBuild arrBuild);
 // I.S money dan gadgetList terdefinisi
 // F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
 //     else -> I.S
 
-void INVENTORY(gadgetList *g, stack *bag, time *t);
+void INVENTORY(gadgetList *g, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y);
 // I.S gadgetList terdefinisi
 // F.S gadgetList berkurang (jika instruksi benar)
 
@@ -57,7 +58,7 @@ boolean isMoneySufficient(time money, int gadgetType);
 // Better input selector
 void getCommand(int *a, int lower_border, int upper_border);
 
-void useGadget(int gadgetType, stack *bag, time *t);
+void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y);
 // menggunakan gadget
 
 #endif
