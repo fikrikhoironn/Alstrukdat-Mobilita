@@ -24,7 +24,6 @@
 int main(){
     Token fileInput;
     time mobiTime;
-    createTime(&mobiTime);
     int command;
 
     gadgetList listGadget;
@@ -36,10 +35,13 @@ int main(){
     
     
     
+    
     ArrayBuild arrayOfBuilding;
     
     
     Matrix adjMatrix;
+    
+
 
 
 
@@ -80,7 +82,8 @@ int main(){
             //displayArray(arrayOfBuilding);
             //displayMatrix(adjMatrix);
             DisplayQueue(daftarPesanan);
-            mobitaLocation(mobiTime) = MakePOINT((HQLoc).col,HQLoc.row);
+            mobitaLocation(mobiTime) = HQLoc;
+            createTime(&mobiTime,HQLoc);
             //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
         printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
@@ -91,14 +94,13 @@ int main(){
     endToken=true;
     adv();
     //scanf("%d",&command);
-        currentToken.len=0;
+    currentToken.len=0;
     printf("ENTER COMMAND: ");
     startTokenStd();
     char * cmd;
     free(cmd);
     cmd = (char *) malloc(101*sizeof(char));
-    //updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
-    //displayList(todo);
+
     while (!isEmptyQueue(daftarPesanan))
     {
         //printMenu();
@@ -135,7 +137,7 @@ int main(){
             HELP();
             //printf("help\n");
         }
-        displayStatus(mobiTime); 
+        displayStatus(mobiTime,arrayOfBuilding); 
         //displayList(todo);
         printf("ENTER COMMAND: ");
         ignoreBlankStdin();
