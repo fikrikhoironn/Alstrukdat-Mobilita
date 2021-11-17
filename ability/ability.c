@@ -10,7 +10,8 @@ void increaseCapactiy(stack *bag){
     }
 }
 
-void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProgressList, time *t){ //mengaktifasi return to sender
+//mengaktifasi return to sender
+void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProgressList, time *t){ 
     item val;
     val = getElmtList(*inProgressList, 0);
     if (typeItem(val) != 'V' &&  returnToSender(*t) > 0){
