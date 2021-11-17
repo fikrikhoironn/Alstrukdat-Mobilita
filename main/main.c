@@ -147,7 +147,10 @@ int main(){
             printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
             printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
             printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
-            
+            printf("ISI tas sekarang: \n");
+            displayBag(mobiBag);
+
+
         }else{
             printf("PERINTAH TIDAK SESUAI.");
         }

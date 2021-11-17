@@ -15,6 +15,8 @@ void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProg
     val = getElmtList(*inProgressList, 0);
     if (typeItem(val) != 'V' &&  returnToSender(*t) > 0){
         popBag(bag, &val);
+        perishableTime(val) = perishableOrigin(val);
+        printf("perishable time item: %d\n", perishableTime(val));
         deleteFirstList(inProgressList, &val);
         insertLastList(toDoList, val);
         printf("Item tipe %c berhasil dikembalikan ke pick up point %c \n", typeItem(val), pickUp(val));

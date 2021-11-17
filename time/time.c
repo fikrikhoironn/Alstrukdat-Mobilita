@@ -172,16 +172,20 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
     stack temp;
     createStack(&temp);
     while (!isEmptyBag(*bag)){ //menfilter perishable item
+        //printf("update bag\n");
         item val;
         popBag(bag, &val); //menyimpan yang lolos filter ke stack sementara
         if ((typeItem(val) == 'P') && perishableTime(val) > 0){
-            pushBag(&temp, val);
+            decrementPerishableTime(&val);
+            if (perishableTime(val) > 0){
+                pushBag(&temp, val);
+            }
         }
         else if((typeItem(val) != 'P')){
             pushBag(&temp, val);
         }
         if ((typeItem(val) == 'P') && perishableTime(val) <= 0){
-            printf("Perishable item tujuan %c telah dihapus\n", dropOff(val));
+            printf("Perishable item tujuan dropOff%c telah dihapus dari tas\n", dropOff(val));
         }
 
     }
