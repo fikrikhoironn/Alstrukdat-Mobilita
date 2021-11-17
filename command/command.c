@@ -198,7 +198,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
             if ((isVIPin(*todo) || isVIPin(*inprogress)) && info(pickedUp).typeItem!='V') {
-                printf("Pick up VIP Item terlebih dahulu!\n");
+                printf("Antar VIP Item terlebih dahulu!\n");
             }
             else {
                 // Kondisi normal, item berhasil di pick up
