@@ -2,16 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Konstruktor
+// Mengisi gadgetList dengan VAL_UNDEF
 void createGadgetList(gadgetList *g){
     int i;
     for (i = 0; i < MAX_CAPACITY; i++){
         ELEMENT(*g, i) = VAL_UNDEF;
     }
 }
-// I.S sembarang
-// F.S mengisi gadgetList dengan VAL_UNDEF
 
+// Return true jika gadgetList penuh
 boolean isFull(gadgetList g){
     int i;
     for (i = 0; i < MAX_CAPACITY; i++){
@@ -22,6 +21,7 @@ boolean isFull(gadgetList g){
     return true;
 }
 
+// Return true jika gadgetList kosong
 boolean isEmpty(gadgetList g){
     int i;
     for (i = 0; i < MAX_CAPACITY; i++){
@@ -32,10 +32,10 @@ boolean isEmpty(gadgetList g){
     return true;
 }
 
-// Fungsi/Prosedur
-
+// Prosedur BUY
 void BUY(time *money, gadgetList *g, ArrayBuild arrBuild){
 
+    // Mengecek lokasi Mobita (harus di HQ)
     int z=0;
     while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(*money).row || TITIK(arrBuild,z).col !=mobitaLocation(*money).col)){
       z++;
@@ -93,6 +93,7 @@ void BUY(time *money, gadgetList *g, ArrayBuild arrBuild){
     
 }
 
+// Pesan kalau buy berhasil
 void displayBuySuccess(int gadgetType){
     if (gadgetType == 1){
         printf("Kain Pembungkus Waktu berhasil dibeli!\n");
@@ -107,17 +108,18 @@ void displayBuySuccess(int gadgetType){
     }
 }
 
+// Prosedur INVENTORY
 void INVENTORY(gadgetList *g, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y){
 
     int command;
-    if (! isEmpty(*g)){
+    if (! isEmpty(*g)){ // Cek inventory kosong
         do {
             displayGadgetList(*g);
             printf("Gadget mana yang ingin digunakan? (ketik 0 jika ingin kembali)\n");
 
             getCommand(&command, 0, 5);
 
-            // command pasti valid (1..5)
+            // command pasti valid (0..5)
             if (command != 0){
                 int gadgetType;
                 removeGadget(g, command - 1, &gadgetType); // command == index + 1
@@ -148,6 +150,7 @@ void INVENTORY(gadgetList *g, stack *bag, time *t, linkedList toDoList, Matrix m
     
 }
 
+// Print isi gadgetList
 void displayGadgetList(gadgetList g){
     int i;
     for(i = 0; i < MAX_CAPACITY; i++){
@@ -169,8 +172,8 @@ void displayGadgetList(gadgetList g){
         }
     }
 }
-// Menampilkan gadget yang disimpan dalam gadgetList
 
+// Memasukkan gadget ke dalam INVENTORY
 void addGadget(gadgetList *g, int gadgetType){
     boolean find = false;
     int i = 0;
@@ -184,9 +187,8 @@ void addGadget(gadgetList *g, int gadgetType){
         }
     }
 }
-// I.S sembarang
-// F.S gadget (berupa int) ditambahkan di VAL_UNDEF pertama
 
+// Menghapus gadget sesuai index
 void removeGadget(gadgetList *g, int index, int *gadgetType){
     if (ELEMENT(*g, index) != VAL_UNDEF){
         *gadgetType = ELEMENT(*g, index);
@@ -196,9 +198,8 @@ void removeGadget(gadgetList *g, int index, int *gadgetType){
         *gadgetType = VAL_UNDEF;
     }
 }
-// I.S gadgetList terdefinisi
-// F.S gadget di index dihapus
 
+// Return harga gadget
 int gadgetPrice(int gadgetType){
     if (gadgetType == 1){
         return 800;
@@ -212,12 +213,11 @@ int gadgetPrice(int gadgetType){
         return 800;
     }
 }
-// Menampilkan harga gadget
 
+// Return true jika uang cukup
 boolean isMoneySufficient(time money, int gadgetType){
     return currentMoney(money) >= gadgetPrice(gadgetType);
 }
-// return true, if money > price of Gadget
 
 // Better input selector
 void getCommand(int *a, int lower_border, int upper_border){
@@ -232,6 +232,7 @@ void getCommand(int *a, int lower_border, int upper_border){
     }
 }
 
+// Prosedur pemakaian gadget
 void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y){
     if (gadgetType == 1){
         if (isPerishableItem(TOP(*bag))) {
@@ -243,12 +244,16 @@ void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix 
         if (maxBag(*bag) > CAPACITY_STACK){
             maxBag(*bag) = CAPACITY_STACK;
         }
+        printf("                      _.----.\n");
+        printf("    .----------------\" /  /  \\ \n");
+        printf("   (     BIG LASER   | |  |)  |\n");
+        printf("    `----------------._\\  \\  /\n");
+        printf("                       \"----'\n");
         printf("Senter Pembesar berhasil digunakan!\n");
     } else if (gadgetType == 3){
         printMap(toDoList, m, arrBuild, x, y, *t, *bag);
         printf("Ingin pindah kemana?\n");
         
-        // Ngikutin command MOVE, belum ada validasi input
         int k=1;
         int locMob;
         ArrayBuild tmpBuild;
@@ -261,17 +266,13 @@ void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix 
             k++;
         }
 
-        printf("Posisi yang dipilih? (ketik 0 jika ingin kembali)\n\n");
-        printf("ENTER COMMAND: ");
+        printf("Posisi yang dipilih?\n"); // bisa teleport ke lokasi awal / terbuang sia - sia
         int comd;
-        scanf("%d",&comd);
-        if(comd!=0 && comd<=k+1){
-            //makeNeutral((mobitaLocation(*mobiTime).location));
-            mobitaLocation(*t).location=arrBuild.koor[z].location;
-            mobitaLocation(*t).col=tmpBuild.koor[comd-1].col;
-            mobitaLocation(*t).row=tmpBuild.koor[comd-1].row;
-            //makeMobita(tmpBuild.koor[comd-1].location);
-        }else if(comd!=0) printf("Lokasi tidak ada...\n");
+        getCommand(&comd, 1, k - 1);
+        
+        mobitaLocation(*t).location=arrBuild.koor[z].location;
+        mobitaLocation(*t).col=tmpBuild.koor[comd-1].col;
+        mobitaLocation(*t).row=tmpBuild.koor[comd-1].row;
 
         printf("Pintu Kemana Saja berhasil digunakan!\n");
     } else if (gadgetType == 4){ 
@@ -288,6 +289,11 @@ void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix 
         if (heavyItem(*t) < 0){
             heavyItem(*t) = 0;
         }
+        printf("                      _.----.\n");
+        printf("    .----------------\" /  /  \\ \n");
+        printf("   (    smol laser   | |  |)  |\n");
+        printf("    `----------------._\\  \\  /\n");
+        printf("                       \"----'\n");
         printf("Senter Pengecil berhasil digunakan!\n");
     }
 }

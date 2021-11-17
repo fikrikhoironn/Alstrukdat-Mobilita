@@ -15,50 +15,43 @@ typedef struct {
     int gadgetType[MAX_CAPACITY];
 } gadgetList;
 
-// Konstruktor
-
+// Mengisi gadgetList dengan VAL_UNDEF
 void createGadgetList(gadgetList *g);
-// I.S sembarang
-// F.S mengisi gadgetList dengan VAL_UNDEF
 
-// Fungsi/Prosedur
-
+// Return true jika gadgetList penuh
 boolean isFull(gadgetList g);
 
+// Return true jika gadgetList kosong
 boolean isEmpty(gadgetList g);
 
+// Prosedur BUY
 void BUY(time *money, gadgetList *g, ArrayBuild arrBuild);
-// I.S money dan gadgetList terdefinisi
-// F.S jika money cukup && gadgetList belum penuh -> item dimasukkan ke dalam gadgetList
-//     else -> I.S
 
+// Prosedur INVENTORY
 void INVENTORY(gadgetList *g, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y);
-// I.S gadgetList terdefinisi
-// F.S gadgetList berkurang (jika instruksi benar)
 
+// Pesan kalau buy berhasil
 void displayBuySuccess(int gadgetType);
 
+// Print isi gadgetList
 void displayGadgetList(gadgetList g);
-// Menampilkan gadget yang disimpan dalam gadgetList
 
+// Memasukkan gadget ke dalam INVENTORY
 void addGadget(gadgetList *g, int gadgetType);
-// I.S sembarang
-// F.S gadget (berupa int) ditambahkan di VAL_UNDEF pertama
 
+// Menghapus gadget sesuai index
 void removeGadget(gadgetList *g, int index, int *gadgetType);
-// I.S gadgetList terdefinisi
-// F.S gadget di index dihapus
 
+// Return harga gadget
 int gadgetPrice(int gadgetType);
-// Menampilkan harga gadget
 
+// Return true jika uang cukup
 boolean isMoneySufficient(time money, int gadgetType);
-// return true, if money > price of Gadget
 
 // Better input selector
 void getCommand(int *a, int lower_border, int upper_border);
 
+// Prosedur pemakaian gadget
 void useGadget(int gadgetType, stack *bag, time *t, linkedList toDoList, Matrix m, ArrayBuild arrBuild, int x , int y);
-// menggunakan gadget
 
 #endif
