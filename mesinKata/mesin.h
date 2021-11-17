@@ -34,25 +34,28 @@ extern Token currentToken;
 extern boolean endToken;
 
 void ignoreBlankStdin();
-
+/* 
+IS Sembarang
+FS Mengabaikan karakter satu atau lebih BLANK yakni New Line maupun Spasi
+*/
 
 void ignoreBlank();
-/* Mengabaikan karakter satu atau lebih BLANK yakni New Line maupun Spasi
-IS
-FS
+/* 
+IS Sembarang
+FS Mengabaikan karakter satu atau lebih BLANK yakni New Line maupun Spasi
 */
 
 
 void startToken(char * c);
-/*Memulai pembacaan pada sebuah mesin kata berakhiran . (MARK)
+/*
 IS. adalah karakter pertama yang akan diakusisi, bisa BLANK maupun bukan
-FS. 
+FS. Memulai pembacaan pada sebuah mesin kata dari sebuah fule
 */
 
 void advToken();
-/*Melanjutkan pembacaan sebuah token atau masukan, yang artinya membaca token berikutnya
+/*
 IS Pita sembanrang
-FS T
+FS Melanjutkan pembacaan sebuah token atau masukan, yang artinya membaca token berikutnya
 */
 
 void salinToken();
@@ -64,25 +67,25 @@ di mana terbentuk token
 
 void printToken();
 /* 
-I.S.
-F.S.
+I.S. sembarang
+F.S. mencetak token
 */
 
 int tokenToInt(Token t);
-/* Mengubah token menjadi int 
-I.S. 
-F.S.
+/*
+I.S. Token tedeifnisi
+F.S. Mengubah token menjadi int 
 */
 int tokenToIntStd(Token t);
-/* Mengubah token menjadi int 
-I.S. 
-F.S.
+/*
+I.S. Token tedefinisi
+F.S. Mengubah token menjadi int 
 */
 
 char tokenToChar(Token t);
-/* Mengubah sebuah token dengan len=1 menjadi char
-I.S.
-F.S.
+/* 
+I.S. Token terdeifinisi
+F.S. Mengubah sebuah token dengan len=1 menjadi char
 */
 
 
@@ -103,10 +106,12 @@ F.S. Jika isinya sama "MOVE"=="MOVE"  misalnya maka hasilnya akan true, jika isi
 
 
 void startTokenStd();
-
+/*
+I.S. Sembarang
+F.S. Menjalankan program mesin kata standar dari user
+*/
 
 void salinTokenSTDIN();
-
 //ini buat opsi kalo graph kita gagal'
 //void tokenToMatrix(int m[][] );
 /*
@@ -119,8 +124,8 @@ void advTokenStdin();
 
 void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ, ArrayBuild *arrBuild, Matrix* adjMatrix,Queue * daftarPesanan);
 /*
-Membaca file configurasi, ketika melakukan newgame
-
+I.S. File terdefinisi dengan nama file c, 
+F.S.Membaca file configurasi, ketika melakukan newgame
 */
 void BacaArray (ArrayBuild* tes,int isi);
 
@@ -133,5 +138,8 @@ I.F. kedua char of pointer terdefinisi
 F.S. Mengembalikan nilai true jika keduanya berisi kalimat atau string yang sama*/
 
 char* tokenToString(Token test);
-
+/*
+I.S. Token terdefinisi
+F.S. mengembalikan nilai char of pointer (string)
+*/
 #endif

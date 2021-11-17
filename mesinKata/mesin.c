@@ -8,14 +8,13 @@ boolean endToken;
 void ignoreBlank(){
     while(currentChar == ' ' || currentChar == '\n'){
         adv();
-        //printf("ada blank ");
     }
 }
 
 void ignoreBlankStdin(){
     while(currentChar == ' ' || currentChar == '\n'){
         advStartIn();
-        //printf("ada blank ");
+
     }
 }
 
@@ -61,7 +60,7 @@ int tokenToInt(Token t){
     int val=0;
     while(i<=t.len){
         val*=10;
-        //printf("|%c|",t.tokenArray[i]);
+
         val += (int)t.tokenArray[i]-(int)'0';
         i++;
     }    
@@ -73,7 +72,7 @@ int tokenToIntStd(Token t){
     int val=0;
     while(i<t.len){
         val*=10;
-        //printf("|%c|",t.tokenArray[i]);
+
         val += (int)t.tokenArray[i]-(int)'0';
         i++;
     }    
@@ -108,7 +107,7 @@ boolean compareToken(Token basis, Token compared){
 }
 
 void startTokenStd(){
-    //printf("ENTER COMMAND: ");
+
     startIn();
     ignoreBlankStdin();
     salinTokenSTDIN();
@@ -144,7 +143,6 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     advToken();
 
 
-    //printf("Map size is (%d,%d)\n",*mapHeight,*mapLength);
     int xHQ, yHQ;
     xHQ=tokenToInt(currentToken);
     advToken();
@@ -155,15 +153,13 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
     makeHeadquarters(hqLoc);
     *HQ=MakePOINT(xHQ,yHQ);
     (*HQ).location=hqLoc;
-
-    //printf("%d %d\n%d %d\n",*mapLength,*mapHeight,(*HQ).col,(*HQ).row);
     advToken();
     int m= tokenToInt(currentToken);
     advToken();
     CreateArrayBuild(arrBuild,m+1);
     IsiArray(arrBuild, '8',(*HQ).col,(*HQ).row);
     BacaArray(arrBuild,m);
-    //displayArray(*arrBuild);
+
     int z;
     CreateMatrix(m+1,m+1,adjMatrix);
     for(z=0;z<=m;z++){
@@ -176,7 +172,6 @@ void readConfigFiles(char* c, int *mapHeight, int * mapLength, locationCoord *HQ
 
     int mq=tokenToInt(currentToken);
     advToken();
-    //printf("Banyak ipesanan %d\n",mq);
     item pesanan;
     CreateQueue(daftarPesanan);
     int i;
@@ -249,58 +244,3 @@ char* tokenToString(Token test){
     printf("--%c-%s-\n",test.tokenArray[0],c);
     return c;
 }
-
-/*
-    int countItem= tokenToInt(currentToken);
-    advToken();
-    for(int i=0;i<countItem;i++){
-        item items;
-        items.timeIn=tokenToInt(currentToken);
-        advToken();
-        items.pickUp=tokenToChar(currentToken);        
-        advToken();
-        items.dropOff=tokenToChar(currentToken);
-        advToken();
-        items.typeItem=tokenToChar(currentToken);
-        if(items.typeItem=='P'){
-            advToken();
-            items.perishableTime=tokenToInt(currentToken);
-        }
-        advToken();
-        pushBag(bag,items);
-    
-    }
-*/
-
-/*
-
-matrix tokenToMatrix(int m){
-    matrix M;
-    createEmptyMatrix(m,m,&M);
-    nRowEff(M)=m;
-    nColEff(M)=m;
-    int i,j;
-    for(i=1;i<=m;i++){
-        for(j=1;j<=m;j++){
-            locationPtr(M,i,j)=tokenToInt(currentToken);
-            advToken();
-        }
-    }
-}
-*/
-
-/*
-locations tokenToLoc(int m){
-
-}
-*/
-
-/*
-graph tokenToGraph(Token t){
-    graph g;
-    Token token;
-    
-    return g;
-}
-*/
-
