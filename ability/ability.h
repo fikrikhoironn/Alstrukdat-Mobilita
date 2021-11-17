@@ -11,6 +11,6 @@ void activateSpeedBoost(time *t); //mengaktifasi speedboost dengan menambahkan j
 
 void increaseCapactiy(stack *bag); //meningkatkan kapasitas tas
 
-void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProgressList, time t); //mengaktifasi return to sender
+void activateReturnToSender(stack *bag, linkedList *toDoList, linkedList *inProgressList, time *t); //mengaktifasi return to sender
 
 #endif

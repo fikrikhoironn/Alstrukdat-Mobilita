@@ -180,7 +180,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
      z = indexOfBuildMobita(*t,arrBuild);
     checkVip =first(*todo);
     while((checkVip)!=NULL && !isLocOfVip){
-        if(info(checkVip).typeItem=='V' && info(checkVip).pickUp==arrBuild.nama[z]){
+        if(info(checkVip).typeItem=='V'){
             isLocOfVip=true;
             pickedUp =checkVip;
         }else{

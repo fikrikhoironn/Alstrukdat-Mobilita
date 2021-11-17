@@ -131,7 +131,7 @@ int main(){
             TO_DO(todo);
         }else if(stringCompare(cmd,"IN_PROGRESS")){
             IN_PROGRESS(inprogressList);
-            printf("progrlist");
+            //printf("progrlist");
         }else if(stringCompare(cmd,"INVENTORY")){
             INVENTORY(&listGadget,&mobiBag,&mobiTime,todo,adjMatrix,arrayOfBuilding,mapLength,mapheight);
             //printf("inventory\n");
@@ -141,6 +141,13 @@ int main(){
         }else if(stringCompare(cmd,"HELP")){
             HELP();
             //printf("help\n");
+        }else if(stringCompare(cmd,"RETURN")){
+            activateReturnToSender(&mobiBag, &todo, &inprogressList, &mobiTime);
+        }else if(stringCompare(cmd,"STATUS")){
+            printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
+            printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
+            printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
+            
         }else{
             printf("PERINTAH TIDAK SESUAI.");
         }
