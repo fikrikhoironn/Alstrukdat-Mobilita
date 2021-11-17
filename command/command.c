@@ -236,13 +236,15 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
 
 
 void HELP(){
-    printf("1. MOVE         -> Untuk berpindah ke lokasi selanjutnya\n");
-    printf("2. PICK_UP      -> Untuk mengambil item dilokasi saat ini\n");
-    printf("3. DROP_OFF     -> Untuk mengantarkan item ke lokasi sesuai pesanan\n");
-    printf("4. MAP          -> Untuk memunculkan peta\n");
-    printf("5. TO_DO        -> Untuk menampilkan pesanan pada To Do List\n");
-    printf("6. IN_PROGRESS  -> Untuk menampilkan pesanan yang sedang dikerjakan\n");
-    printf("7. BUY          -> Untuk menampilkan gadget yang dapat dibeli lalu membelinya (Hanya pada headquarters)\n");
-    printf("8. INVENTORY    -> Untuk melihat gadget yang dimiliki dan menggunakannya\n");
-    printf("9. HELP         -> Untuk mengeluarkan list command dan kegunaannya\n");
+    printf("\n\b==================================================================================================================\n");
+    printf("|| 1. MOVE         -> Untuk berpindah ke lokasi selanjutnya\t\t\t\t\t\t\t||\n");
+    printf("|| 2. PICK_UP      -> Untuk mengambil item dilokasi saat ini\t\t\t\t\t\t\t||\n");
+    printf("|| 3. DROP_OFF     -> Untuk mengantarkan item ke lokasi sesuai pesanan\t\t\t\t\t\t||\n");
+    printf("|| 4. MAP          -> Untuk memunculkan peta\t\t\t\t\t\t\t\t\t||\n");
+    printf("|| 5. TO_DO        -> Untuk menampilkan pesanan pada To Do List\t\t\t\t\t\t\t||\n");
+    printf("|| 6. IN_PROGRESS  -> Untuk menampilkan pesanan yang sedang dikerjakan\t\t\t\t\t\t||\n");
+    printf("|| 7. BUY          -> Untuk menampilkan gadget yang dapat dibeli lalu membelinya (Hanya pada headquarters)\t||\n");
+    printf("|| 8. INVENTORY    -> Untuk melihat gadget yang dimiliki dan menggunakannya\t\t\t\t\t||\n");
+    printf("|| 9. HELP         -> Untuk mengeluarkan list command dan kegunaannya\t\t\t\t\t\t||\n");
+    printf("==================================================================================================================\n\n");
 }

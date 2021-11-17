@@ -131,7 +131,7 @@ void salinTokenSTDIN(){
 void advTokenStdin(){
     if(currentChar == eot) endToken=true;
     else{
-        //printf("ENTER COMMAND: ");
+        ignoreBlankStdin();
         salinTokenSTDIN();
     }
 }

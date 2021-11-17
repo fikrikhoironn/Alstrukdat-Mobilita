@@ -3,6 +3,7 @@
 
 #include "boolean.h"
 #include "../point/point.h"
+#include "../pcolor/pcolor.h"
 #include "../locations/locations.h"
 #include <stdlib.h>
 #include <stdio.h>

@@ -24,33 +24,15 @@
 int main(){
     Token fileInput;
     time mobiTime;
-
     int command;
-
     gadgetList listGadget;
     createGadgetList(&listGadget);
-
-
     int mapheight, mapLength;
     locationCoord HQLoc;
-    
-    
-    
-    
     ArrayBuild arrayOfBuilding;
-    
-    
     Matrix adjMatrix;
-    
-
-
-
-
-
     Queue daftarPesanan;
     CreateQueue(&daftarPesanan);
-
-
     linkedList todo;
     CreateList(&todo);
     linkedList inprogressList;
@@ -63,101 +45,113 @@ int main(){
     char * test=(char *) malloc(101*sizeof(char));
     int i;
     int j;
+    boolean isCommadValid=false;
+    printf("%s\n.``````````````````````````````````````````.......\n.````````````````.:+osso+-````````````````````````\n...............+dNNNNmhhdmms-`````````````````````\n.............-dNNdo/..``.`.:s-`...................\n-...........-yNd/.`   `.    .-....................\n-------....-/NNo..   /s.h-   :....................\n::----------/NNh.-   `...   .:....-...............\n:::::::::::::s//.`.````....-`--...................\n/////:::::::::--````.--:///.`-.--...--------------\n/////:::::::odmyo+.`./++++..-------------------::;\n//////////::mmNmmm/.......sh:------------:::://::/\n//////::::::mmdssdm. ``/:`/mo-----::::::::::://///\n////::::::::mmyssymy/-osssohs:::://///////////////\n/////:::::::mmssssmysssssssyso////////////////////\n%s",GREEN,NORMAL);
     do{
-        printf("Silahkan masukkan menu\n(1 // 2 // 3):\nENTER COMMAND: ");
+        printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");
         scanf("%d",&command);
-    }while(command != 1 && command != 2 && command !=3);
+
+    }while(!(command == 1 || command == 2 || command ==3));
     if(command==1){
-            while(fp==NULL){
-            currentToken.len=0;
-            printf("ENTER FILENAME: ");
+            printf("\n==================================");
+            printf("\n||  ENTER FILENAME: ");
             startTokenStd();
-            for(i=0;i<=currentToken.len;i++){
-            if(i!=currentToken.len) test[i]=currentToken.tokenArray[i];
-            else test[i]='\0';
-            }
-            fp= fopen(test,"r");
-            //printf("%s||%c||%c\n",test,test[0],currentToken.tokenArray[1]);
-            advTokenStdin();
+            printf("==================================");
+
+            boolean isFileValid=false;
+            while(fp==NULL){
+                for(i=0;i<=currentToken.len;i++){
+                    if(i!=currentToken.len) test[i]=currentToken.tokenArray[i];
+                    else test[i]='\0';
+
+                    if(currentToken.tokenArray[i]=='.') isFileValid=true;
+                }
+                if(isFileValid){ 
+                fp= fopen(test,"r");
+                }
+                if(fp==NULL) {
+                    printf("\n==================================");
+                    printf("\n||  ENTER FILENAME: ");
+                    advTokenStdin(); 
+                    printf("==================================");
+                }
             }
             readConfigFiles(test,&mapheight,&mapLength,&HQLoc,&arrayOfBuilding,&adjMatrix,&daftarPesanan);
-            //printf("%d %d\n%d %d\n",mapLength,mapheight,HQLoc.col,HQLoc.row);
-            //displayArray(arrayOfBuilding);
-            //displayMatrix(adjMatrix);
-            //DisplayQueue(daftarPesanan);
             mobitaLocation(mobiTime) = HQLoc;
             createTime(&mobiTime,HQLoc);
-            //currentMoney(mobiTime) = 10000; // nge-cheat doeloe ga seh
-            //printf("%d %d",HQLoc.col,mobiTime.currentLocation.row);
-            //printf("Selamat datang di permainan Mobilita.\n");
     }else if(command ==2){
         printf("Maaf fitur belum dapat diakses dan sedang dalam pengembangan.\n");
     }else{
         printf("Selamat Tinggal, terima kasih telah bersua.\n");
     }
-    eot=true;
-    endToken=true;
-    adv();
-    //scanf("%d",&command);
-    currentToken.len=0;
-    printf("ENTER COMMAND: ");
-    startTokenStd();
-    char * cmd;
-    free(cmd);
-    cmd = (char *) malloc(101*sizeof(char));
-    while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList) || !(mobitaLocation(mobiTime).col==HQLoc.col && mobitaLocation(mobiTime).row== HQLoc.row))
-    {
-        //printMenu();
-        //printStatus();
-        for(i=0;i<=currentToken.len;i++){
-        if(i!=currentToken.len) cmd[i]=currentToken.tokenArray[i];
-        else cmd[i]='\0';
-        }
-        if(stringCompare(cmd,"MOVE")){
-            MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
-            updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
-            //displayList(todo);
-            //printf("(%d,%d)",mobitaLocation(mobiTime).col,mobitaLocation(mobiTime).row);
-            //printf("--move %d\n",tokenToIntStd(currentToken));
-        }else if(stringCompare(cmd,"PICK_UP")){
-            PICK_UP(&todo,&inprogressList,&mobiBag,&mobiTime,arrayOfBuilding);
-        }else if(stringCompare(cmd,"DROP_OFF")){
-            DROP_OFF(&todo,&inprogressList,&mobiBag,&mobiTime, arrayOfBuilding);
-        }else if(stringCompare(cmd, "MAP")){
-            //printf("%d %d\n%d %d\n",mapheight,mapLength,arrayOfBuilding.koor[2].row,arrayOfBuilding.koor[2].col);
-            //displayArray(arrayOfBuilding);
-            printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
-        }else if(stringCompare(cmd,"TO_DO")){
-            TO_DO(todo);
-        }else if(stringCompare(cmd,"IN_PROGRESS")){
-            IN_PROGRESS(inprogressList);
-            //printf("progrlist");
-        }else if(stringCompare(cmd,"INVENTORY")){
-            INVENTORY(&listGadget,&mobiBag,&mobiTime,todo,adjMatrix,arrayOfBuilding,mapLength,mapheight);
-            //printf("inventory\n");
-        }else if(stringCompare(cmd,"BUY")){
-            BUY(&mobiTime,&listGadget, arrayOfBuilding);
-            //printf("buy\n");
-        }else if(stringCompare(cmd,"HELP")){
-            HELP();
-            //printf("help\n");
-        }else if(stringCompare(cmd,"RETURN")){
-            activateReturnToSender(&mobiBag, &todo, &inprogressList, &mobiTime);
-        }else if(stringCompare(cmd,"STATUS")){
-            printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
-            printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
-            printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
-            
-        }else{
-            printf("PERINTAH TIDAK SESUAI.");
-        }
-        displayStatus(mobiTime,arrayOfBuilding); 
-        //displayList(todo);
-        printf("ENTER COMMAND: ");
-        ignoreBlankStdin();
-        advTokenStdin();
 
-    } 
+    if(command==1){
+        printf("\n\n==================================");
+        printf("\n||    %s%s", BLUE, "Welcome");
+        printf("%s", NORMAL);
+        printf(" to Alshock");
+        print_red('D');print_red('E');print_red('A');print_red('D');
+        printf("\t||\n==================================");
+        eot=true;
+        endToken=true;
+        adv();
+        currentToken.len=0;
+        printf("\n\nENTER COMMAND: ");
+        startTokenStd();
+        char * cmd;
+        free(cmd);
+        cmd = (char *) malloc(101*sizeof(char));
+        while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList) || !(mobitaLocation(mobiTime).col==HQLoc.col && mobitaLocation(mobiTime).row== HQLoc.row))
+        {
+
+            for(i=0;i<=currentToken.len;i++){
+            if(i!=currentToken.len) cmd[i]=currentToken.tokenArray[i];
+            else cmd[i]='\0';
+            }
+            if(stringCompare(cmd,"MOVE")){
+                MOVE(&mobiTime,arrayOfBuilding,adjMatrix);
+                updateToDoAndPerishable(&mobiTime,&todo,&inprogressList,&daftarPesanan,&mobiBag);
+
+            }else if(stringCompare(cmd,"PICK_UP")){
+                PICK_UP(&todo,&inprogressList,&mobiBag,&mobiTime,arrayOfBuilding);
+            }else if(stringCompare(cmd,"DROP_OFF")){
+                DROP_OFF(&todo,&inprogressList,&mobiBag,&mobiTime, arrayOfBuilding);
+            }else if(stringCompare(cmd, "MAP")){
+
+                printMap(todo,adjMatrix,arrayOfBuilding,mapLength,mapheight,mobiTime,mobiBag);
+            }else if(stringCompare(cmd,"TO_DO")){
+                TO_DO(todo);
+            }else if(stringCompare(cmd,"IN_PROGRESS")){
+                IN_PROGRESS(inprogressList);
+                //printf("progrlist");
+            }else if(stringCompare(cmd,"INVENTORY")){
+                INVENTORY(&listGadget,&mobiBag,&mobiTime,todo,adjMatrix,arrayOfBuilding,mapLength,mapheight);
+                //printf("inventory\n");
+            }else if(stringCompare(cmd,"BUY")){
+                BUY(&mobiTime,&listGadget, arrayOfBuilding);
+
+            }else if(stringCompare(cmd,"HELP")){
+                HELP();
+
+            }else if(stringCompare(cmd,"RETURN")){
+                activateReturnToSender(&mobiBag, &todo, &inprogressList, &mobiTime);
+            }else if(stringCompare(cmd,"STATUS")){
+                printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
+                printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
+                printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
+                
+            }else{
+                printf("PERINTAH TIDAK SESUAI.");
+            }
+            displayStatus(mobiTime,arrayOfBuilding); 
+
+            printf("ENTER COMMAND: ");
+            ignoreBlankStdin();
+            advTokenStdin();
+
+        } 
+    }
+
     printf("PERMAINAN SELESAI SELAMAT");
     
 }

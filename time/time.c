@@ -7,9 +7,12 @@ void displayStatus(time t, ArrayBuild arrBuild){
     while(z<NEFF(arrBuild)&& (TITIK(arrBuild,z).row!=mobitaLocation(t).row || TITIK(arrBuild,z).col !=mobitaLocation(t).col)){
       z++;
     }
-    printf("Mobita sekarang berada di titik %c (%d,%d)!\n",arrBuild.nama[z],mobitaLocation(t).col,mobitaLocation(t).row);
+    printf("\nMobita sekarang berada di titik %s%c%s (%d,%d)%s!\n",YELLOW,arrBuild.nama[z],MAGENTA,mobitaLocation(t).col,mobitaLocation(t).row,NORMAL);
+    printf("%s",GREEN);
     printCurrentTime(t);
-    printf("JUMLAH UANG: %d\n", currentMoney(t));
+    printf("%s",RED);
+    printf("JUMLAH UANG: %d\n\n", currentMoney(t));
+    printf("%s",NORMAL);
     //printf("ENTERCOMMAND: ");
 }
 
