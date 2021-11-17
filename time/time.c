@@ -175,7 +175,10 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         item val;
         popBag(bag, &val); //menyimpan yang lolos filter ke stack sementara
         if ((typeItem(val) == 'P') && perishableTime(val) > 0){
-            pushBag(&temp, val);
+            decrementPerishableTime(&val);
+            if (perishableTime(val) > 0){
+                pushBag(&temp, val);
+            }
         }
         else if((typeItem(val) != 'P')){
             pushBag(&temp, val);

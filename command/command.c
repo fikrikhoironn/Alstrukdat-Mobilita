@@ -203,6 +203,7 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
             else {
                 // Kondisi normal, item berhasil di pick up
                 deleteAtList(todo, (indexOfList(*todo, info(pickedUp))), &delVal);
+                perishableTime(delVal) = perishableOrigin(delVal);
                 insert_timedescList(inprogress, delVal);
                 pushBag(tas, delVal);
                 printf("Pesanan berupa ");
