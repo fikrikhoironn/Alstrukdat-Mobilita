@@ -304,21 +304,23 @@ Address find_by_pickup_location (linkedList L, char location) {
         p = next(p);
     }
     retAddr = p;
-    p = next(p);
-    // Akan diperiksa jika ada elemen berikutnya yang berada pada lokasi location dan bertipe VIP
-    VIPfound = false;
-    while (p != NULL && !VIPfound) {
-        if ((info(p)).pickUp == location && (info(p)).typeItem == 'V') {
-            // terdapat VIP item pada lokasi yang sama;
-            VIPfound = true;
+    if (p != NULL) {
+        p = next(p);
+        // Akan diperiksa jika ada elemen berikutnya yang berada pada lokasi location dan bertipe VIP
+        VIPfound = false;
+        while (p != NULL && !VIPfound) {
+            if ((info(p)).pickUp == location && (info(p)).typeItem == 'V') {
+                // terdapat VIP item pada lokasi yang sama;
+                VIPfound = true;
+            }
+            else {
+                p = next(p);
+            }
         }
-        else {
-            p = next(p);
+        if (VIPfound) {
+            // Akan dikembalikan item VIP terlebih dahulu
+            retAddr = p;
         }
-    }
-    if (VIPfound) {
-        // Akan dikembalikan item VIP terlebih dahulu
-        retAddr = p;
     }
     return retAddr;
 }
