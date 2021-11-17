@@ -37,6 +37,6 @@ void displayItem(item t); //menampilkan atribut item
 
 void decrementPerishableTime(item *t); //mengurangi waktu perishable time
 
-void resetPerishableTime(item *t);
+void resetPerishableTime(item *t); //mengembalikan waktu perishable time ke nilai awal sebelum di pick up
 
 #endif

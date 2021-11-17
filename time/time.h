@@ -28,7 +28,7 @@ typedef struct{
 #define senterPengecil(t) (t).senterPengecil
 #define mobitaLocation(t) (t).currentLocation
 
-void displayStatus(time t, ArrayBuild arrBuild);
+void displayStatus(time t, ArrayBuild arrBuild); //menampilkan status atribut struct time
 
 void createTime(time *t, locationCoord base); //membuat state waktu sesuai amount atau masukan
 
@@ -65,7 +65,8 @@ void incrementSenterPengecil(time *t); // menambah senterPengecil sebanyak 1
 void decrementSenterPengecil(time *t); // mengurangi senterPengecil sebanyak 1
 
 void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgressList, Queue *daftarPesanan, stack *bag); //mengupdateToDoList sesuai waktu arrBuild
-int indexOfBuildMobita(time t,ArrayBuild arrBuild);
+
+int indexOfBuildMobita(time t,ArrayBuild arrBuild); //menampilkan index building mobita
 
 #endif
 

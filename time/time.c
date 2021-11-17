@@ -13,7 +13,6 @@ void displayStatus(time t, ArrayBuild arrBuild){
     printf("%s",RED);
     printf("JUMLAH UANG: %d\n\n", currentMoney(t));
     printf("%s",NORMAL);
-    //printf("ENTERCOMMAND: ");
 }
 
 
@@ -47,7 +46,6 @@ void incrementTime(time *t){
 void printCurrentTime(time t){
     int my_var = (int) floor(currentTime(t));
     printf("WAKTU SEKARANG: %d\n", my_var);
-    //printf("%f\n", currentTimeFloat);
 }
 
 void addTime(time *t, int amount){
@@ -109,32 +107,7 @@ void decrementSenterPengecil(time *t){
 void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgressList,  Queue *daftarPesanan, stack *bag) //mengupdateToDoList dan perishableTime sesuai waktu sekarang
 {
     int i;
-    //untuk memasukkan daftar pesanan ke toDoList jika sesuai waktu
-    // for (i = IDX_HEAD (*daftarPesanan); i <= IDX_TAIL(*daftarPesanan); i++)
-    // {
-    //     /* code */
-    //     item val;
-    //     val = daftarPesanan->buffer[i];
-    //     int my_var = (int) floor(currentTime(*t));
-    //     //printf("nilai waktu sekarang: %d\n", my_var);
-    //     boolean status = timeIn(val) <= my_var;
-    //     if (status){ //jika waktu masuk pesanan kurang sama dengan dari waktu sekarang maka masukkan ke toDoList
-    //         //printf("memasukkan pesanan ke toDoList\n");
-    //         //printf("isi TO DO LIST sekarang: \n");
-    //         if (typeItem(val) == 'V'){
-    //             insertFirstList(toDoList, val);
-    //         }
-    //         else{
-    //             insert_timeascList(toDoList, val); //masukkan ke  toDoList
-    //             //displayList(*toDoList);
-    //         }
-    //         if (!isEmptyQueue(*daftarPesanan)){
-    //             item x;
-    //             dequeue(daftarPesanan, &x); //dequeue dari daftar pesanan
-    //         }
-
-    //     }
-    // }
+    
 
     int my_var = (int) floor(currentTime(*t));
     while(timeIn(HEAD(*daftarPesanan)) <= my_var && !isOneElmtQueue(*daftarPesanan) && !isEmptyQueue(*daftarPesanan)){
@@ -159,7 +132,6 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
             item val;
             if (typeItem(info(p)) == 'P'){
                 perishableTime(info(p)) = perishableTime(info(p)) - heavyItem(*t) - 1;
-                //printf("sisa waktu hangus: %d\n", perishableTime(info(p)));
 
             }
             if (typeItem(info(p)) == 'P' && perishableTime(info(p)) <= 0){
@@ -196,8 +168,7 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
         popBag(&temp, &val2);
         pushBag(bag, val2);
     }
-    // printf("isi toDoList sekarang: \n");
-    // displayList(*toDoList);
+    
 
 }
 
