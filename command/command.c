@@ -6,6 +6,8 @@
 
 void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     printf("Posisi yang dapat dicapai:\n");
+    int comd;
+    char bcomd;
     int k=1;
     int locMob;
     ArrayBuild tmpBuild;
@@ -23,10 +25,19 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     printf("Posisi yang dipilih? (ketik 0 jika ingin kembali)\n\n");
     printf("ENTER COMMAND: ");
         //ignoreBlank();
-        //advTokenStdin();
+    advTokenStdin();
     //printf("---%d--\n",tokenToIntStd(currentToken));
-    int comd;
-    scanf("%d",&comd);
+    bcomd=currentToken.tokenArray[0];
+    comd = (int) bcomd-'0';
+    while ( 0>comd || comd>k )
+    {
+        printf("\nLokasi Tak Tersediia\nENTER COMMAND: ");
+        advTokenStdin();
+        bcomd=currentToken.tokenArray[0];
+        comd = (int) bcomd-'0';
+    }
+    
+    
     if(comd>0 && comd<=k+1){
         //makeNeutral((mobitaLocation(*mobiTime).location));
         mobitaLocation(*mobiTime).location=arrayOfBuilding.koor[z].location;

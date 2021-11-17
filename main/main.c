@@ -24,6 +24,7 @@
 int main(){
     Token fileInput;
     time mobiTime;
+    char bcom;
     int command;
     gadgetList listGadget;
     createGadgetList(&listGadget);
@@ -45,17 +46,23 @@ int main(){
     char * test=(char *) malloc(101*sizeof(char));
     int i;
     int j;
+
     boolean isCommadValid=false;
     printf("%s\n.``````````````````````````````````````````.......\n.````````````````.:+osso+-````````````````````````\n...............+dNNNNmhhdmms-`````````````````````\n.............-dNNdo/..``.`.:s-`...................\n-...........-yNd/.`   `.    .-....................\n-------....-/NNo..   /s.h-   :....................\n::----------/NNh.-   `...   .:....-...............\n:::::::::::::s//.`.````....-`--...................\n/////:::::::::--````.--:///.`-.--...--------------\n/////:::::::odmyo+.`./++++..-------------------::;\n//////////::mmNmmm/.......sh:------------:::://::/\n//////::::::mmdssdm. ``/:`/mo-----::::::::::://///\n////::::::::mmyssymy/-osssohs:::://///////////////\n/////:::::::mmssssmysssssssyso////////////////////\n%s",GREEN,NORMAL);
+    
+    printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");    
+    startTokenStd();    
     do{
-        printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");
-        scanf("%d",&command);
-
+        while(currentToken.len!=1){
+            printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");   
+            advTokenStdin();
+        }
+    command = (int)(currentToken).tokenArray[0]-'0';
     }while(!(command == 1 || command == 2 || command ==3));
     if(command==1){
             printf("\n==================================");
             printf("\n||  ENTER FILENAME: ");
-            startTokenStd();
+            advTokenStdin();
             printf("==================================");
 
             boolean isFileValid=false;
