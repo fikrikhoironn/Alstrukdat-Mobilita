@@ -296,13 +296,31 @@ void insert_timedescList (linkedList *L, infotype val) {
 
 Address find_by_pickup_location (linkedList L, char location) {
     // KAMUS
-    Address p;
+    Address p, retAddr;
+    boolean VIPfound;
     // ALGORITMA
     p = first(L);
     while (p != NULL && (info(p)).pickUp != location) {
         p = next(p);
     }
-    return p;
+    retAddr = p;
+    p = next(p);
+    // Akan diperiksa jika ada elemen berikutnya yang berada pada lokasi location dan bertipe VIP
+    VIPfound = false;
+    while (p != NULL && !VIPfound) {
+        if ((info(p)).pickUp == location && (info(p)).typeItem == 'V') {
+            // terdapat VIP item pada lokasi yang sama;
+            VIPfound = true;
+        }
+        else {
+            p = next(p);
+        }
+    }
+    if (VIPfound) {
+        // Akan dikembalikan item VIP terlebih dahulu
+        retAddr = p;
+    }
+    return retAddr;
 }
 
 boolean isVIPin (linkedList L) {
@@ -321,22 +339,6 @@ boolean isVIPin (linkedList L) {
     else {
         return true;
     }
-    // while (p != NULL && !found) {
-    //     if((info(p)).typeItem == 'V'){
-    //         found = true;
-    //     }
-    //     else{
-    //         p = next(p);
-    //     }
-    // }
-    /*
-    if (info(p).typeItem=='V') {
-        return true;
-    }
-    else {
-        return false;
-    }
-    */
 }
 
 boolean isPickupLocation(linkedList L, char location) {

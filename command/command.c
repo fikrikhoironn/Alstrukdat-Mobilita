@@ -176,8 +176,10 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
     boolean isLocOfVip;
     int i,z;
     // ALGORITMA
+    
     isLocOfVip=false;
      z = indexOfBuildMobita(*t,arrBuild);
+    /*
     checkVip =first(*todo);
     while((checkVip)!=NULL && !isLocOfVip){
         if(info(checkVip).typeItem=='V'){
@@ -190,7 +192,8 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
     if(!isLocOfVip){
     pickedUp = find_by_pickup_location(*todo, arrBuild.nama[z]);
     }
-
+    */
+   pickedUp = find_by_pickup_location(*todo, arrBuild.nama[z]);
 
     if (pickedUp != NULL) {
         if (!isFullBag(*tas)) {
