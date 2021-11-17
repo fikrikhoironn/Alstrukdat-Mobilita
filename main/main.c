@@ -105,7 +105,7 @@ int main(){
     char * cmd;
     free(cmd);
     cmd = (char *) malloc(101*sizeof(char));
-    while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList))
+    while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList) || !(mobitaLocation(mobiTime).col==HQLoc.col && mobitaLocation(mobiTime).row== HQLoc.row))
     {
         //printMenu();
         //printStatus();
@@ -147,10 +147,7 @@ int main(){
             printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
             printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
             printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
-            printf("ISI tas sekarang: \n");
-            displayBag(mobiBag);
-
-
+            
         }else{
             printf("PERINTAH TIDAK SESUAI.");
         }
