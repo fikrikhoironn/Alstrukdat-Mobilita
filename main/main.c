@@ -112,11 +112,9 @@ int main(){
         printf("\n\nENTER COMMAND: ");
         startTokenStd();
         char * cmd;
-        free(cmd);
         cmd = (char *) malloc(101*sizeof(char));
         while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList) || !(mobitaLocation(mobiTime).col==HQLoc.col && mobitaLocation(mobiTime).row== HQLoc.row))
         {
-
             for(i=0;i<=currentToken.len;i++){
             if(i!=currentToken.len) cmd[i]=currentToken.tokenArray[i];
             else cmd[i]='\0';
