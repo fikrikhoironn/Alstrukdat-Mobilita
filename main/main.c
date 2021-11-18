@@ -149,7 +149,7 @@ int main(){
                 HELP();
 
             }else if(stringCompare(cmd,"RETURN")){
-                activateReturnToSender(&mobiBag, &todo, &inprogressList, &mobiTime);
+                activateReturnToSender1(&mobiBag, &todo, &inprogressList, &mobiTime);
             }else if(stringCompare(cmd,"STATUS")){
                 printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
                 printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
