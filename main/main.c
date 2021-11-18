@@ -50,11 +50,11 @@ int main(){
     boolean isCommadValid=false;
     printf("%s\n.``````````````````````````````````````````.......\n.````````````````.:+osso+-````````````````````````\n...............+dNNNNmhhdmms-`````````````````````\n.............-dNNdo/..``.`.:s-`...................\n-...........-yNd/.`   `.    .-....................\n-------....-/NNo..   /s.h-   :....................\n::----------/NNh.-   `...   .:....-...............\n:::::::::::::s//.`.````....-`--...................\n/////:::::::::--````.--:///.`-.--...--------------\n/////:::::::odmyo+.`./++++..-------------------::;\n//////////::mmNmmm/.......sh:------------:::://::/\n//////::::::mmdssdm. ``/:`/mo-----::::::::::://///\n////::::::::mmyssymy/-osssohs:::://///////////////\n/////:::::::mmssssmysssssssyso////////////////////\n%s",GREEN,NORMAL);
     
-    printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");    
+    printf("\n\nSilahkan masukkan menu\n(1| Start Game\n(2| Load Game \n(3| New Game\nMasukkan nomor perintah!\n\nENTER COMMAND: ");
     startTokenStd();    
     do{
         while(currentToken.len!=1){
-            printf("\n\nSilahkan masukkan menu\n(1 // 2 // 3):\n\nENTER COMMAND: ");   
+            printf("\n\nSilahkan masukkan menu\n(1| Start Game\n(2| Load Game \n(3| New Game\nMasukkan nomor perintah!\n\nENTER COMMAND: ");   
             advTokenStdin();
         }
     command = (int)(currentToken).tokenArray[0]-'0';
@@ -97,7 +97,7 @@ int main(){
         printf("\n||    %s%s", BLUE, "Welcome");
         printf("%s", NORMAL);
         printf(" to Alshock");
-        print_red('D');print_red('E');print_red('A');print_red('D');
+        printStringColor(RED,"DEAD");
         printf("\t||\n==================================");
         eot=true;
         endToken=true;
