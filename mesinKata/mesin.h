@@ -76,6 +76,7 @@ int tokenToInt(Token t);
 I.S. Token tedeifnisi
 F.S. Mengubah token menjadi int 
 */
+
 int tokenToIntStd(Token t);
 /*
 I.S. Token tedefinisi
