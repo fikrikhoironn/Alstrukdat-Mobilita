@@ -11,8 +11,9 @@ void displayStatus(time t, ArrayBuild arrBuild){
     printf("%s",GREEN);
     printCurrentTime(t);
     printf("%s",RED);
-    printf("JUMLAH UANG: %d\n\n", currentMoney(t));
+    printf("JUMLAH UANG: %d\n", currentMoney(t));
     printf("%s",NORMAL);
+    printf("HEAVY ITEM: %d || SPEEDBOOST: %d || RETURN TO SENDER: %d || SENTER PENGECIL: %d\n\n", heavyItem(t), speedBoost(t), returnToSender(t), senterPengecil(t));
 }
 
 
