@@ -133,15 +133,20 @@ void updateToDoAndPerishable(time *t, linkedList *toDoList, linkedList *inProgre
             item val;
             if (typeItem(info(p)) == 'P'){
                 perishableTime(info(p)) = perishableTime(info(p)) - heavyItem(*t) - 1;
-
+                if (perishableTime(info(p)) <= 0) {
+                    p = next(p);
+                    deleteAtList(inProgressList, idx, &val);
+                    printf("Perishable item tujuan %c telah hangus\n", dropOff(val));
+                }
+                else {
+                    p = next(p);
+                    idx++;
+                }
             }
-            if (typeItem(info(p)) == 'P' && perishableTime(info(p)) <= 0){
-                deleteAtList(inProgressList, idx, &val);
-                printf("Perishable item tujuan dropOff %c telah hangus\n", dropOff(info(p)));
-
+            else {
+                p = next(p);
+                idx++;
             }
-            p = next(p);
-            idx++;
         }
     }
     //update bag, menghapus perishable item jika sudah hangus dari bag
