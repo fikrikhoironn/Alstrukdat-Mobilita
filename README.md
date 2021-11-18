@@ -3,13 +3,19 @@
 
 Program ini merupakan sebuah program permainan berbasis teks mengenai pengantaran barang sebagai contoh dari penggunaan tipe data abstrak. Program ditulis seutuhnya menggunakan bahasa C.
 
+## Daftar Isi
+* [Cara Melakukan Kompilasi Program](#cara-melakukan-kompilasi-program)
+* [Cara Menjalankan Program](#cara=menjalankan-program)
+* [Pembagian Tugas](#pembagian-tugas)
+* [Daftar Fitur](#daftar-isi)
+
 
 ## Cara Melakukan Kompilasi Program
 
 Program dapat di-compile menggunakan compiler gcc. Sebelum melakukan kompilasi, pastikan Anda berada dalam folder main kemudian ketik instruksi di bawah ini.
 
 ``` 
-gcc main.c ../arraydin/arraydin.c ../mesinKata/mesin.c ../mesinKata/charmachine.c ../matrix/matrix.c ../point/point.c ../locations/locations.c ../ability/ability.h ../queue/queue.c ../item/item.c ../linkedlist/linkedlist.c ../time/time.c ../stack/stack.c ../command/command.c ../pcolor/pcolor.c ../ability/ability.c ../arraystatis/arraystatis.c -lm -o test 
+gcc ./main/main.c ./arraydin/arraydin.c ./mesinKata/mesin.c ./mesinKata/charmachine.c ./matrix/matrix.c ./point/point.c ./locations/locations.c ./ability/ability.h ./queue/queue.c ./item/item.c ./linkedlist/linkedlist.c ./time/time.c ./stack/stack.c ./command/command.c ./pcolor/pcolor.c ./ability/ability.c ./arraystatis/arraystatis.c -lm -o test 
 ```
 
 
@@ -17,7 +23,7 @@ gcc main.c ../arraydin/arraydin.c ../mesinKata/mesin.c ../mesinKata/charmachine.
 
 Setelah program berhasil di-compile, akan muncul executable file bernama "test.exe" dalam folder main. Ketik 
 ```
-./tes
+./test
 ```
 untuk menjalankan program.
 
@@ -33,13 +39,13 @@ Program ini disusun oleh Kelompok 02 Kelas 01 sebagai tugas besar mata kuliah IF
     Mengerjakan ADT Array Dinamis, ADT Queue, dan implementasi command HELP.
 + Diky Restu Maulana (13520017)
 
-    Mengerjakan ADT Location, ADT Point, dan ADT Matrix.
+    Mengerjakan ADT Location, ADT MesinKata, Main Program, MAP, EXIT, ADT Point, dan ADT Matrix.
 + Muhammad Risqi Firdaus (13520043)
     
     Mengerjakan ADT Matrix, ADT Mesin Kata,ADT Locations, dan implementasi command MOVE, Main Program, ADT Point, serta ADT Color.
 + Gregorius Moses Marevson (13520052)
         
-    Mengerjakan ADT Array Statis, implementasi gadget dan command BUY.
+    Mengerjakan ADT Array Statis, implementasi gadget, ADT Time dan command BUY.
 + Fikri Khoiron Fadhila (13520056)
 
     Mengerjakan ADT Stack, ADT Time, ADT Ability, ADT item, mekanisme waktu, dan melakukan integrasi program.
@@ -59,3 +65,12 @@ Berikut adalah fitur/command yang tersedia pada program :
 + HELP          (selesai)
 + SAVE_GAME     (tidak selesai)
 + RETURN        (selesai)
+
+## Project Status
+Project is:  _no longer being worked on_
+
+
+## Room for Improvement
+1. Tampilan yang lebih menarik
+2. Program yang lebih efisien, baik dalam skema ADT maupun fungsi fungsi yang dibuat
+3. 
