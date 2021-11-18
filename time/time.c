@@ -13,7 +13,7 @@ void displayStatus(time t, ArrayBuild arrBuild){
     printf("%s",RED);
     printf("JUMLAH UANG: %d\n", currentMoney(t));
     printf("%s",NORMAL);
-    printf("HEAVY ITEM: %d || SPEEDBOOST: %d || RETURN TO SENDER: %d || SENTER PENGECIL: %d\n\n", heavyItem(t), speedBoost(t), returnToSender(t), senterPengecil(t));
+    printf("HEAVY ITEM: %s%d%s || SPEEDBOOST: %s%d%s || RETURN TO SENDER: %s%d%s || SENTER PENGECIL: %s%d%s\n\n", BLUE, heavyItem(t), NORMAL,BLUE, speedBoost(t), NORMAL,BLUE,returnToSender(t),NORMAL,BLUE, senterPengecil(t),NORMAL);
 }
 
 

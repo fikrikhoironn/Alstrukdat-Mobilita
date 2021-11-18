@@ -29,16 +29,15 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
     //printf("---%d--\n",tokenToIntStd(currentToken));
     bcomd=currentToken.tokenArray[0];
     comd = (int) bcomd-'0';
-    while ( 0>comd || comd>k )
+    while ( 0>comd || comd>=k )
     {
         printf("\nLokasi Tak Tersediia\nENTER COMMAND: ");
         advTokenStdin();
-        bcomd=currentToken.tokenArray[0];
-        comd = (int) bcomd-'0';
+        comd = tokenToInt(currentToken);
     }
     
     
-    if(comd>0 && comd<=k+1){
+    if(comd>0 && comd<=k){
         //makeNeutral((mobitaLocation(*mobiTime).location));
         mobitaLocation(*mobiTime).location=arrayOfBuilding.koor[z].location;
         mobitaLocation(*mobiTime).col=tmpBuild.koor[comd-1].col;
