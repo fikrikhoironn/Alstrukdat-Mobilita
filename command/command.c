@@ -36,7 +36,7 @@ void MOVE(time *mobiTime, ArrayBuild arrayOfBuilding, Matrix adjMatrix){
         comd = tokenToIntStd(currentToken);
     }
     
-    printf("%d %d\n",k,comd);
+    //printf("%d %d\n",k,comd);
     
     if(comd>0 && comd<k){
         //makeNeutral((mobitaLocation(*mobiTime).location));
