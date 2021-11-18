@@ -46,19 +46,16 @@ int main(){
     char * test=(char *) malloc(101*sizeof(char));
     int i;
     int j;
-
-    boolean isCommadValid=false;
-    printf("                  _     _ _                                _             
-\n                 | |   (_) |                              (_)            
-\n  _ __ ___   ___ | |__  _| |_ __ _    __ _  __ _ _ __ ___  _ _ __   __ _ 
-\n | '_ ` _ \ / _ \| '_ \| | __/ _` |  / _` |/ _` | '_ ` _ \| | '_ \ / _` |
-\n | | | | | | (_) | |_) | | || (_| | | (_| | (_| | | | | | | | | | | (_| |
-\n |_| |_| |_|\___/|_.__/|_|\__\__,_|  \__, |\__,_|_| |_| |_|_|_| |_|\__, |
-\n                                      __/ |                         __/ |
-\n                                     |___/                         |___/ \n");
-    printf("%s\n.``````````````````````````````````````````.......\n.````````````````.:+osso+-````````````````````````\n...............+dNNNNmhhdmms-`````````````````````\n.............-dNNdo/..``.`.:s-`...................\n-...........-yNd/.`   `.    .-....................\n-------....-/NNo..   /s.h-   :....................\n::----------/NNh.-   `...   .:....-...............\n:::::::::::::s//.`.````....-`--...................\n/////:::::::::--````.--:///.`-.--...--------------\n/////:::::::odmyo+.`./++++..-------------------::;\n//////////::mmNmmm/.......sh:------------:::://::/\n//////::::::mmdssdm. ``/:`/mo-----::::::::::://///\n////::::::::mmyssymy/-osssohs:::://///////////////\n/////:::::::mmssssmysssssssyso////////////////////\n%s",GREEN,NORMAL);
-    
-    printf("\n\nSilahkan masukkan menu\n(1| Start Game\n(2| Load Game \n(3| New Game\nMasukkan nomor perintah!\n\nENTER COMMAND: ");
+    printf("%s",RED);
+    printf("#     # ####### ######  ### #######    #       #       #######  #####  ####### #     # ######\n");  
+    printf("##   ## #     # #     #  #     #      # #      #       #       #     # #       ##    # #     # \n");
+    printf("# # # # #     # #     #  #     #     #   #     #       #       #       #       # #   # #     # \n");
+    printf("#  #  # #     # ######   #     #    #     #    #       #####   #  #### #####   #  #  # #     # \n");
+    printf("#     # #     # #     #  #     #    #######    #       #       #     # #       #   # # #     #\n");
+    printf("#     # #     # #     #  #     #    #     #    #       #       #     # #       #    ## #     #\n"); 
+    printf("#     # ####### ######  ###    #    #     #    ####### #######  #####  ####### #     # ######  \n");
+    printf("%s",NORMAL);
+    printf("\nSilahkan masukkan menu\n(1| Start Game\n(2| Load Game \n(3| New Game\nMasukkan nomor perintah!\n\nENTER COMMAND: ");
     startTokenStd();    
     do{
         while(currentToken.len!=1){
@@ -102,10 +99,11 @@ int main(){
 
     if(command==1){
         printf("\n\n==================================");
-        printf("\n||    %s%s", BLUE, "Welcome");
+        printf("\n||  %s%s", BLUE, "Welcome");
         printf("%s", NORMAL);
-        printf(" to Alshock");
-        printStringColor(RED,"DEAD");
+        printf(" to Mobita");
+        printStringColor(RED," vs ");
+        printf("PPKM");
         printf("\t||\n==================================");
         eot=true;
         endToken=true;
