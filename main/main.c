@@ -46,7 +46,7 @@ int main(){
     char * test=(char *) malloc(101*sizeof(char));
     int i;
     int j;
-    printf("%s",RED);
+    printf("%s",YELLOW);
     printf("#     # ####### ######  ### #######    #       #       #######  #####  ####### #     # ######\n");  
     printf("##   ## #     # #     #  #     #      # #      #       #       #     # #       ##    # #     # \n");
     printf("# # # # #     # #     #  #     #     #   #     #       #       #       #       # #   # #     # \n");
