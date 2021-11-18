@@ -113,7 +113,8 @@ int main(){
         startTokenStd();
         char * cmd;
         cmd = (char *) malloc(101*sizeof(char));
-        while (!isEmptyQueue(daftarPesanan) || !isListEmpty(todo) || !isListEmpty(inprogressList) || !(mobitaLocation(mobiTime).col==HQLoc.col && mobitaLocation(mobiTime).row== HQLoc.row))
+        boolean isExit=false;
+        do
         {
             for(i=0;i<=currentToken.len;i++){
             if(i!=currentToken.len) cmd[i]=currentToken.tokenArray[i];
@@ -149,18 +150,20 @@ int main(){
             }else if(stringCompare(cmd,"STATUS")){
                 printf("HEAVY ITEM YANG DIBAWA: %d\n", heavyItem(mobiTime));
                 printf("JUMLAH SPEEDBOOST SEKARANG: %d\n", speedBoost(mobiTime));
-                printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));
-                
-            }else{
+                printf("JUMLAH RETURN TO SENDER SEKARANG: %d\n", returnToSender(mobiTime));   
+            }else if(stringCompare(cmd,"EXIT")){
+                isExit=EXIT(todo,inprogressList,mobiTime,HQLoc);
+            } else{
                 printf("PERINTAH TIDAK SESUAI.");
             }
             displayStatus(mobiTime,arrayOfBuilding); 
-
-            printf("ENTER COMMAND: ");
-            ignoreBlankStdin();
-            advTokenStdin();
-
-        } 
+            
+            if(!isExit){
+                printf("ENTER COMMAND: ");
+                ignoreBlankStdin();
+                advTokenStdin();
+            }
+        }while(!isExit);
     }
 
     printf("PERMAINAN SELESAI SELAMAT");

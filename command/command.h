@@ -31,5 +31,8 @@ void PICK_UP (linkedList *todo, linkedList *inprogress, stack *tas, time *t,Arra
 
 void HELP();
 
+boolean EXIT(linkedList todo, linkedList inPorgress, time t,locationCoord hq);
+// Mengembalikan true jika permainan selesai dan pemain bisa menang;
+
 #endif /* command_H */
 

@@ -257,5 +257,17 @@ void HELP(){
     printf("|| 7. BUY          -> Untuk menampilkan gadget yang dapat dibeli lalu membelinya (Hanya pada headquarters)\t||\n");
     printf("|| 8. INVENTORY    -> Untuk melihat gadget yang dimiliki dan menggunakannya\t\t\t\t\t||\n");
     printf("|| 9. HELP         -> Untuk mengeluarkan list command dan kegunaannya\t\t\t\t\t\t||\n");
+    printf("||10. EXIT         -> Untuk keluar dari permainan ketika permainan selesai                                      ||\n");
     printf("==================================================================================================================\n\n");
+}
+
+boolean EXIT(linkedList todo, linkedList inPorgress, time t,locationCoord hq)
+// Mengembalikan true jika permainan selesai dan pemain bisa menang;
+{
+    if(!(isListEmpty(todo) || isListEmpty(inPorgress))){
+        printf("HABISKAN PESANAN TERLEBIH DAHULU\n");
+    }else if(!(mobitaLocation(t).col==hq.col && mobitaLocation(t).row==hq.row)){
+        printf("PERGI KE HQ TERLEBIH DAHULU\n");
+    }
+    return isListEmpty(todo) && isListEmpty(inPorgress) && mobitaLocation(t).col==hq.col && mobitaLocation(t).row==hq.row;
 }
